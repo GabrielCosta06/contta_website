@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contta Business - Documentação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .glossary-term::before {
+            content: "•";
+            color: #0284c7;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Mobile Header -->
+    <div class="lg:hidden flex items-center justify-between p-4 bg-white border-b sticky top-0 z-50">
+        <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-chart-line text-brand-600 text-xl"></i>
+            <span class="font-bold text-lg text-slate-900">Contta Docs</span>
+        </div>
+        <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="text-slate-600 focus:outline-none">
+            <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+    </div>
+
+    <div class="flex min-h-screen">
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-in-out overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center space-x-2 mb-8">
+                    <div class="w-8 h-8 bg-brand-600 rounded flex items-center justify-center text-white">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <span class="text-xl font-bold text-slate-900">Contta</span>
+                </div>
+
+                <nav class="space-y-1">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 pl-2">Geral</p>
+                    <a href="#introducao" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Introdução</a>
+                    <a href="#problema" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">O Problema</a>
+                    
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2 pl-2">Funcionalidades</p>
+                    <a href="#o-que-faz" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Módulos Principais</a>
+                    <a href="#arquitetura" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Arquitetura Híbrida</a>
+                    <a href="#seguranca" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Segurança</a>
+
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2 pl-2">Desenvolvimento</p>
+                    <a href="#roadmap" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Roadmap & Futuro</a>
+                    <a href="#stack" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Tech Stack</a>
+                    <a href="#glossario" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Glossário</a>
+                </nav>
+            </div>
+            
+            <div class="p-4 border-t border-slate-200 mt-auto">
+                <div class="text-xs text-slate-500">
+                    &copy; 2025 Contta Tecnologia Ltda.
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 lg:ml-64">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+                <!-- Hero Section -->
+                <section id="introducao">
+                    <div class="border-b border-slate-200 pb-8">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <img src="https://img.shields.io/badge/AI_Core-Gemini_1.5-8E75B2?style=flat&logo=google&logoColor=white" alt="Gemini">
+                            <img src="https://img.shields.io/badge/Edge_AI-TFLite-FF6F00?style=flat&logo=tensorflow&logoColor=white" alt="TF Lite">
+                            <img src="https://img.shields.io/badge/Flutter-Production-02569B?style=flat&logo=flutter&logoColor=white" alt="Flutter">
+                        </div>
+                        <h1 class="text-4xl font-bold text-slate-900 mb-2">Contta Business <span class="text-brand-600">AI</span></h1>
+                        <p class="text-xl text-slate-600 mb-6">O escudo financeiro impulsionado por Inteligência Artificial.</p>
+                        <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded-r shadow-sm">
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-robot text-purple-600 mt-1 mr-3 text-lg"></i>
+                                <div>
+                                    <p class="text-purple-900 font-bold">Inteligência Artificial de sobrevivência para PMEs.</p>
+                                    <p class="text-purple-800 text-sm mt-1">Não apenas registra o passado. A IA prevê o futuro e sugere como salvar seu caixa.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-6 text-slate-700 leading-relaxed">
+                            O <strong>Contta Business</strong> é um sistema financeiro <strong>AI-first</strong> feito para a realidade hostil do Brasil. Diferente de ERPs tradicionais, utilizamos modelos de IA híbrida (Edge + Cloud) para entregar <strong>recomendações práticas</strong> que protegem margem e evitam quebra de caixa.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 grid md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-purple-50 rounded-bl-full -mr-8 -mt-8"></div>
+                            <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 relative z-10"><i class="fa-solid fa-money-bill-wave"></i></div>
+                            <h3 class="font-bold text-slate-900">IA de Lucratividade</h3>
+                            <p class="text-sm text-slate-600 mt-2">Algoritmos calculam o lucro real líquido em tempo real.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-purple-50 rounded-bl-full -mr-8 -mt-8"></div>
+                            <div class="w-10 h-10 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4 relative z-10"><i class="fa-solid fa-chart-line"></i></div>
+                            <h3 class="font-bold text-slate-900">IA Preditiva de Caixa</h3>
+                            <p class="text-sm text-slate-600 mt-2">Previsão de insolvência baseada em padrões históricos.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-purple-50 rounded-bl-full -mr-8 -mt-8"></div>
+                            <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4 relative z-10"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <h3 class="font-bold text-slate-900">IA Fiscal</h3>
+                            <p class="text-sm text-slate-600 mt-2">Monitoramento contínuo de eficiência tributária.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contexto -->
+                <section id="problema">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                        <span class="mr-2">🇧🇷</span> Contexto Brasileiro
+                    </h2>
+                    <p class="text-slate-700 mb-4">Empreender no Brasil exige precisão. Muitas pequenas empresas quebram por cegueira financeira, não por falta de vendas.</p>
+                    
+                    <div class="bg-white rounded-lg border border-slate-200 overflow-hidden">
+                        <ul class="divide-y divide-slate-200">
+                            <li class="p-4 hover:bg-slate-50">
+                                <span class="font-bold text-slate-900 block">Precificação incorreta</span>
+                                <span class="text-slate-600 text-sm">Confusão entre markup e margem com impostos e taxas corroendo o lucro real.</span>
+                            </li>
+                            <li class="p-4 hover:bg-slate-50">
+                                <span class="font-bold text-slate-900 block">Risco de caixa</span>
+                                <span class="text-slate-600 text-sm">Desalinhamento entre prazos de pagamento (ex: 30 dias) e recebimento (ex: 31+ dias).</span>
+                            </li>
+                            <li class="p-4 hover:bg-slate-50">
+                                <span class="font-bold text-slate-900 block">Opacidade tributária</span>
+                                <span class="text-slate-600 text-sm">Regimes complexos (MEI, Simples, Presumido, Real) dificultam enxergar custo real por unidade.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- O que faz -->
+                <section id="o-que-faz">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">✅ Funcionalidades Prescritivas (AI-Driven)</h2>
+                    <p class="text-slate-600 mb-6">O Contta é prescritivo: a IA identifica o risco e sugere a ação.</p>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Card 1 -->
+                        <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-colors">
+                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <i class="fa-solid fa-shield-halved text-6xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">1. Guardião de Preços</h3>
+                            <p class="text-slate-600 text-sm mb-3">Monitora variações em notas e custos de fornecedores.</p>
+                            <div class="bg-slate-50 p-3 rounded text-xs border border-slate-100 text-slate-500 font-mono">
+                                "A IA detectou alta de 8% no fornecedor. Sugestão: ajuste para R$ 5,49 para manter margem."
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-colors">
+                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <i class="fa-solid fa-calculator text-6xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">2. Precificação Inteligente</h3>
+                            <p class="text-slate-600 text-sm mb-3">Calcula preço ideal cruzando impostos, taxas e custos.</p>
+                            <div class="bg-slate-50 p-3 rounded text-xs border border-slate-100 text-slate-500 font-mono">
+                                "Análise: R$ 10,00 gera prejuízo. IA Recomenda: R$ 14,50 para lucro alvo de 15%."
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-colors">
+                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <i class="fa-solid fa-satellite-dish text-6xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">3. Profeta do Fluxo de Caixa</h3>
+                            <p class="text-slate-600 text-sm mb-3">Projeta caixa futuro usando séries temporais e sazonalidade.</p>
+                            <div class="bg-slate-50 p-3 rounded text-xs border border-slate-100 text-slate-500 font-mono">
+                                "Previsão: Risco de falta de R$ 2.000 no dia 20. Sugestão: Antecipe recebíveis hoje."
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-colors">
+                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <i class="fa-solid fa-magnifying-glass-dollar text-6xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">4. Raio-X dos Custos</h3>
+                            <p class="text-slate-600 text-sm mb-3">Unit Economics, custos fixos/variáveis e ponto de equilíbrio.</p>
+                            <div class="bg-slate-50 p-3 rounded text-xs border border-slate-100 text-slate-500 font-mono">
+                                "Cálculo: Ponto de equilíbrio dia 19. A partir do dia 20, operação entra em lucro."
+                            </div>
+                        </div>
+
+                         <!-- Card 5 -->
+                         <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-colors md:col-span-2">
+                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <i class="fa-solid fa-chess-knight text-6xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">5. Estrategista Tributário</h3>
+                            <p class="text-slate-600 text-sm mb-3">Simula cenários fiscais complexos para otimização.</p>
+                            <div class="bg-slate-50 p-3 rounded text-xs border border-slate-100 text-slate-500 font-mono">
+                                "Alerta IA: Fator R em 24%. Aumentar pró-labore em R$ 200 economiza R$ 8.400/ano em impostos."
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Arquitetura -->
+                <section id="arquitetura">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">🧠 IA Híbrida (Edge + Nuvem)</h2>
+                    <p class="text-slate-600 mb-6">Usamos o melhor dos dois mundos: rapidez local e poder cognitivo na nuvem.</p>
+
+                    <div class="overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
+                        <table class="min-w-full divide-y divide-slate-200">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Camada</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Modelo de IA</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Função Inteligente</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Benefício</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-slate-200">
+                                <tr class="bg-orange-50/50">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-slate-900">Edge (Dispositivo)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-800 font-medium"><i class="fa-brands fa-google text-orange-500 mr-2"></i>TensorFlow Lite</td>
+                                    <td class="px-6 py-4 text-sm text-slate-600">Categorização instantânea, detecção de anomalias locais</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-700"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Privacidade Total</span></td>
+                                </tr>
+                                <tr class="bg-purple-50/50">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-slate-900">Nuvem (Cognitiva)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-800 font-medium"><i class="fa-solid fa-gem text-purple-500 mr-2"></i>Google Gemini</td>
+                                    <td class="px-6 py-4 text-sm text-slate-600">Análise de documentos (OCR), Copiloto de Decisão, Cenários complexos</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-700"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">Raciocínio Avançado</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-500">Persistência</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">Drift + SQLCipher</td>
+                                    <td class="px-6 py-4 text-sm text-slate-500">Banco de dados local vetorial/relacional</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">Segurança (AES-256)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-8 bg-gradient-to-r from-slate-900 to-slate-800 text-slate-300 p-6 rounded-lg shadow-md border border-slate-700">
+                        <div class="flex items-center mb-4">
+                             <i class="fa-solid fa-microchip text-purple-400 text-2xl mr-3"></i>
+                             <h4 class="text-white font-bold text-lg">Pipeline de Inteligência</h4>
+                        </div>
+                        <ol class="list-decimal list-inside space-y-3 text-sm">
+                            <li><strong>Ingestão:</strong> Dados entram via Open Finance ou input manual.</li>
+                            <li><strong>Edge AI (TFLite):</strong> O app categoriza a transação em < 100ms sem internet.</li>
+                            <li><strong>Análise de Padrão:</strong> O modelo local recalcula projeções de caixa instantaneamente.</li>
+                            <li><strong>Consultoria (Gemini):</strong> Se houver risco complexo, o usuário ativa o "Copiloto" para análise profunda na nuvem.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Segurança -->
+                <section id="seguranca">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">🔐 Segurança e Privacidade</h2>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                            <div>
+                                <span class="font-bold block text-slate-900">Criptografia Local</span>
+                                <span class="text-sm text-slate-600">SQLCipher (AES-256) para todos os dados locais.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                            <div>
+                                <span class="font-bold block text-slate-900">Acesso</span>
+                                <span class="text-sm text-slate-600">Proteção via Biometria + PIN.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                            <div>
+                                <span class="font-bold block text-slate-900">Offline-first</span>
+                                <span class="text-sm text-slate-600">Visibilidade total do status de sincronização.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                            <div>
+                                <span class="font-bold block text-slate-900">Consentimento</span>
+                                <span class="text-sm text-slate-600">Aprovação explícita para envio de dados à nuvem.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Roadmap -->
+                <section id="roadmap">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">🗺️ Roadmap e Futuro</h2>
+                    
+                    <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                        
+                        <!-- Item Completo -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-green-500 text-slate-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded bg-white border border-slate-200 shadow-sm">
+                                <div class="font-bold text-slate-900">Base & Inteligência</div>
+                                <div class="text-slate-500 text-sm">Lançamentos, DRE, Custos, Alertas, Projeções e Briefing.</div>
+                            </div>
+                        </div>
+
+                        <!-- Item Completo -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-green-500 text-slate-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded bg-white border border-slate-200 shadow-sm">
+                                <div class="font-bold text-slate-900">Ecossistema</div>
+                                <div class="text-slate-500 text-sm">Multi-empresa e portal do contador.</div>
+                            </div>
+                        </div>
+
+                        <!-- Item Futuro -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-brand-100 text-brand-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded bg-white border-l-4 border-brand-500 shadow-sm">
+                                <div class="font-bold text-slate-900">Em Breve (Alto Impacto)</div>
+                                <ul class="text-slate-600 text-sm mt-2 space-y-1 list-disc list-inside">
+                                    <li><strong>Copiloto de Decisão:</strong> Chat para simular parcelamentos e impacto no caixa.</li>
+                                    <li><strong>Modo Cenários (What-if):</strong> Simular preços, descontos e estoque.</li>
+                                    <li><strong>Auditor de Maquininha:</strong> Detecção de taxas abusivas.</li>
+                                    <li><strong>Assistente de Compras:</strong> Quando e quanto comprar.</li>
+                                    <li><strong>Monitor Tributário:</strong> Alertas de DAS e NFe.</li>
+                                    <li><strong>Survival Score:</strong> Pontuação de risco do negócio (0-100).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stack -->
+                <section id="stack">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">🛠 Stack Tecnológico</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        <div class="text-center p-4 bg-white rounded border border-slate-200">
+                            <i class="fa-brands fa-flutter text-blue-400 text-2xl mb-2 block"></i>
+                            <span class="text-sm font-bold block">Flutter</span>
+                            <span class="text-xs text-slate-500">Frontend</span>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded border border-slate-200">
+                            <i class="fa-solid fa-database text-slate-600 text-2xl mb-2 block"></i>
+                            <span class="text-sm font-bold block">Drift + SQLCipher</span>
+                            <span class="text-xs text-slate-500">Banco Local</span>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded border border-slate-200">
+                            <i class="fa-solid fa-brain text-purple-500 text-2xl mb-2 block"></i>
+                            <span class="text-sm font-bold block">TFLite + Gemini</span>
+                            <span class="text-xs text-slate-500">Inteligência</span>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded border border-slate-200">
+                            <i class="fa-solid fa-water text-blue-300 text-2xl mb-2 block"></i>
+                            <span class="text-sm font-bold block">Riverpod 2.0</span>
+                            <span class="text-xs text-slate-500">Ger. Estado</span>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded border border-slate-200">
+                            <i class="fa-solid fa-fingerprint text-green-500 text-2xl mb-2 block"></i>
+                            <span class="text-sm font-bold block">Supabase</span>
+                            <span class="text-xs text-slate-500">Auth & Sync</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 bg-slate-900 text-slate-300 p-4 rounded font-mono text-sm">
+                        <p class="text-slate-400 mb-2"># Como rodar (dev)</p>
+                        <p class="mb-1"><span class="text-yellow-400">git</span> clone [repo_url]</p>
+                        <p class="mb-1"><span class="text-green-400">flutter</span> pub get</p>
+                        <p class="mb-1"><span class="text-blue-400">dart</span> run build_runner build</p>
+                        <p><span class="text-purple-400">flutter</span> run</p>
+                    </div>
+                </section>
+
+                <!-- Glossário -->
+                <section id="glossario">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">📚 Glossário Brasileiro</h2>
+                    <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 text-sm">
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <span class="font-bold text-slate-900 glossary-term">Markup</span>
+                                <p class="text-slate-600 ml-4">Percentual aplicado sobre o custo para formar o preço. Ex: custo R$ 10, markup 50% = preço R$ 15.</p>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900 glossary-term">Margem (de lucro)</span>
+                                <p class="text-slate-600 ml-4">Percentual do lucro em relação ao preço de venda. Ex: preço R$ 15, custo R$ 10 = margem 33,3%.</p>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900 glossary-term">CMV</span>
+                                <p class="text-slate-600 ml-4">Custo da Mercadoria Vendida. Quanto o estoque custou nas vendas do período.</p>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900 glossary-term">DRE</span>
+                                <p class="text-slate-600 ml-4">Demonstração do Resultado. Receitas, custos, despesas e lucro/prejuízo.</p>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900 glossary-term">Ponto de Equilíbrio</span>
+                                <p class="text-slate-600 ml-4">Mínimo de vendas para cobrir custos. A partir daqui, começa o lucro.</p>
+                            </div>
+                             <div>
+                                <span class="font-bold text-slate-900 glossary-term">Fator R</span>
+                                <p class="text-slate-600 ml-4">Indicador do Simples (Folha/Receita) que pode mudar o anexo de tributação.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <span class="font-bold text-slate-900 glossary-term">Simples Nacional</span>
+                                <p class="text-slate-600 ml-4">Regime simplificado para MEs e EPPs, dividido em anexos e faixas.</p>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900 glossary-term">Lucro Presumido</span>
+                                <p class="text-slate-600 ml-4">IRPJ/CSLL calculados por presunção de lucro conforme a atividade.</p>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900 glossary-term">Lucro Real</span>
+                                <p class="text-slate-600 ml-4">Baseado no lucro contábil ajustado (LALUR). Permite créditos.</p>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900 glossary-term">ICMS-ST</span>
+                                <p class="text-slate-600 ml-4">Substituição Tributária. O imposto é recolhido antecipadamente na cadeia.</p>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900 glossary-term">Open Finance</span>
+                                <p class="text-slate-600 ml-4">Compartilhamento padronizado de dados financeiros (extratos bancários).</p>
+                            </div>
+                             <div>
+                                <span class="font-bold text-slate-900 glossary-term">DAS</span>
+                                <p class="text-slate-600 ml-4">Documento de Arrecadação do Simples Nacional.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Disclaimer Footer -->
+                <footer class="border-t border-slate-200 pt-8 pb-12">
+                    <div class="bg-yellow-50 border border-yellow-200 rounded p-4 text-sm text-yellow-800">
+                        <strong class="block mb-2 text-yellow-900"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Disclaimer Importante</strong>
+                        <p class="mb-2">O Contta Business fornece análises e recomendações baseadas em dados. <strong>O sistema não substitui contadores ou advogados.</strong></p>
+                        <p>Recomendações tributárias devem ser validadas por profissionais. O usuário é responsável pelas decisões tomadas.</p>
+                    </div>
+                    <div class="mt-8 text-center text-slate-500 text-sm">
+                        <p>&copy; 2025 Contta Tecnologia Ltda. Inteligência para a economia real.</p>
+                        <p class="mt-2">
+                            <a href="#" class="text-brand-600 hover:underline">Licença</a> • 
+                            <a href="#" class="text-brand-600 hover:underline">Contato</a> • 
+                            <a href="#" class="text-brand-600 hover:underline">Reportar Bug</a>
+                        </p>
+                    </div>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple active link highlighter
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('aside nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-slate-50', 'text-brand-600');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('bg-slate-50', 'text-brand-600');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
