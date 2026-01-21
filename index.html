@@ -1,529 +1,1800 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contta Business - Documentação</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contta Business AI - O Escudo Financeiro da sua Empresa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            900: '#0c4a6e',
-                        }
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
+              },
+            },
+          },
+        },
+      };
     </script>
     <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
-        }
-        .glossary-term::before {
-            content: "•";
-            color: #0284c7;
-            margin-right: 8px;
-            font-weight: bold;
-        }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      .glossary-term::before {
+        content: "•";
+        color: #0284c7;
+        margin-right: 8px;
+        font-weight: bold;
+      }
+      /* Navbar scroll effect */
+      .navbar-scrolled {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+      }
+      /* 3D Mock Window */
+      .mock-window {
+        transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+        transition: transform 0.5s ease;
+      }
+      .mock-window:hover {
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+      }
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      /* Tech logo grayscale hover */
+      .tech-logo {
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+      .tech-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
     </style>
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+  </head>
+  <body class="bg-white text-slate-800 font-sans antialiased leading-relaxed">
+    <!-- Sticky Navbar -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <a href="#" class="flex items-center space-x-2">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-brand-500 to-brand-700 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30"
+            >
+              <i class="fa-solid fa-chart-pie text-lg"></i>
+            </div>
+            <span class="text-xl font-bold text-slate-900">Contta</span>
+          </a>
 
-    <!-- Mobile Header -->
-    <div class="lg:hidden flex items-center justify-between p-4 bg-white border-b sticky top-0 z-50">
-        <div class="flex items-center space-x-2">
-            <i class="fa-solid fa-chart-line text-brand-600 text-xl"></i>
-            <span class="font-bold text-lg text-slate-900">Contta Docs</span>
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#problema"
+              class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              >O Problema</a
+            >
+            <a
+              href="#funcionalidades"
+              class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              >Funcionalidades</a
+            >
+            <a
+              href="#arquitetura"
+              class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              >Tecnologia</a
+            >
+            <a
+              href="#roadmap"
+              class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              >Roadmap</a
+            >
+          </div>
+
+          <!-- CTA Button Desktop -->
+          <div class="hidden md:flex items-center space-x-4">
+            <a
+              href="#contato"
+              class="px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-full hover:from-brand-600 hover:to-brand-700 transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50"
+            >
+              Contato
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden text-slate-600 focus:outline-none p-2"
+          >
+            <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+          </button>
         </div>
-        <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="text-slate-600 focus:outline-none">
-            <i class="fa-solid fa-bars text-xl"></i>
-        </button>
-    </div>
+      </div>
 
-    <div class="flex min-h-screen">
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg"
+      >
+        <div class="px-4 py-6 space-y-4">
+          <a
+            href="#problema"
+            class="block text-base font-medium text-slate-700 hover:text-brand-600"
+            >O Problema</a
+          >
+          <a
+            href="#funcionalidades"
+            class="block text-base font-medium text-slate-700 hover:text-brand-600"
+            >Funcionalidades</a
+          >
+          <a
+            href="#arquitetura"
+            class="block text-base font-medium text-slate-700 hover:text-brand-600"
+            >Tecnologia</a
+          >
+          <a
+            href="#roadmap"
+            class="block text-base font-medium text-slate-700 hover:text-brand-600"
+            >Roadmap</a
+          >
+          <div class="pt-4 border-t border-slate-100">
+            <a
+              href="#contato"
+              class="block w-full text-center px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-full"
+            >
+              Contato
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-        <!-- Sidebar Navigation -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-in-out overflow-y-auto">
-            <div class="p-6">
-                <div class="flex items-center space-x-2 mb-8">
-                    <div class="w-8 h-8 bg-brand-600 rounded flex items-center justify-center text-white">
-                        <i class="fa-solid fa-chart-pie"></i>
-                    </div>
-                    <span class="text-xl font-bold text-slate-900">Contta</span>
+    <!-- Hero Section -->
+    <section
+      id="introducao"
+      class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+    >
+      <!-- Background Gradient -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-brand-50"
+      ></div>
+      <div
+        class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-brand-100/50 to-transparent rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-purple-100/50 to-transparent rounded-full blur-3xl"
+      ></div>
+
+      <div
+        class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center"
+      >
+        <!-- Badge -->
+        <div
+          class="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-8"
+        >
+          <i class="fa-solid fa-robot mr-2"></i>
+          Inteligência Artificial de sobrevivência para PMEs
+        </div>
+
+        <!-- Main Headline -->
+        <h1
+          class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight"
+        >
+          Contta Business <span class="gradient-text">AI</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p
+          class="text-xl sm:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+        >
+          O escudo financeiro impulsionado por Inteligência Artificial. Não
+          apenas registra o passado —
+          <strong class="text-slate-800"
+            >prevê o futuro e sugere como salvar seu caixa.</strong
+          >
+        </p>
+
+        <!-- Description -->
+        <p class="text-lg text-slate-500 mb-12 max-w-2xl mx-auto">
+          Sistema financeiro <strong>AI-first</strong> feito para a realidade
+          hostil do Brasil. Utilizamos IA híbrida (Edge + Cloud) para entregar
+          <strong>recomendações práticas</strong> que protegem margem e evitam
+          quebra de caixa.
+        </p>
+
+        <!-- Platform Availability -->
+        <div class="flex flex-col items-center justify-center gap-6 mb-16">
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <div
+              class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full"
+            >
+              <i class="fa-brands fa-apple text-slate-800 text-xl"></i>
+              <span class="text-sm font-medium text-slate-700">iOS</span>
+              <span
+                class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full"
+                >Disponível</span
+              >
+            </div>
+            <div
+              class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full"
+            >
+              <i class="fa-brands fa-android text-green-600 text-xl"></i>
+              <span class="text-sm font-medium text-slate-700">Android</span>
+              <span
+                class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full"
+                >Disponível</span
+              >
+            </div>
+            <div
+              class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full"
+            >
+              <i class="fa-solid fa-globe text-brand-500 text-xl"></i>
+              <span class="text-sm font-medium text-slate-700">Web</span>
+              <span
+                class="px-2 py-0.5 bg-brand-100 text-brand-700 text-xs font-semibold rounded-full"
+                >Em breve</span
+              >
+            </div>
+          </div>
+          <a
+            href="#contato"
+            class="px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-full hover:from-brand-600 hover:to-brand-700 transition-all shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:-translate-y-0.5"
+          >
+            <i class="fa-solid fa-envelope mr-2"></i>Entre em Contato
+          </a>
+        </div>
+
+        <!-- Mini Feature Cards -->
+        <div class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div
+            class="bg-white/80 backdrop-blur p-6 rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100"
+          >
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-green-500/30"
+            >
+              <i class="fa-solid fa-money-bill-wave text-white"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2">IA de Lucratividade</h3>
+            <p class="text-sm text-slate-600">
+              Algoritmos calculam o lucro real líquido em tempo real.
+            </p>
+          </div>
+          <div
+            class="bg-white/80 backdrop-blur p-6 rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100"
+          >
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-red-500/30"
+            >
+              <i class="fa-solid fa-chart-line text-white"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2">IA Preditiva de Caixa</h3>
+            <p class="text-sm text-slate-600">
+              Previsão de insolvência baseada em padrões históricos.
+            </p>
+          </div>
+          <div
+            class="bg-white/80 backdrop-blur p-6 rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100"
+          >
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-blue-500/30"
+            >
+              <i class="fa-solid fa-scale-balanced text-white"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2">IA Fiscal</h3>
+            <p class="text-sm text-slate-600">
+              Monitoramento contínuo de eficiência tributária.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interface Preview Section -->
+    <section class="py-20 bg-gradient-to-b from-white to-slate-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-900 mb-4">
+            Interface Preview
+          </h2>
+          <p class="text-lg text-slate-600">
+            Veja como o Contta transforma dados em decisões inteligentes
+          </p>
+        </div>
+
+        <!-- 3D Mock Window -->
+        <div class="mock-window mx-auto max-w-4xl">
+          <div
+            class="bg-white rounded-2xl shadow-2xl shadow-slate-300/50 border border-slate-200 overflow-hidden"
+          >
+            <!-- Window Header -->
+            <div
+              class="bg-slate-100 px-4 py-3 flex items-center space-x-2 border-b border-slate-200"
+            >
+              <div class="w-3 h-3 rounded-full bg-red-400"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+              <div class="w-3 h-3 rounded-full bg-green-400"></div>
+              <div class="flex-1 text-center">
+                <span class="text-xs text-slate-500 font-medium"
+                  >Contta Business Dashboard</span
+                >
+              </div>
+            </div>
+            <!-- Window Content Placeholder -->
+            <div
+              class="aspect-video bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-8"
+            >
+              <div class="text-center">
+                <div
+                  class="w-20 h-20 bg-gradient-to-br from-brand-500 to-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-brand-500/30"
+                >
+                  <i class="fa-solid fa-chart-pie text-white text-3xl"></i>
                 </div>
-
-                <nav class="space-y-1">
-                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 pl-2">Geral</p>
-                    <a href="#introducao" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Introdução</a>
-                    <a href="#problema" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">O Problema</a>
-                    
-                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2 pl-2">Funcionalidades</p>
-                    <a href="#o-que-faz" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Módulos Principais</a>
-                    <a href="#arquitetura" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Arquitetura Híbrida</a>
-                    <a href="#seguranca" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Segurança</a>
-
-                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2 pl-2">Desenvolvimento</p>
-                    <a href="#roadmap" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Roadmap & Futuro</a>
-                    <a href="#stack" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Tech Stack</a>
-                    <a href="#glossario" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-md">Glossário</a>
-                </nav>
+                <p class="text-slate-400 text-lg font-medium">
+                  Insira aqui o screenshot do dashboard
+                </p>
+                <p class="text-slate-400 text-sm mt-2">
+                  Tamanho recomendado: 1920x1080
+                </p>
+              </div>
             </div>
-            
-            <div class="p-4 border-t border-slate-200 mt-auto">
-                <div class="text-xs text-slate-500">
-                    &copy; 2025 Contta Tecnologia Ltda.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main>
+      <!-- The Problem Section -->
+      <section id="problema" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <span
+              class="inline-flex items-center px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium mb-4"
+            >
+              <span class="mr-2">🇧🇷</span> Realidade Brasileira
+            </span>
+            <h2 class="text-4xl font-bold text-slate-900 mb-6">
+              Por que tantas PMEs fecham as portas?
+            </h2>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+              Empreender no Brasil exige precisão.
+              <strong class="text-slate-800"
+                >6 em cada 10 empresas fecham antes de completar 5 anos</strong
+              >
+              — e na maioria das vezes, não é por falta de clientes ou vendas.
+            </p>
+          </div>
+
+          <!-- Statistics Cards - Horizontal Row -->
+          <div class="grid md:grid-cols-3 gap-8 mb-20">
+            <div
+              class="group bg-gradient-to-br from-red-50 to-red-100/50 rounded-2xl p-8 text-center border border-red-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              <div
+                class="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-red-500/30 group-hover:scale-110 transition-transform"
+              >
+                <i class="fa-solid fa-store-slash text-white text-2xl"></i>
+              </div>
+              <div class="text-5xl font-extrabold text-red-600 mb-2">60%</div>
+              <div class="text-lg font-semibold text-red-900 mb-2">
+                das PMEs fecham em até 5 anos
+              </div>
+              <div class="text-sm text-red-600">Fonte: IBGE/Sebrae</div>
+            </div>
+            <div
+              class="group bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-2xl p-8 text-center border border-orange-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              <div
+                class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform"
+              >
+                <i
+                  class="fa-solid fa-money-bill-transfer text-white text-2xl"
+                ></i>
+              </div>
+              <div class="text-5xl font-extrabold text-orange-600 mb-2">
+                29%
+              </div>
+              <div class="text-lg font-semibold text-orange-900 mb-2">
+                fecham por falta de capital de giro
+              </div>
+              <div class="text-sm text-orange-600">
+                Principal causa de falência
+              </div>
+            </div>
+            <div
+              class="group bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-2xl p-8 text-center border border-yellow-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              <div
+                class="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-yellow-500/30 group-hover:scale-110 transition-transform"
+              >
+                <i class="fa-solid fa-chart-line text-white text-2xl"></i>
+              </div>
+              <div class="text-5xl font-extrabold text-yellow-600 mb-2">
+                18%
+              </div>
+              <div class="text-lg font-semibold text-yellow-900 mb-2">
+                fecham por problemas de gestão financeira
+              </div>
+              <div class="text-sm text-yellow-600">Erros evitáveis</div>
+            </div>
+          </div>
+
+          <!-- Alert Banner -->
+          <div
+            class="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 mb-20 text-white shadow-xl shadow-red-500/20"
+          >
+            <div
+              class="flex flex-col md:flex-row items-start md:items-center gap-6"
+            >
+              <div
+                class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fa-solid fa-skull-crossbones text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">
+                  A verdade que ninguém conta:
+                </h3>
+                <p class="text-red-100 text-lg">
+                  Empresas não quebram quando param de vender. Elas quebram
+                  quando o dinheiro acaba antes de chegar.
+                  <strong class="text-white"
+                    >Você pode ter R$ 100 mil em vendas e ainda assim fechar as
+                    portas no mês seguinte.</strong
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pain Points -->
+          <div class="mb-20">
+            <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center">
+              <i class="fa-solid fa-face-tired text-slate-400 mr-3"></i>
+              Você se identifica com alguma dessas situações?
+            </h3>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div
+                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+              >
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                  >
+                    <i class="fa-solid fa-calculator text-red-500 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-900 mb-2">
+                      😰 "Vendo bastante, mas no final do mês não sobra nada"
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                      Confusão entre markup e margem real. Impostos, taxas de
+                      cartão, comissões e custos ocultos corroem silenciosamente
+                      seu lucro.
+                    </p>
+                  </div>
                 </div>
+              </div>
+              <div
+                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+              >
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                  >
+                    <i
+                      class="fa-solid fa-calendar-xmark text-orange-500 text-xl"
+                    ></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-900 mb-2">
+                      😓 "Sempre estou correndo atrás de dinheiro para pagar
+                      fornecedores"
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                      Você paga seu fornecedor em 7 dias, mas recebe do cliente
+                      em 30+ dias. Esse descompasso é a armadilha do fluxo de
+                      caixa.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+              >
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                  >
+                    <i class="fa-solid fa-receipt text-yellow-600 text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-900 mb-2">
+                      😵 "Não sei se estou no regime tributário certo"
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                      MEI, Simples Nacional, Lucro Presumido, Fator R... É um
+                      labirinto. Você pode estar pagando milhares a mais em
+                      impostos todo ano.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+              >
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                  >
+                    <i
+                      class="fa-solid fa-chart-line text-purple-500 text-xl"
+                    ></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-900 mb-2">
+                      😤 "Meu fornecedor aumentou o preço e eu nem percebi"
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                      Fornecedores reajustam preços silenciosamente. Sem
+                      monitoramento, você continua vendendo pelo preço antigo.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+              >
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                  >
+                    <i
+                      class="fa-solid fa-credit-card text-blue-500 text-xl"
+                    ></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-900 mb-2">
+                      😡 "As taxas da maquininha estão comendo meu lucro"
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                      Taxa de débito, crédito à vista, parcelado, antecipação...
+                      Cada venda tem uma mordida diferente. Você pode estar
+                      perdendo 3-5% do faturamento.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+              >
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                  >
+                    <i
+                      class="fa-solid fa-file-invoice-dollar text-green-600 text-xl"
+                    ></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-900 mb-2">
+                      😨 "Não sei quanto preciso vender para pagar as contas"
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                      Qual é o seu ponto de equilíbrio? Quantos dias do mês você
+                      trabalha só para cobrir custos fixos? Sem essa clareza,
+                      você não sabe se está construindo riqueza ou cavando um
+                      buraco.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-        </aside>
+          </div>
 
-        <!-- Main Content -->
-        <main class="flex-1 lg:ml-64">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
-
-                <!-- Hero Section -->
-                <section id="introducao">
-                    <div class="border-b border-slate-200 pb-8">
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <img src="https://img.shields.io/badge/AI_Core-Gemini_1.5-8E75B2?style=flat&logo=google&logoColor=white" alt="Gemini">
-                            <img src="https://img.shields.io/badge/Edge_AI-TFLite-FF6F00?style=flat&logo=tensorflow&logoColor=white" alt="TF Lite">
-                            <img src="https://img.shields.io/badge/Flutter-Production-02569B?style=flat&logo=flutter&logoColor=white" alt="Flutter">
-                        </div>
-                        <h1 class="text-4xl font-bold text-slate-900 mb-2">Contta Business <span class="text-brand-600">AI</span></h1>
-                        <p class="text-xl text-slate-600 mb-6">O escudo financeiro impulsionado por Inteligência Artificial.</p>
-                        <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded-r shadow-sm">
-                            <div class="flex items-start">
-                                <i class="fa-solid fa-robot text-purple-600 mt-1 mr-3 text-lg"></i>
-                                <div>
-                                    <p class="text-purple-900 font-bold">Inteligência Artificial de sobrevivência para PMEs.</p>
-                                    <p class="text-purple-800 text-sm mt-1">Não apenas registra o passado. A IA prevê o futuro e sugere como salvar seu caixa.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="mt-6 text-slate-700 leading-relaxed">
-                            O <strong>Contta Business</strong> é um sistema financeiro <strong>AI-first</strong> feito para a realidade hostil do Brasil. Diferente de ERPs tradicionais, utilizamos modelos de IA híbrida (Edge + Cloud) para entregar <strong>recomendações práticas</strong> que protegem margem e evitam quebra de caixa.
-                        </p>
-                    </div>
-
-                    <div class="mt-8 grid md:grid-cols-3 gap-6">
-                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-16 h-16 bg-purple-50 rounded-bl-full -mr-8 -mt-8"></div>
-                            <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 relative z-10"><i class="fa-solid fa-money-bill-wave"></i></div>
-                            <h3 class="font-bold text-slate-900">IA de Lucratividade</h3>
-                            <p class="text-sm text-slate-600 mt-2">Algoritmos calculam o lucro real líquido em tempo real.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-16 h-16 bg-purple-50 rounded-bl-full -mr-8 -mt-8"></div>
-                            <div class="w-10 h-10 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4 relative z-10"><i class="fa-solid fa-chart-line"></i></div>
-                            <h3 class="font-bold text-slate-900">IA Preditiva de Caixa</h3>
-                            <p class="text-sm text-slate-600 mt-2">Previsão de insolvência baseada em padrões históricos.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-16 h-16 bg-purple-50 rounded-bl-full -mr-8 -mt-8"></div>
-                            <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4 relative z-10"><i class="fa-solid fa-scale-balanced"></i></div>
-                            <h3 class="font-bold text-slate-900">IA Fiscal</h3>
-                            <p class="text-sm text-slate-600 mt-2">Monitoramento contínuo de eficiência tributária.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Contexto -->
-                <section id="problema">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-                        <span class="mr-2">🇧🇷</span> Contexto Brasileiro
-                    </h2>
-                    <p class="text-slate-700 mb-4">Empreender no Brasil exige precisão. Muitas pequenas empresas quebram por cegueira financeira, não por falta de vendas.</p>
-                    
-                    <div class="bg-white rounded-lg border border-slate-200 overflow-hidden">
-                        <ul class="divide-y divide-slate-200">
-                            <li class="p-4 hover:bg-slate-50">
-                                <span class="font-bold text-slate-900 block">Precificação incorreta</span>
-                                <span class="text-slate-600 text-sm">Confusão entre markup e margem com impostos e taxas corroendo o lucro real.</span>
-                            </li>
-                            <li class="p-4 hover:bg-slate-50">
-                                <span class="font-bold text-slate-900 block">Risco de caixa</span>
-                                <span class="text-slate-600 text-sm">Desalinhamento entre prazos de pagamento (ex: 30 dias) e recebimento (ex: 31+ dias).</span>
-                            </li>
-                            <li class="p-4 hover:bg-slate-50">
-                                <span class="font-bold text-slate-900 block">Opacidade tributária</span>
-                                <span class="text-slate-600 text-sm">Regimes complexos (MEI, Simples, Presumido, Real) dificultam enxergar custo real por unidade.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- O que faz -->
-                <section id="o-que-faz">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-6">✅ Funcionalidades Prescritivas (AI-Driven)</h2>
-                    <p class="text-slate-600 mb-6">O Contta é prescritivo: a IA identifica o risco e sugere a ação.</p>
-
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Card 1 -->
-                        <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-colors">
-                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <i class="fa-solid fa-shield-halved text-6xl"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">1. Guardião de Preços</h3>
-                            <p class="text-slate-600 text-sm mb-3">Monitora variações em notas e custos de fornecedores.</p>
-                            <div class="bg-slate-50 p-3 rounded text-xs border border-slate-100 text-slate-500 font-mono">
-                                "A IA detectou alta de 8% no fornecedor. Sugestão: ajuste para R$ 5,49 para manter margem."
-                            </div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-colors">
-                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <i class="fa-solid fa-calculator text-6xl"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">2. Precificação Inteligente</h3>
-                            <p class="text-slate-600 text-sm mb-3">Calcula preço ideal cruzando impostos, taxas e custos.</p>
-                            <div class="bg-slate-50 p-3 rounded text-xs border border-slate-100 text-slate-500 font-mono">
-                                "Análise: R$ 10,00 gera prejuízo. IA Recomenda: R$ 14,50 para lucro alvo de 15%."
-                            </div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-colors">
-                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <i class="fa-solid fa-satellite-dish text-6xl"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">3. Profeta do Fluxo de Caixa</h3>
-                            <p class="text-slate-600 text-sm mb-3">Projeta caixa futuro usando séries temporais e sazonalidade.</p>
-                            <div class="bg-slate-50 p-3 rounded text-xs border border-slate-100 text-slate-500 font-mono">
-                                "Previsão: Risco de falta de R$ 2.000 no dia 20. Sugestão: Antecipe recebíveis hoje."
-                            </div>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-colors">
-                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <i class="fa-solid fa-magnifying-glass-dollar text-6xl"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">4. Raio-X dos Custos</h3>
-                            <p class="text-slate-600 text-sm mb-3">Unit Economics, custos fixos/variáveis e ponto de equilíbrio.</p>
-                            <div class="bg-slate-50 p-3 rounded text-xs border border-slate-100 text-slate-500 font-mono">
-                                "Cálculo: Ponto de equilíbrio dia 19. A partir do dia 20, operação entra em lucro."
-                            </div>
-                        </div>
-
-                         <!-- Card 5 -->
-                         <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-500 transition-colors md:col-span-2">
-                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <i class="fa-solid fa-chess-knight text-6xl"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">5. Estrategista Tributário</h3>
-                            <p class="text-slate-600 text-sm mb-3">Simula cenários fiscais complexos para otimização.</p>
-                            <div class="bg-slate-50 p-3 rounded text-xs border border-slate-100 text-slate-500 font-mono">
-                                "Alerta IA: Fator R em 24%. Aumentar pró-labore em R$ 200 economiza R$ 8.400/ano em impostos."
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Arquitetura -->
-                <section id="arquitetura">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-6">🧠 IA Híbrida (Edge + Nuvem)</h2>
-                    <p class="text-slate-600 mb-6">Usamos o melhor dos dois mundos: rapidez local e poder cognitivo na nuvem.</p>
-
-                    <div class="overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
-                        <table class="min-w-full divide-y divide-slate-200">
-                            <thead class="bg-slate-50">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Camada</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Modelo de IA</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Função Inteligente</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Benefício</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-slate-200">
-                                <tr class="bg-orange-50/50">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-slate-900">Edge (Dispositivo)</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-800 font-medium"><i class="fa-brands fa-google text-orange-500 mr-2"></i>TensorFlow Lite</td>
-                                    <td class="px-6 py-4 text-sm text-slate-600">Categorização instantânea, detecção de anomalias locais</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-700"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Privacidade Total</span></td>
-                                </tr>
-                                <tr class="bg-purple-50/50">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-slate-900">Nuvem (Cognitiva)</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-800 font-medium"><i class="fa-solid fa-gem text-purple-500 mr-2"></i>Google Gemini</td>
-                                    <td class="px-6 py-4 text-sm text-slate-600">Análise de documentos (OCR), Copiloto de Decisão, Cenários complexos</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-700"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">Raciocínio Avançado</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-500">Persistência</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">Drift + SQLCipher</td>
-                                    <td class="px-6 py-4 text-sm text-slate-500">Banco de dados local vetorial/relacional</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">Segurança (AES-256)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="mt-8 bg-gradient-to-r from-slate-900 to-slate-800 text-slate-300 p-6 rounded-lg shadow-md border border-slate-700">
-                        <div class="flex items-center mb-4">
-                             <i class="fa-solid fa-microchip text-purple-400 text-2xl mr-3"></i>
-                             <h4 class="text-white font-bold text-lg">Pipeline de Inteligência</h4>
-                        </div>
-                        <ol class="list-decimal list-inside space-y-3 text-sm">
-                            <li><strong>Ingestão:</strong> Dados entram via Open Finance ou input manual.</li>
-                            <li><strong>Edge AI (TFLite):</strong> O app categoriza a transação em < 100ms sem internet.</li>
-                            <li><strong>Análise de Padrão:</strong> O modelo local recalcula projeções de caixa instantaneamente.</li>
-                            <li><strong>Consultoria (Gemini):</strong> Se houver risco complexo, o usuário ativa o "Copiloto" para análise profunda na nuvem.</li>
-                        </ol>
-                    </div>
-                </section>
-
-                <!-- Segurança -->
-                <section id="seguranca">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">🔐 Segurança e Privacidade</h2>
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div class="flex items-start">
-                            <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
-                            <div>
-                                <span class="font-bold block text-slate-900">Criptografia Local</span>
-                                <span class="text-sm text-slate-600">SQLCipher (AES-256) para todos os dados locais.</span>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
-                            <div>
-                                <span class="font-bold block text-slate-900">Acesso</span>
-                                <span class="text-sm text-slate-600">Proteção via Biometria + PIN.</span>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
-                            <div>
-                                <span class="font-bold block text-slate-900">Offline-first</span>
-                                <span class="text-sm text-slate-600">Visibilidade total do status de sincronização.</span>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
-                            <div>
-                                <span class="font-bold block text-slate-900">Consentimento</span>
-                                <span class="text-sm text-slate-600">Aprovação explícita para envio de dados à nuvem.</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Roadmap -->
-                <section id="roadmap">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-6">🗺️ Roadmap e Futuro</h2>
-                    
-                    <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
-                        
-                        <!-- Item Completo -->
-                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-green-500 text-slate-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                                <i class="fa-solid fa-check"></i>
-                            </div>
-                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded bg-white border border-slate-200 shadow-sm">
-                                <div class="font-bold text-slate-900">Base & Inteligência</div>
-                                <div class="text-slate-500 text-sm">Lançamentos, DRE, Custos, Alertas, Projeções e Briefing.</div>
-                            </div>
-                        </div>
-
-                        <!-- Item Completo -->
-                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-green-500 text-slate-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                                <i class="fa-solid fa-check"></i>
-                            </div>
-                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded bg-white border border-slate-200 shadow-sm">
-                                <div class="font-bold text-slate-900">Ecossistema</div>
-                                <div class="text-slate-500 text-sm">Multi-empresa e portal do contador.</div>
-                            </div>
-                        </div>
-
-                        <!-- Item Futuro -->
-                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-brand-100 text-brand-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                                <i class="fa-solid fa-rocket"></i>
-                            </div>
-                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded bg-white border-l-4 border-brand-500 shadow-sm">
-                                <div class="font-bold text-slate-900">Em Breve (Alto Impacto)</div>
-                                <ul class="text-slate-600 text-sm mt-2 space-y-1 list-disc list-inside">
-                                    <li><strong>Copiloto de Decisão:</strong> Chat para simular parcelamentos e impacto no caixa.</li>
-                                    <li><strong>Modo Cenários (What-if):</strong> Simular preços, descontos e estoque.</li>
-                                    <li><strong>Auditor de Maquininha:</strong> Detecção de taxas abusivas.</li>
-                                    <li><strong>Assistente de Compras:</strong> Quando e quanto comprar.</li>
-                                    <li><strong>Monitor Tributário:</strong> Alertas de DAS e NFe.</li>
-                                    <li><strong>Survival Score:</strong> Pontuação de risco do negócio (0-100).</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Stack -->
-                <section id="stack">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-6">🛠 Stack Tecnológico</h2>
-                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                        <div class="text-center p-4 bg-white rounded border border-slate-200">
-                            <i class="fa-brands fa-flutter text-blue-400 text-2xl mb-2 block"></i>
-                            <span class="text-sm font-bold block">Flutter</span>
-                            <span class="text-xs text-slate-500">Frontend</span>
-                        </div>
-                        <div class="text-center p-4 bg-white rounded border border-slate-200">
-                            <i class="fa-solid fa-database text-slate-600 text-2xl mb-2 block"></i>
-                            <span class="text-sm font-bold block">Drift + SQLCipher</span>
-                            <span class="text-xs text-slate-500">Banco Local</span>
-                        </div>
-                        <div class="text-center p-4 bg-white rounded border border-slate-200">
-                            <i class="fa-solid fa-brain text-purple-500 text-2xl mb-2 block"></i>
-                            <span class="text-sm font-bold block">TFLite + Gemini</span>
-                            <span class="text-xs text-slate-500">Inteligência</span>
-                        </div>
-                        <div class="text-center p-4 bg-white rounded border border-slate-200">
-                            <i class="fa-solid fa-water text-blue-300 text-2xl mb-2 block"></i>
-                            <span class="text-sm font-bold block">Riverpod 2.0</span>
-                            <span class="text-xs text-slate-500">Ger. Estado</span>
-                        </div>
-                        <div class="text-center p-4 bg-white rounded border border-slate-200">
-                            <i class="fa-solid fa-fingerprint text-green-500 text-2xl mb-2 block"></i>
-                            <span class="text-sm font-bold block">Supabase</span>
-                            <span class="text-xs text-slate-500">Auth & Sync</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-6 bg-slate-900 text-slate-300 p-4 rounded font-mono text-sm">
-                        <p class="text-slate-400 mb-2"># Como rodar (dev)</p>
-                        <p class="mb-1"><span class="text-yellow-400">git</span> clone [repo_url]</p>
-                        <p class="mb-1"><span class="text-green-400">flutter</span> pub get</p>
-                        <p class="mb-1"><span class="text-blue-400">dart</span> run build_runner build</p>
-                        <p><span class="text-purple-400">flutter</span> run</p>
-                    </div>
-                </section>
-
-                <!-- Glossário -->
-                <section id="glossario">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-6">📚 Glossário Brasileiro</h2>
-                    <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 text-sm">
-                        
-                        <div class="space-y-4">
-                            <div>
-                                <span class="font-bold text-slate-900 glossary-term">Markup</span>
-                                <p class="text-slate-600 ml-4">Percentual aplicado sobre o custo para formar o preço. Ex: custo R$ 10, markup 50% = preço R$ 15.</p>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-900 glossary-term">Margem (de lucro)</span>
-                                <p class="text-slate-600 ml-4">Percentual do lucro em relação ao preço de venda. Ex: preço R$ 15, custo R$ 10 = margem 33,3%.</p>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-900 glossary-term">CMV</span>
-                                <p class="text-slate-600 ml-4">Custo da Mercadoria Vendida. Quanto o estoque custou nas vendas do período.</p>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-900 glossary-term">DRE</span>
-                                <p class="text-slate-600 ml-4">Demonstração do Resultado. Receitas, custos, despesas e lucro/prejuízo.</p>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-900 glossary-term">Ponto de Equilíbrio</span>
-                                <p class="text-slate-600 ml-4">Mínimo de vendas para cobrir custos. A partir daqui, começa o lucro.</p>
-                            </div>
-                             <div>
-                                <span class="font-bold text-slate-900 glossary-term">Fator R</span>
-                                <p class="text-slate-600 ml-4">Indicador do Simples (Folha/Receita) que pode mudar o anexo de tributação.</p>
-                            </div>
-                        </div>
-
-                        <div class="space-y-4">
-                            <div>
-                                <span class="font-bold text-slate-900 glossary-term">Simples Nacional</span>
-                                <p class="text-slate-600 ml-4">Regime simplificado para MEs e EPPs, dividido em anexos e faixas.</p>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-900 glossary-term">Lucro Presumido</span>
-                                <p class="text-slate-600 ml-4">IRPJ/CSLL calculados por presunção de lucro conforme a atividade.</p>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-900 glossary-term">Lucro Real</span>
-                                <p class="text-slate-600 ml-4">Baseado no lucro contábil ajustado (LALUR). Permite créditos.</p>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-900 glossary-term">ICMS-ST</span>
-                                <p class="text-slate-600 ml-4">Substituição Tributária. O imposto é recolhido antecipadamente na cadeia.</p>
-                            </div>
-                            <div>
-                                <span class="font-bold text-slate-900 glossary-term">Open Finance</span>
-                                <p class="text-slate-600 ml-4">Compartilhamento padronizado de dados financeiros (extratos bancários).</p>
-                            </div>
-                             <div>
-                                <span class="font-bold text-slate-900 glossary-term">DAS</span>
-                                <p class="text-slate-600 ml-4">Documento de Arrecadação do Simples Nacional.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-
-                <!-- Disclaimer Footer -->
-                <footer class="border-t border-slate-200 pt-8 pb-12">
-                    <div class="bg-yellow-50 border border-yellow-200 rounded p-4 text-sm text-yellow-800">
-                        <strong class="block mb-2 text-yellow-900"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Disclaimer Importante</strong>
-                        <p class="mb-2">O Contta Business fornece análises e recomendações baseadas em dados. <strong>O sistema não substitui contadores ou advogados.</strong></p>
-                        <p>Recomendações tributárias devem ser validadas por profissionais. O usuário é responsável pelas decisões tomadas.</p>
-                    </div>
-                    <div class="mt-8 text-center text-slate-500 text-sm">
-                        <p>&copy; 2025 Contta Tecnologia Ltda. Inteligência para a economia real.</p>
-                        <p class="mt-2">
-                            <a href="#" class="text-brand-600 hover:underline">Licença</a> • 
-                            <a href="#" class="text-brand-600 hover:underline">Contato</a> • 
-                            <a href="#" class="text-brand-600 hover:underline">Reportar Bug</a>
-                        </p>
-                    </div>
-                </footer>
-
+          <!-- Vicious Cycle -->
+          <div
+            class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-10 mb-20 text-white"
+          >
+            <h3 class="font-bold text-xl mb-8 flex items-center justify-center">
+              <i
+                class="fa-solid fa-triangle-exclamation text-yellow-400 mr-3"
+              ></i>
+              O ciclo vicioso da cegueira financeira
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              <div class="relative group">
+                <div
+                  class="bg-slate-800 rounded-2xl p-6 border border-slate-700 group-hover:border-slate-600 transition-colors"
+                >
+                  <i
+                    class="fa-solid fa-eye-slash text-3xl text-slate-400 mb-4"
+                  ></i>
+                  <p class="text-sm font-medium">
+                    Sem visibilidade do lucro real
+                  </p>
+                </div>
+                <i
+                  class="fa-solid fa-arrow-right text-slate-600 absolute -right-3 top-1/2 -translate-y-1/2 hidden md:block text-xl"
+                ></i>
+              </div>
+              <div class="relative group">
+                <div
+                  class="bg-slate-800 rounded-2xl p-6 border border-slate-700 group-hover:border-slate-600 transition-colors"
+                >
+                  <i class="fa-solid fa-tag text-3xl text-orange-400 mb-4"></i>
+                  <p class="text-sm font-medium">Preços mal calculados</p>
+                </div>
+                <i
+                  class="fa-solid fa-arrow-right text-slate-600 absolute -right-3 top-1/2 -translate-y-1/2 hidden md:block text-xl"
+                ></i>
+              </div>
+              <div class="relative group">
+                <div
+                  class="bg-slate-800 rounded-2xl p-6 border border-slate-700 group-hover:border-slate-600 transition-colors"
+                >
+                  <i
+                    class="fa-solid fa-money-bill-transfer text-3xl text-red-400 mb-4"
+                  ></i>
+                  <p class="text-sm font-medium">Caixa sempre apertado</p>
+                </div>
+                <i
+                  class="fa-solid fa-arrow-right text-slate-600 absolute -right-3 top-1/2 -translate-y-1/2 hidden md:block text-xl"
+                ></i>
+              </div>
+              <div class="group">
+                <div
+                  class="bg-red-900/50 rounded-2xl p-6 border border-red-700 group-hover:border-red-600 transition-colors"
+                >
+                  <i
+                    class="fa-solid fa-store-slash text-3xl text-red-400 mb-4"
+                  ></i>
+                  <p class="text-sm font-bold">Empresa fecha</p>
+                </div>
+              </div>
             </div>
-        </main>
-    </div>
+          </div>
+
+          <!-- The Solution -->
+          <div
+            class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 rounded-3xl p-10 border border-green-200"
+          >
+            <div class="flex flex-col md:flex-row items-start gap-8">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-green-500/30"
+              >
+                <i class="fa-solid fa-lightbulb text-white text-3xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-green-900 text-2xl mb-4">
+                  E se você tivesse um "diretor financeiro" 24 horas por dia?
+                </h3>
+                <p class="text-green-800 text-lg mb-4 leading-relaxed">
+                  Imagine ter alguém que monitora seus custos automaticamente,
+                  avisa quando um fornecedor aumenta preços, calcula o preço
+                  ideal de cada produto, prevê quando o caixa vai apertar e
+                  sugere o que fazer —
+                  <strong>antes do problema acontecer</strong>.
+                </p>
+                <p class="text-green-700">
+                  É exatamente isso que o <strong>Contta Business</strong> faz.
+                  Com Inteligência Artificial, transformamos dados em decisões
+                  que protegem seu negócio.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section - Bento Grid -->
+      <section id="funcionalidades" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <span
+              class="inline-flex items-center px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-sm font-medium mb-4"
+            >
+              ✅ AI-Driven
+            </span>
+            <h2 class="text-4xl font-bold text-slate-900 mb-6">
+              Funcionalidades Prescritivas
+            </h2>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+              O Contta é prescritivo: a IA identifica o risco e sugere a ação.
+            </p>
+          </div>
+
+          <!-- Bento Grid -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 - Large -->
+            <div
+              class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 lg:col-span-2"
+            >
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-brand-50 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity"
+              ></div>
+              <div
+                class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity"
+              >
+                <i
+                  class="fa-solid fa-shield-halved text-7xl text-brand-600"
+                ></i>
+              </div>
+              <div class="relative z-10">
+                <div
+                  class="w-14 h-14 bg-gradient-to-br from-brand-400 to-brand-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-brand-500/30"
+                >
+                  <i class="fa-solid fa-shield-halved text-white text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">
+                  1. Guardião de Preços
+                </h3>
+                <p class="text-slate-600 mb-4">
+                  Monitora variações em notas e custos de fornecedores
+                  automaticamente.
+                </p>
+                <div
+                  class="bg-slate-50 p-4 rounded-xl text-sm border border-slate-100 text-slate-600 font-mono"
+                >
+                  <i class="fa-solid fa-robot text-brand-500 mr-2"></i>
+                  "A IA detectou alta de 8% no fornecedor. Sugestão: ajuste para
+                  R$ 5,49 para manter margem."
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-purple-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              <div
+                class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-purple-50 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity"
+              ></div>
+              <div
+                class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity"
+              >
+                <i class="fa-solid fa-calculator text-6xl text-purple-600"></i>
+              </div>
+              <div class="relative z-10">
+                <div
+                  class="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30"
+                >
+                  <i class="fa-solid fa-calculator text-white text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">
+                  2. Precificação Inteligente
+                </h3>
+                <p class="text-slate-600 mb-4">
+                  Calcula preço ideal cruzando impostos, taxas e custos.
+                </p>
+                <div
+                  class="bg-slate-50 p-4 rounded-xl text-sm border border-slate-100 text-slate-600 font-mono"
+                >
+                  <i class="fa-solid fa-robot text-purple-500 mr-2"></i>
+                  "R$ 10,00 gera prejuízo. Recomendado: R$ 14,50 para lucro de
+                  15%."
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-orange-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              <div
+                class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-orange-50 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity"
+              ></div>
+              <div
+                class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity"
+              >
+                <i
+                  class="fa-solid fa-satellite-dish text-6xl text-orange-600"
+                ></i>
+              </div>
+              <div class="relative z-10">
+                <div
+                  class="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/30"
+                >
+                  <i class="fa-solid fa-satellite-dish text-white text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">
+                  3. Profeta do Fluxo de Caixa
+                </h3>
+                <p class="text-slate-600 mb-4">
+                  Projeta caixa futuro usando séries temporais e sazonalidade.
+                </p>
+                <div
+                  class="bg-slate-50 p-4 rounded-xl text-sm border border-slate-100 text-slate-600 font-mono"
+                >
+                  <i class="fa-solid fa-robot text-orange-500 mr-2"></i>
+                  "Risco de falta de R$ 2.000 no dia 20. Antecipe recebíveis."
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-green-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              <div
+                class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-green-50 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity"
+              ></div>
+              <div
+                class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity"
+              >
+                <i
+                  class="fa-solid fa-magnifying-glass-dollar text-6xl text-green-600"
+                ></i>
+              </div>
+              <div class="relative z-10">
+                <div
+                  class="w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/30"
+                >
+                  <i
+                    class="fa-solid fa-magnifying-glass-dollar text-white text-xl"
+                  ></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">
+                  4. Raio-X dos Custos
+                </h3>
+                <p class="text-slate-600 mb-4">
+                  Unit Economics, custos fixos/variáveis e ponto de equilíbrio.
+                </p>
+                <div
+                  class="bg-slate-50 p-4 rounded-xl text-sm border border-slate-100 text-slate-600 font-mono"
+                >
+                  <i class="fa-solid fa-robot text-green-500 mr-2"></i>
+                  "Ponto de equilíbrio dia 19. A partir do dia 20, operação em
+                  lucro."
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 - Full Width -->
+            <div
+              class="bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-2xl shadow-xl relative overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 lg:col-span-3"
+            >
+              <div
+                class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-yellow-500/10 to-transparent rounded-bl-full"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-brand-500/10 to-transparent rounded-tr-full"
+              ></div>
+              <div
+                class="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-8"
+              >
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center shadow-xl shadow-yellow-500/30"
+                  >
+                    <i class="fa-solid fa-chess-knight text-white text-3xl"></i>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-2xl font-bold text-white mb-3">
+                    5. Estrategista Tributário
+                  </h3>
+                  <p class="text-slate-300 mb-4 text-lg">
+                    Simula cenários fiscais complexos para otimização
+                    tributária.
+                  </p>
+                  <div
+                    class="bg-white/10 backdrop-blur p-4 rounded-xl text-sm border border-white/20 text-slate-200 font-mono"
+                  >
+                    <i class="fa-solid fa-robot text-yellow-400 mr-2"></i>
+                    "Alerta IA: Fator R em 24%. Aumentar pró-labore em R$ 200
+                    economiza R$ 8.400/ano em impostos."
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Architecture Section -->
+      <section id="arquitetura" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <span
+              class="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-4"
+            >
+              🧠 IA Híbrida
+            </span>
+            <h2 class="text-4xl font-bold text-slate-900 mb-6">Edge + Nuvem</h2>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+              Usamos o melhor dos dois mundos: rapidez local e poder cognitivo
+              na nuvem.
+            </p>
+          </div>
+
+          <!-- Architecture Table -->
+          <div
+            class="overflow-x-auto rounded-2xl border border-slate-200 shadow-lg mb-16"
+          >
+            <table class="min-w-full divide-y divide-slate-200">
+              <thead class="bg-slate-50">
+                <tr>
+                  <th
+                    scope="col"
+                    class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
+                  >
+                    Camada
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
+                  >
+                    Modelo de IA
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
+                  >
+                    Função Inteligente
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
+                  >
+                    Benefício
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-slate-200">
+                <tr
+                  class="bg-orange-50/50 hover:bg-orange-50 transition-colors"
+                >
+                  <td
+                    class="px-6 py-5 whitespace-nowrap text-sm font-bold text-slate-900"
+                  >
+                    Edge (Dispositivo)
+                  </td>
+                  <td
+                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-800 font-medium"
+                  >
+                    <i class="fa-brands fa-google text-orange-500 mr-2"></i
+                    >TensorFlow Lite
+                  </td>
+                  <td class="px-6 py-5 text-sm text-slate-600">
+                    Categorização instantânea, detecção de anomalias locais
+                  </td>
+                  <td
+                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-700"
+                  >
+                    <span
+                      class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                      >Privacidade Total</span
+                    >
+                  </td>
+                </tr>
+                <tr
+                  class="bg-purple-50/50 hover:bg-purple-50 transition-colors"
+                >
+                  <td
+                    class="px-6 py-5 whitespace-nowrap text-sm font-bold text-slate-900"
+                  >
+                    Nuvem (Cognitiva)
+                  </td>
+                  <td
+                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-800 font-medium"
+                  >
+                    <i class="fa-solid fa-gem text-purple-500 mr-2"></i>Google
+                    Gemini
+                  </td>
+                  <td class="px-6 py-5 text-sm text-slate-600">
+                    Análise de documentos (OCR), Copiloto de Decisão, Cenários
+                    complexos
+                  </td>
+                  <td
+                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-700"
+                  >
+                    <span
+                      class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                      >Raciocínio Avançado</span
+                    >
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50 transition-colors">
+                  <td
+                    class="px-6 py-5 whitespace-nowrap text-sm font-medium text-slate-500"
+                  >
+                    Persistência
+                  </td>
+                  <td
+                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-500"
+                  >
+                    Drift + SQLCipher
+                  </td>
+                  <td class="px-6 py-5 text-sm text-slate-500">
+                    Banco de dados local vetorial/relacional
+                  </td>
+                  <td
+                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-500"
+                  >
+                    Segurança (AES-256)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pipeline Card -->
+          <div
+            class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-300 p-10 rounded-3xl shadow-2xl border border-slate-700"
+          >
+            <div class="flex items-center mb-8">
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-purple-500/30"
+              >
+                <i class="fa-solid fa-microchip text-white text-xl"></i>
+              </div>
+              <h4 class="text-white font-bold text-2xl">
+                Pipeline de Inteligência
+              </h4>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+              <div
+                class="bg-slate-800/50 rounded-xl p-6 border border-slate-700"
+              >
+                <div
+                  class="w-10 h-10 bg-brand-500/20 rounded-lg flex items-center justify-center mb-4"
+                >
+                  <span class="text-brand-400 font-bold">1</span>
+                </div>
+                <h5 class="text-white font-semibold mb-2">Ingestão</h5>
+                <p class="text-sm text-slate-400">
+                  Dados entram via Open Finance ou input manual.
+                </p>
+              </div>
+              <div
+                class="bg-slate-800/50 rounded-xl p-6 border border-slate-700"
+              >
+                <div
+                  class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4"
+                >
+                  <span class="text-orange-400 font-bold">2</span>
+                </div>
+                <h5 class="text-white font-semibold mb-2">Edge AI (TFLite)</h5>
+                <p class="text-sm text-slate-400">
+                  O app categoriza a transação em &lt; 100ms sem internet.
+                </p>
+              </div>
+              <div
+                class="bg-slate-800/50 rounded-xl p-6 border border-slate-700"
+              >
+                <div
+                  class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center mb-4"
+                >
+                  <span class="text-green-400 font-bold">3</span>
+                </div>
+                <h5 class="text-white font-semibold mb-2">Análise de Padrão</h5>
+                <p class="text-sm text-slate-400">
+                  O modelo local recalcula projeções de caixa instantaneamente.
+                </p>
+              </div>
+              <div
+                class="bg-slate-800/50 rounded-xl p-6 border border-slate-700"
+              >
+                <div
+                  class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4"
+                >
+                  <span class="text-purple-400 font-bold">4</span>
+                </div>
+                <h5 class="text-white font-semibold mb-2">
+                  Consultoria (Gemini)
+                </h5>
+                <p class="text-sm text-slate-400">
+                  Se houver risco complexo, o usuário ativa o "Copiloto" para
+                  análise profunda.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Security Section -->
+      <section id="seguranca" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <span
+              class="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-4"
+            >
+              🔐 Proteção Total
+            </span>
+            <h2 class="text-4xl font-bold text-slate-900 mb-6">
+              Segurança e Privacidade
+            </h2>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4"
+              >
+                <i class="fa-solid fa-lock text-green-600 text-xl"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 mb-2">Criptografia Local</h4>
+              <p class="text-sm text-slate-600">
+                SQLCipher (AES-256) para todos os dados locais.
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4"
+              >
+                <i class="fa-solid fa-fingerprint text-blue-600 text-xl"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 mb-2">Acesso Biométrico</h4>
+              <p class="text-sm text-slate-600">
+                Proteção via Biometria + PIN.
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4"
+              >
+                <i class="fa-solid fa-wifi-slash text-purple-600 text-xl"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 mb-2">Offline-first</h4>
+              <p class="text-sm text-slate-600">
+                Visibilidade total do status de sincronização.
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            >
+              <div
+                class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4"
+              >
+                <i class="fa-solid fa-user-check text-yellow-600 text-xl"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 mb-2">Consentimento</h4>
+              <p class="text-sm text-slate-600">
+                Aprovação explícita para envio de dados à nuvem.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Roadmap Section -->
+      <section id="roadmap" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <span
+              class="inline-flex items-center px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-sm font-medium mb-4"
+            >
+              🗺️ Em Desenvolvimento
+            </span>
+            <h2 class="text-4xl font-bold text-slate-900 mb-6">
+              Roadmap e Futuro
+            </h2>
+          </div>
+
+          <div
+            class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent"
+          >
+            <!-- Item Completo 1 -->
+            <div
+              class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+            >
+              <div
+                class="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-green-500 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+              >
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div
+                class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white border border-slate-200 shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div class="font-bold text-lg text-slate-900 mb-2">
+                  Base & Inteligência
+                </div>
+                <div class="text-slate-600">
+                  Lançamentos, DRE, Custos, Alertas, Projeções e Briefing.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item Completo 2 -->
+            <div
+              class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+            >
+              <div
+                class="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-green-500 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+              >
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div
+                class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white border border-slate-200 shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div class="font-bold text-lg text-slate-900 mb-2">
+                  Ecossistema
+                </div>
+                <div class="text-slate-600">
+                  Multi-empresa e portal do contador.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item Futuro -->
+            <div
+              class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
+            >
+              <div
+                class="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-lg shadow-brand-500/30 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+              >
+                <i class="fa-solid fa-rocket"></i>
+              </div>
+              <div
+                class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-gradient-to-br from-brand-50 to-white border-2 border-brand-200 shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div class="font-bold text-lg text-slate-900 mb-4">
+                  Em Breve (Alto Impacto)
+                </div>
+                <ul class="text-slate-600 space-y-3">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-message-bot text-brand-500 mt-1"></i>
+                    <span
+                      ><strong>Copiloto de Decisão:</strong> Chat para simular
+                      parcelamentos e impacto no caixa.</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-flask text-brand-500 mt-1"></i>
+                    <span
+                      ><strong>Modo Cenários (What-if):</strong> Simular preços,
+                      descontos e estoque.</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-credit-card text-brand-500 mt-1"></i>
+                    <span
+                      ><strong>Auditor de Maquininha:</strong> Detecção de taxas
+                      abusivas.</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i
+                      class="fa-solid fa-cart-shopping text-brand-500 mt-1"
+                    ></i>
+                    <span
+                      ><strong>Assistente de Compras:</strong> Quando e quanto
+                      comprar.</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-bell text-brand-500 mt-1"></i>
+                    <span
+                      ><strong>Monitor Tributário:</strong> Alertas de DAS e
+                      NFe.</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-heart-pulse text-brand-500 mt-1"></i>
+                    <span
+                      ><strong>Survival Score:</strong> Pontuação de risco do
+                      negócio (0-100).</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Glossary Section -->
+      <section id="glossario" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <span
+              class="inline-flex items-center px-3 py-1 bg-slate-200 text-slate-700 rounded-full text-sm font-medium mb-4"
+            >
+              📚 Referência
+            </span>
+            <h2 class="text-4xl font-bold text-slate-900 mb-6">
+              Glossário Brasileiro
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
+            <div class="space-y-6">
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term"
+                  >Markup</span
+                >
+                <p class="text-slate-600 mt-1">
+                  Percentual aplicado sobre o custo para formar o preço. Ex:
+                  custo R$ 10, markup 50% = preço R$ 15.
+                </p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term"
+                  >Margem (de lucro)</span
+                >
+                <p class="text-slate-600 mt-1">
+                  Percentual do lucro em relação ao preço de venda. Ex: preço R$
+                  15, custo R$ 10 = margem 33,3%.
+                </p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term">CMV</span>
+                <p class="text-slate-600 mt-1">
+                  Custo da Mercadoria Vendida. Quanto o estoque custou nas
+                  vendas do período.
+                </p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term">DRE</span>
+                <p class="text-slate-600 mt-1">
+                  Demonstração do Resultado. Receitas, custos, despesas e
+                  lucro/prejuízo.
+                </p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term"
+                  >Ponto de Equilíbrio</span
+                >
+                <p class="text-slate-600 mt-1">
+                  Mínimo de vendas para cobrir custos. A partir daqui, começa o
+                  lucro.
+                </p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term"
+                  >Fator R</span
+                >
+                <p class="text-slate-600 mt-1">
+                  Indicador do Simples (Folha/Receita) que pode mudar o anexo de
+                  tributação.
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term"
+                  >Simples Nacional</span
+                >
+                <p class="text-slate-600 mt-1">
+                  Regime simplificado para MEs e EPPs, dividido em anexos e
+                  faixas.
+                </p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term"
+                  >Lucro Presumido</span
+                >
+                <p class="text-slate-600 mt-1">
+                  IRPJ/CSLL calculados por presunção de lucro conforme a
+                  atividade.
+                </p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term"
+                  >Lucro Real</span
+                >
+                <p class="text-slate-600 mt-1">
+                  Baseado no lucro contábil ajustado (LALUR). Permite créditos.
+                </p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term"
+                  >ICMS-ST</span
+                >
+                <p class="text-slate-600 mt-1">
+                  Substituição Tributária. O imposto é recolhido antecipadamente
+                  na cadeia.
+                </p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term"
+                  >Open Finance</span
+                >
+                <p class="text-slate-600 mt-1">
+                  Compartilhamento padronizado de dados financeiros (extratos
+                  bancários).
+                </p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-slate-200">
+                <span class="font-bold text-slate-900 glossary-term">DAS</span>
+                <p class="text-slate-600 mt-1">
+                  Documento de Arrecadação do Simples Nacional.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section
+        id="contato"
+        class="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-brand-900"
+      >
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Platform Availability Banner -->
+          <div class="text-center mb-16">
+            <div
+              class="inline-flex items-center px-4 py-2 bg-white/10 text-white rounded-full text-sm font-medium mb-8 backdrop-blur"
+            >
+              <i class="fa-solid fa-mobile-screen mr-2"></i>
+              Disponível para Mobile
+            </div>
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+              Pronto para proteger seu negócio?
+            </h2>
+            <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+              O Contta Business AI está disponível para iOS e Android. Versão
+              Web em desenvolvimento.
+            </p>
+
+            <!-- Platform Cards -->
+            <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+              <div
+                class="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur rounded-2xl border border-white/20"
+              >
+                <i class="fa-brands fa-apple text-white text-2xl"></i>
+                <div class="text-left">
+                  <span class="block text-white font-semibold">iOS</span>
+                  <span class="text-green-400 text-sm">✓ Disponível</span>
+                </div>
+              </div>
+              <div
+                class="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur rounded-2xl border border-white/20"
+              >
+                <i class="fa-brands fa-android text-green-400 text-2xl"></i>
+                <div class="text-left">
+                  <span class="block text-white font-semibold">Android</span>
+                  <span class="text-green-400 text-sm">✓ Disponível</span>
+                </div>
+              </div>
+              <div
+                class="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur rounded-2xl border border-white/20"
+              >
+                <i class="fa-solid fa-globe text-brand-400 text-2xl"></i>
+                <div class="text-left">
+                  <span class="block text-white font-semibold">Web</span>
+                  <span class="text-brand-400 text-sm">Em desenvolvimento</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="grid md:grid-cols-2 gap-8">
+            <div
+              class="bg-white/5 backdrop-blur rounded-3xl p-8 border border-white/10"
+            >
+              <h3 class="text-2xl font-bold text-white mb-6">
+                Entre em Contato
+              </h3>
+              <p class="text-slate-300 mb-8">
+                Quer saber mais sobre o Contta Business AI? Estamos prontos para
+                ajudar.
+              </p>
+
+              <div class="space-y-6">
+                <a
+                  href="mailto:contato@contta.com.br"
+                  class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group"
+                >
+                  <div
+                    class="w-12 h-12 bg-brand-500/20 rounded-xl flex items-center justify-center group-hover:bg-brand-500/30 transition-colors"
+                  >
+                    <i class="fa-solid fa-envelope text-brand-400"></i>
+                  </div>
+                  <div>
+                    <span class="block text-sm text-slate-400">E-mail</span>
+                    <span class="font-medium">contato@contta.com.br</span>
+                  </div>
+                </a>
+
+                <a
+                  href="https://wa.me/5511999999999"
+                  target="_blank"
+                  class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group"
+                >
+                  <div
+                    class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center group-hover:bg-green-500/30 transition-colors"
+                  >
+                    <i class="fa-brands fa-whatsapp text-green-400 text-xl"></i>
+                  </div>
+                  <div>
+                    <span class="block text-sm text-slate-400">WhatsApp</span>
+                    <span class="font-medium">+55 (11) 99999-9999</span>
+                  </div>
+                </a>
+
+                <a
+                  href="https://linkedin.com/company/contta"
+                  target="_blank"
+                  class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group"
+                >
+                  <div
+                    class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-colors"
+                  >
+                    <i
+                      class="fa-brands fa-linkedin-in text-blue-400 text-xl"
+                    ></i>
+                  </div>
+                  <div>
+                    <span class="block text-sm text-slate-400">LinkedIn</span>
+                    <span class="font-medium">Contta Tecnologia</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="bg-white/5 backdrop-blur rounded-3xl p-8 border border-white/10"
+            >
+              <h3 class="text-2xl font-bold text-white mb-6">
+                Envie uma Mensagem
+              </h3>
+              <form class="space-y-4">
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Seu nome"
+                    class="w-full px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    placeholder="Seu e-mail"
+                    class="w-full px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <textarea
+                    rows="4"
+                    placeholder="Sua mensagem"
+                    class="w-full px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-none"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-600 text-white font-semibold rounded-xl hover:from-brand-600 hover:to-brand-700 transition-all shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50"
+                >
+                  <i class="fa-solid fa-paper-plane mr-2"></i>Enviar Mensagem
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech Stack / Trust Strip -->
+      <section class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p
+            class="text-center text-sm text-slate-500 uppercase tracking-wider mb-8"
+          >
+            Tecnologias que impulsionam o Contta
+          </p>
+          <div
+            class="flex flex-wrap items-center justify-center gap-8 md:gap-12"
+          >
+            <div class="tech-logo text-center p-4">
+              <i
+                class="fa-brands fa-flutter text-4xl text-blue-400 mb-2 block"
+              ></i>
+              <span class="text-xs font-medium text-slate-600">Flutter</span>
+            </div>
+            <div class="tech-logo text-center p-4">
+              <i
+                class="fa-solid fa-database text-4xl text-slate-600 mb-2 block"
+              ></i>
+              <span class="text-xs font-medium text-slate-600"
+                >Drift + SQLCipher</span
+              >
+            </div>
+            <div class="tech-logo text-center p-4">
+              <i
+                class="fa-solid fa-brain text-4xl text-purple-500 mb-2 block"
+              ></i>
+              <span class="text-xs font-medium text-slate-600"
+                >TFLite + Gemini</span
+              >
+            </div>
+            <div class="tech-logo text-center p-4">
+              <i
+                class="fa-solid fa-water text-4xl text-blue-300 mb-2 block"
+              ></i>
+              <span class="text-xs font-medium text-slate-600"
+                >Riverpod 2.0</span
+              >
+            </div>
+            <div class="tech-logo text-center p-4">
+              <i
+                class="fa-solid fa-fingerprint text-4xl text-green-500 mb-2 block"
+              ></i>
+              <span class="text-xs font-medium text-slate-600">Supabase</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Disclaimer -->
+        <div
+          class="bg-yellow-500/10 border border-yellow-500/30 rounded-2xl p-6 mb-12"
+        >
+          <div class="flex items-start gap-4">
+            <i
+              class="fa-solid fa-triangle-exclamation text-yellow-500 text-xl mt-1"
+            ></i>
+            <div>
+              <strong class="block mb-2 text-yellow-500"
+                >Disclaimer Importante</strong
+              >
+              <p class="text-slate-400 text-sm mb-2">
+                O Contta Business fornece análises e recomendações baseadas em
+                dados.
+                <strong class="text-slate-300"
+                  >O sistema não substitui contadores ou advogados.</strong
+                >
+              </p>
+              <p class="text-slate-500 text-sm">
+                Recomendações tributárias devem ser validadas por profissionais.
+                O usuário é responsável pelas decisões tomadas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-slate-800"
+        >
+          <div class="flex items-center space-x-2">
+            <div
+              class="w-8 h-8 bg-gradient-to-br from-brand-500 to-brand-700 rounded-lg flex items-center justify-center text-white"
+            >
+              <i class="fa-solid fa-chart-pie text-sm"></i>
+            </div>
+            <span class="font-bold text-white">Contta</span>
+          </div>
+
+          <p class="text-sm text-slate-500">
+            &copy; 2025 Contta Tecnologia Ltda. Inteligência para a economia
+            real.
+          </p>
+
+          <div class="flex items-center space-x-6">
+            <a
+              href="#"
+              class="text-slate-400 hover:text-brand-400 transition-colors text-sm"
+              >Licença</a
+            >
+            <a
+              href="#"
+              class="text-slate-400 hover:text-brand-400 transition-colors text-sm"
+              >Contato</a
+            >
+            <a
+              href="#"
+              class="text-slate-400 hover:text-brand-400 transition-colors text-sm"
+              >Reportar Bug</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script>
-        // Simple active link highlighter
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('aside nav a');
+      // Navbar scroll effect
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("navbar-scrolled");
+        } else {
+          navbar.classList.remove("navbar-scrolled");
+        }
+      });
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
 
-            navLinks.forEach(link => {
-                link.classList.remove('bg-slate-50', 'text-brand-600');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('bg-slate-50', 'text-brand-600');
-                }
-            });
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        if (mobileMenu.classList.contains("hidden")) {
+          menuIcon.classList.remove("fa-xmark");
+          menuIcon.classList.add("fa-bars");
+        } else {
+          menuIcon.classList.remove("fa-bars");
+          menuIcon.classList.add("fa-xmark");
+        }
+      });
+
+      // Close mobile menu on link click
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuIcon.classList.remove("fa-xmark");
+          menuIcon.classList.add("fa-bars");
         });
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            const offset = 80; // navbar height
+            const targetPosition =
+              target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
