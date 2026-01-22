@@ -3,7 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Contta Business AI - O primeiro CFO Digital para PMEs. Automatize seu financeiro, preveja o caixa e otimize impostos com Inteligência Artificial."
+    />
+
+    <meta property="og:title" content="Contta Business AI - Seu CFO Digital" />
+    <meta
+      property="og:description"
+      content="Pare de apenas registrar o passado. Comece a prever o futuro do seu caixa com IA."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://contta.com.br/preview.jpg" />
+    <meta property="og:locale" content="pt_BR" />
+
     <title>Contta Business AI - O Escudo Financeiro da sua Empresa</title>
+
+    <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -13,370 +29,286 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-            },
-            colors: {
-              brand: {
-                50: "#f0f9ff",
-                100: "#e0f2fe",
-                200: "#bae6fd",
-                300: "#7dd3fc",
-                400: "#38bdf8",
-                500: "#0ea5e9",
-                600: "#0284c7",
-                700: "#0369a1",
-                800: "#075985",
-                900: "#0c4a6e",
-              },
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f5f9;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-      }
-      .glossary-term::before {
-        content: "•";
-        color: #0284c7;
-        margin-right: 8px;
-        font-weight: bold;
-      }
-      /* Navbar scroll effect */
-      .navbar-scrolled {
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-      }
-      /* 3D Mock Window */
-      .mock-window {
-        transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
-        transition: transform 0.5s ease;
-      }
-      .mock-window:hover {
-        transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-      }
-      /* Gradient text */
-      .gradient-text {
-        background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      /* Tech logo grayscale hover */
-      .tech-logo {
-        filter: grayscale(100%);
-        opacity: 0.6;
-        transition: all 0.3s ease;
-      }
-      .tech-logo:hover {
-        filter: grayscale(0%);
-        opacity: 1;
-      }
-    </style>
+
+    <!-- Tailwind Config -->
+    <script src="js/tailwind.config.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body class="bg-white text-slate-800 font-sans antialiased leading-relaxed">
-    <!-- Sticky Navbar -->
+  <body class="bg-white text-slate-800 font-sans antialiased">
     <nav
       id="navbar"
-      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+      style="transition: transform 0.3s ease, background 0.3s ease;"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
-          <!-- Logo -->
-          <a href="#" class="flex items-center space-x-2">
+          <a href="#" class="flex items-center space-x-2.5 group">
             <div
-              class="w-10 h-10 bg-gradient-to-br from-brand-500 to-brand-700 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30"
+              class="w-10 h-10 bg-gradient-to-br from-brand-500 to-violet-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/25 group-hover:shadow-brand-500/40 transition-shadow"
             >
               <i class="fa-solid fa-chart-pie text-lg"></i>
             </div>
             <span class="text-xl font-bold text-slate-900">Contta</span>
           </a>
 
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex items-center space-x-8">
+          <div class="hidden md:flex items-center space-x-1">
             <a
               href="#problema"
-              class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              class="reveal-line px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
               >O Problema</a
             >
             <a
               href="#funcionalidades"
-              class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              class="reveal-line px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
               >Funcionalidades</a
             >
             <a
               href="#arquitetura"
-              class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              class="reveal-line px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
               >Tecnologia</a
             >
             <a
-              href="#roadmap"
-              class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
-              >Roadmap</a
+              href="#seguranca"
+              class="reveal-line px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
+              >Segurança</a
             >
           </div>
 
-          <!-- CTA Button Desktop -->
           <div class="hidden md:flex items-center space-x-4">
             <a
               href="#contato"
-              class="px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-full hover:from-brand-600 hover:to-brand-700 transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50"
+              class="btn-primary shine px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-full shadow-lg shadow-brand-500/25"
             >
-              Contato
+              Começar Agora
             </a>
           </div>
 
-          <!-- Mobile Menu Button -->
           <button
             id="mobile-menu-btn"
-            class="md:hidden text-slate-600 focus:outline-none p-2"
+            class="md:hidden text-slate-500 hover:text-slate-900 focus:outline-none p-2 transition-colors"
           >
             <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
           </button>
         </div>
       </div>
 
-      <!-- Mobile Menu -->
       <div
         id="mobile-menu"
-        class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg"
+        class="hidden md:hidden glass border-t border-slate-100/50"
       >
-        <div class="px-4 py-6 space-y-4">
+        <div class="px-4 py-6 space-y-3">
           <a
             href="#problema"
-            class="block text-base font-medium text-slate-700 hover:text-brand-600"
+            class="block px-4 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-colors"
             >O Problema</a
           >
           <a
             href="#funcionalidades"
-            class="block text-base font-medium text-slate-700 hover:text-brand-600"
+            class="block px-4 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-colors"
             >Funcionalidades</a
           >
           <a
             href="#arquitetura"
-            class="block text-base font-medium text-slate-700 hover:text-brand-600"
+            class="block px-4 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-colors"
             >Tecnologia</a
           >
           <a
-            href="#roadmap"
-            class="block text-base font-medium text-slate-700 hover:text-brand-600"
-            >Roadmap</a
+            href="#seguranca"
+            class="block px-4 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-colors"
+            >Segurança</a
           >
-          <div class="pt-4 border-t border-slate-100">
+          <div class="pt-4">
             <a
               href="#contato"
-              class="block w-full text-center px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-full"
+              class="block w-full text-center px-5 py-3.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-xl"
             >
-              Contato
+              Começar Agora
             </a>
           </div>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
     <section
       id="introducao"
       class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      <!-- Background Gradient -->
-      <div
-        class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-brand-50"
-      ></div>
-      <div
-        class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-brand-100/50 to-transparent rounded-full blur-3xl"
-      ></div>
-      <div
-        class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-purple-100/50 to-transparent rounded-full blur-3xl"
-      ></div>
+      <!-- Animated Background Blobs -->
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-50/90 via-white/80 to-brand-50/90"></div>
 
       <div
         class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center"
       >
-        <!-- Badge -->
         <div
-          class="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-8"
+          class="fade-in inline-flex items-center px-4 py-2 glass rounded-full text-sm font-medium mb-8 text-purple-700"
         >
-          <i class="fa-solid fa-robot mr-2"></i>
+          <i class="fa-solid fa-sparkles mr-2 icon-pulse"></i>
           Inteligência Artificial de sobrevivência para PMEs
         </div>
 
-        <!-- Main Headline -->
         <h1
-          class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight"
+          class="fade-in stagger-1 text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight"
         >
           Contta Business <span class="gradient-text">AI</span>
         </h1>
 
-        <!-- Subheadline -->
         <p
-          class="text-xl sm:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+          class="fade-in stagger-2 text-xl sm:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed"
         >
-          O escudo financeiro impulsionado por Inteligência Artificial. Não
-          apenas registra o passado —
+          O primeiro <strong>CFO Digital</strong> que trabalha 24/7 pela sua
+          empresa.
+          <br class="hidden md:block" />
+          Não apenas registra o passado —
           <strong class="text-slate-800"
-            >prevê o futuro e sugere como salvar seu caixa.</strong
+            >prevê o futuro e blinda seu caixa.</strong
           >
         </p>
 
-        <!-- Description -->
-        <p class="text-lg text-slate-500 mb-12 max-w-2xl mx-auto">
-          Sistema financeiro <strong>AI-first</strong> feito para a realidade
-          hostil do Brasil. Utilizamos IA híbrida (Edge + Cloud) para entregar
-          <strong>recomendações práticas</strong> que protegem margem e evitam
-          quebra de caixa.
+        <p class="fade-in stagger-3 text-lg text-slate-500 mb-12 max-w-2xl mx-auto">
+          Adeus, planilhas e PDFs manuais. Conecte suas contas via Open Finance
+          e receba
+          <strong>recomendações táticas</strong> para proteger sua margem e
+          evitar quebra de caixa.
         </p>
 
-        <!-- Platform Availability -->
-        <div class="flex flex-col items-center justify-center gap-6 mb-16">
-          <div class="flex flex-wrap items-center justify-center gap-4">
+        <div class="fade-in stagger-4 flex flex-col items-center justify-center gap-6 mb-16">
+          <div class="flex flex-wrap items-center justify-center gap-3">
             <div
-              class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full"
+              class="flex items-center gap-2 px-4 py-2.5 glass rounded-full hover:scale-105 transition-transform duration-300"
             >
               <i class="fa-brands fa-apple text-slate-800 text-xl"></i>
               <span class="text-sm font-medium text-slate-700">iOS</span>
               <span
-                class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full"
+                class="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 text-xs font-semibold rounded-full"
                 >Disponível</span
               >
             </div>
             <div
-              class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full"
+              class="flex items-center gap-2 px-4 py-2.5 glass rounded-full hover:scale-105 transition-transform duration-300"
             >
               <i class="fa-brands fa-android text-green-600 text-xl"></i>
               <span class="text-sm font-medium text-slate-700">Android</span>
               <span
-                class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full"
+                class="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 text-xs font-semibold rounded-full"
                 >Disponível</span
               >
             </div>
             <div
-              class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full"
+              class="flex items-center gap-2 px-4 py-2.5 glass rounded-full hover:scale-105 transition-transform duration-300"
             >
               <i class="fa-solid fa-globe text-brand-500 text-xl"></i>
               <span class="text-sm font-medium text-slate-700">Web</span>
               <span
-                class="px-2 py-0.5 bg-brand-100 text-brand-700 text-xs font-semibold rounded-full"
+                class="px-2 py-0.5 bg-brand-500/10 text-brand-600 text-xs font-semibold rounded-full"
                 >Em breve</span
               >
             </div>
           </div>
           <a
             href="#contato"
-            class="px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-full hover:from-brand-600 hover:to-brand-700 transition-all shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:-translate-y-0.5"
+            class="btn-primary shine px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-full shadow-xl shadow-brand-500/25"
           >
-            <i class="fa-solid fa-envelope mr-2"></i>Entre em Contato
+            <i class="fa-solid fa-rocket mr-2"></i>Começar Agora
           </a>
         </div>
 
-        <!-- Mini Feature Cards -->
-        <div class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="grid sm:grid-cols-3 gap-5 max-w-4xl mx-auto">
           <div
-            class="bg-white/80 backdrop-blur p-6 rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100"
+            class="fade-in-scale stagger-1 glass card-hover gradient-border p-6 rounded-2xl"
           >
             <div
-              class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-green-500/30"
+              class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-emerald-500/30"
             >
-              <i class="fa-solid fa-money-bill-wave text-white"></i>
+              <i class="fa-solid fa-coins text-white"></i>
             </div>
-            <h3 class="font-bold text-slate-900 mb-2">IA de Lucratividade</h3>
+            <h3 class="font-bold text-slate-900 mb-2">Lucro Real Líquido</h3>
             <p class="text-sm text-slate-600">
-              Algoritmos calculam o lucro real líquido em tempo real.
+              Cálculo automático de margem limpa após impostos e taxas.
             </p>
           </div>
           <div
-            class="bg-white/80 backdrop-blur p-6 rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100"
+            class="fade-in-scale stagger-2 glass card-hover gradient-border p-6 rounded-2xl"
           >
             <div
-              class="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-red-500/30"
+              class="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-rose-500/30"
             >
-              <i class="fa-solid fa-chart-line text-white"></i>
+              <i class="fa-solid fa-brain text-white"></i>
             </div>
             <h3 class="font-bold text-slate-900 mb-2">IA Preditiva de Caixa</h3>
             <p class="text-sm text-slate-600">
-              Previsão de insolvência baseada em padrões históricos.
+              Previsão de insolvência antes que ela aconteça.
             </p>
           </div>
           <div
-            class="bg-white/80 backdrop-blur p-6 rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100"
+            class="fade-in-scale stagger-3 glass card-hover gradient-border p-6 rounded-2xl"
           >
             <div
-              class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-blue-500/30"
+              class="w-12 h-12 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-violet-500/30"
             >
               <i class="fa-solid fa-scale-balanced text-white"></i>
             </div>
-            <h3 class="font-bold text-slate-900 mb-2">IA Fiscal</h3>
+            <h3 class="font-bold text-slate-900 mb-2">Eficiência Fiscal</h3>
             <p class="text-sm text-slate-600">
-              Monitoramento contínuo de eficiência tributária.
+              Monitoramento contínuo para evitar impostos indevidos.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Interface Preview Section -->
-    <section class="py-20 bg-gradient-to-b from-white to-slate-50">
+    <section class="py-24 bg-gradient-to-b from-white to-slate-50/50">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
+        <div class="fade-in text-center mb-16">
+          <span class="inline-flex items-center px-3 py-1 bg-brand-50 text-brand-600 rounded-full text-sm font-medium mb-4">
+            <i class="fa-solid fa-desktop mr-2"></i> Preview
+          </span>
           <h2 class="text-3xl font-bold text-slate-900 mb-4">
-            Interface Preview
+            Interface Inteligente
           </h2>
-          <p class="text-lg text-slate-600">
-            Veja como o Contta transforma dados em decisões inteligentes
+          <p class="text-lg text-slate-500 max-w-xl mx-auto">
+            Veja como o Contta transforma dados bancários brutos em decisões
+            inteligentes
           </p>
         </div>
 
-        <!-- 3D Mock Window -->
-        <div class="mock-window mx-auto max-w-4xl">
+        <div class="fade-in-scale mock-window mx-auto max-w-4xl">
           <div
-            class="bg-white rounded-2xl shadow-2xl shadow-slate-300/50 border border-slate-200 overflow-hidden"
+            class="bg-white rounded-3xl shadow-2xl shadow-slate-200/80 border border-slate-100 overflow-hidden"
           >
-            <!-- Window Header -->
             <div
-              class="bg-slate-100 px-4 py-3 flex items-center space-x-2 border-b border-slate-200"
+              class="bg-slate-50 px-5 py-4 flex items-center space-x-2 border-b border-slate-100"
             >
-              <div class="w-3 h-3 rounded-full bg-red-400"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-              <div class="w-3 h-3 rounded-full bg-green-400"></div>
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-rose-400"></div>
+                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+              </div>
               <div class="flex-1 text-center">
-                <span class="text-xs text-slate-500 font-medium"
-                  >Contta Business Dashboard</span
-                >
+                <div class="inline-flex items-center px-4 py-1.5 bg-white rounded-lg border border-slate-200">
+                  <i class="fa-solid fa-lock text-emerald-500 text-xs mr-2"></i>
+                  <span class="text-xs text-slate-500 font-medium">app.contta.com.br</span>
+                </div>
               </div>
             </div>
-            <!-- Window Content Placeholder -->
             <div
-              class="aspect-video bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-8"
+              class="aspect-video bg-gradient-to-br from-slate-50 to-slate-100/50 flex items-center justify-center p-8"
             >
               <div class="text-center">
                 <div
-                  class="w-20 h-20 bg-gradient-to-br from-brand-500 to-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-brand-500/30"
+                  class="w-24 h-24 bg-gradient-to-br from-brand-500 to-violet-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-brand-500/30 float-animation"
                 >
-                  <i class="fa-solid fa-chart-pie text-white text-3xl"></i>
+                  <i class="fa-solid fa-chart-pie text-white text-4xl"></i>
                 </div>
                 <p class="text-slate-400 text-lg font-medium">
                   Insira aqui o screenshot do dashboard
                 </p>
-                <p class="text-slate-400 text-sm mt-2">
+                <p class="text-slate-300 text-sm mt-2">
                   Tamanho recomendado: 1920x1080
                 </p>
               </div>
@@ -386,251 +318,211 @@
       </div>
     </section>
 
-    <!-- Main Content Container -->
     <main>
-      <!-- The Problem Section -->
-      <section id="problema" class="py-24 bg-white">
+      <section id="problema" class="py-28 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <!-- Section Header -->
-          <div class="text-center mb-16">
+          <div class="fade-in text-center mb-20">
             <span
-              class="inline-flex items-center px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium mb-4"
+              class="inline-flex items-center px-4 py-1.5 bg-rose-50 text-rose-600 rounded-full text-sm font-medium mb-6"
             >
               <span class="mr-2">🇧🇷</span> Realidade Brasileira
             </span>
-            <h2 class="text-4xl font-bold text-slate-900 mb-6">
-              Por que tantas PMEs fecham as portas?
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Por que tantas PMEs fecham?
             </h2>
-            <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-              Empreender no Brasil exige precisão.
-              <strong class="text-slate-800"
-                >6 em cada 10 empresas fecham antes de completar 5 anos</strong
-              >
-              — e na maioria das vezes, não é por falta de clientes ou vendas.
+            <p class="text-xl text-slate-500 max-w-2xl mx-auto">
+              <strong class="text-slate-700">6 em cada 10 empresas</strong> fecham antes de 5 anos — 
+              não por falta de clientes, mas por falta de gestão de caixa.
             </p>
           </div>
 
-          <!-- Statistics Cards - Horizontal Row -->
-          <div class="grid md:grid-cols-3 gap-8 mb-20">
+          <div class="grid md:grid-cols-3 gap-6 mb-20">
             <div
-              class="group bg-gradient-to-br from-red-50 to-red-100/50 rounded-2xl p-8 text-center border border-red-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              class="fade-in stagger-1 tilt-card group bg-gradient-to-br from-rose-50 to-white rounded-3xl p-8 text-center border border-rose-100 hover:border-rose-200 transition-colors"
             >
               <div
-                class="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-red-500/30 group-hover:scale-110 transition-transform"
+                class="w-16 h-16 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-rose-500/25 group-hover:scale-110 transition-transform duration-500"
               >
                 <i class="fa-solid fa-store-slash text-white text-2xl"></i>
               </div>
-              <div class="text-5xl font-extrabold text-red-600 mb-2">60%</div>
-              <div class="text-lg font-semibold text-red-900 mb-2">
+              <div class="text-5xl font-extrabold text-rose-600 mb-2 counter" data-target="60">0%</div>
+              <div class="text-base font-medium text-slate-700 mb-1">
                 das PMEs fecham em até 5 anos
               </div>
-              <div class="text-sm text-red-600">Fonte: IBGE/Sebrae</div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider">Fonte: IBGE/Sebrae</div>
             </div>
             <div
-              class="group bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-2xl p-8 text-center border border-orange-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              class="fade-in stagger-2 tilt-card group bg-gradient-to-br from-amber-50 to-white rounded-3xl p-8 text-center border border-amber-100 hover:border-amber-200 transition-colors"
             >
               <div
-                class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform"
+                class="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-amber-500/25 group-hover:scale-110 transition-transform duration-500"
               >
-                <i
-                  class="fa-solid fa-money-bill-transfer text-white text-2xl"
-                ></i>
+                <i class="fa-solid fa-piggy-bank text-white text-2xl"></i>
               </div>
-              <div class="text-5xl font-extrabold text-orange-600 mb-2">
-                29%
-              </div>
-              <div class="text-lg font-semibold text-orange-900 mb-2">
+              <div class="text-5xl font-extrabold text-amber-600 mb-2 counter" data-target="29">0%</div>
+              <div class="text-base font-medium text-slate-700 mb-1">
                 fecham por falta de capital de giro
               </div>
-              <div class="text-sm text-orange-600">
-                Principal causa de falência
-              </div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider">Principal causa</div>
             </div>
             <div
-              class="group bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-2xl p-8 text-center border border-yellow-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              class="fade-in stagger-3 tilt-card group bg-gradient-to-br from-violet-50 to-white rounded-3xl p-8 text-center border border-violet-100 hover:border-violet-200 transition-colors"
             >
               <div
-                class="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-yellow-500/30 group-hover:scale-110 transition-transform"
+                class="w-16 h-16 bg-gradient-to-br from-violet-500 to-violet-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-violet-500/25 group-hover:scale-110 transition-transform duration-500"
               >
                 <i class="fa-solid fa-chart-line text-white text-2xl"></i>
               </div>
-              <div class="text-5xl font-extrabold text-yellow-600 mb-2">
-                18%
+              <div class="text-5xl font-extrabold text-violet-600 mb-2 counter" data-target="18">0%</div>
+              <div class="text-base font-medium text-slate-700 mb-1">
+                fecham por problemas de gestão
               </div>
-              <div class="text-lg font-semibold text-yellow-900 mb-2">
-                fecham por problemas de gestão financeira
-              </div>
-              <div class="text-sm text-yellow-600">Erros evitáveis</div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider">Erros evitáveis</div>
             </div>
           </div>
 
-          <!-- Alert Banner -->
           <div
-            class="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 mb-20 text-white shadow-xl shadow-red-500/20"
+            class="fade-in bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 md:p-10 mb-20 text-white shadow-2xl relative overflow-hidden"
           >
-            <div
-              class="flex flex-col md:flex-row items-start md:items-center gap-6"
-            >
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"30\" height=\"30\" viewBox=\"0 0 30 30\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z\" fill=\"rgba(255,255,255,0.05)\"%3E%3C/path%3E%3C/svg%3E')] opacity-50"></div>
+            <div class="relative flex flex-col md:flex-row items-start md:items-center gap-6">
               <div
-                class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0"
+                class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 backdrop-blur"
               >
-                <i class="fa-solid fa-skull-crossbones text-2xl"></i>
+                <i class="fa-solid fa-triangle-exclamation text-amber-400 text-2xl"></i>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2">
-                  A verdade que ninguém conta:
+                <h3 class="text-xl font-bold mb-3">
+                  A verdade que ninguém conta
                 </h3>
-                <p class="text-red-100 text-lg">
+                <p class="text-slate-300 text-lg leading-relaxed">
                   Empresas não quebram quando param de vender. Elas quebram
                   quando o dinheiro acaba antes de chegar.
-                  <strong class="text-white"
-                    >Você pode ter R$ 100 mil em vendas e ainda assim fechar as
-                    portas no mês seguinte.</strong
-                  >
+                  <strong class="text-white">
+                    Você pode ter R$ 100 mil em vendas e ainda assim fechar as
+                    portas no mês seguinte.
+                  </strong>
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- Pain Points -->
-          <div class="mb-20">
-            <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center">
-              <i class="fa-solid fa-face-tired text-slate-400 mr-3"></i>
-              Você se identifica com alguma dessas situações?
+          <div class="fade-in mb-20">
+            <h3 class="text-2xl font-bold text-slate-900 mb-10 text-center">
+              Você se identifica?
             </h3>
 
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div
-                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
               >
                 <div class="flex items-start gap-4">
                   <div
-                    class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                    class="w-11 h-11 bg-rose-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-rose-100 transition-colors"
                   >
-                    <i class="fa-solid fa-calculator text-red-500 text-xl"></i>
+                    <i class="fa-solid fa-calculator text-rose-500"></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-slate-900 mb-2">
-                      😰 "Vendo bastante, mas no final do mês não sobra nada"
+                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
+                      "Vendo, mas não sobra"
                     </h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                      Confusão entre markup e margem real. Impostos, taxas de
-                      cartão, comissões e custos ocultos corroem silenciosamente
-                      seu lucro.
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                      Impostos e taxas corroem seu lucro sem você ver.
                     </p>
                   </div>
                 </div>
               </div>
               <div
-                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
               >
                 <div class="flex items-start gap-4">
                   <div
-                    class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                    class="w-11 h-11 bg-amber-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-amber-100 transition-colors"
                   >
-                    <i
-                      class="fa-solid fa-calendar-xmark text-orange-500 text-xl"
-                    ></i>
+                    <i class="fa-solid fa-hourglass-half text-amber-500"></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-slate-900 mb-2">
-                      😓 "Sempre estou correndo atrás de dinheiro para pagar
-                      fornecedores"
+                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
+                      "Correndo atrás de dinheiro"
                     </h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                      Você paga seu fornecedor em 7 dias, mas recebe do cliente
-                      em 30+ dias. Esse descompasso é a armadilha do fluxo de
-                      caixa.
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                      Paga em 7 dias, recebe em 30. O buraco se abre.
                     </p>
                   </div>
                 </div>
               </div>
               <div
-                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
               >
                 <div class="flex items-start gap-4">
                   <div
-                    class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                    class="w-11 h-11 bg-violet-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-violet-100 transition-colors"
                   >
-                    <i class="fa-solid fa-receipt text-yellow-600 text-xl"></i>
+                    <i class="fa-solid fa-receipt text-violet-500"></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-slate-900 mb-2">
-                      😵 "Não sei se estou no regime tributário certo"
+                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
+                      "Impostos são um labirinto"
                     </h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                      MEI, Simples Nacional, Lucro Presumido, Fator R... É um
-                      labirinto. Você pode estar pagando milhares a mais em
-                      impostos todo ano.
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                      MEI, Simples, Fator R... pagando mais do que deveria.
                     </p>
                   </div>
                 </div>
               </div>
               <div
-                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
               >
                 <div class="flex items-start gap-4">
                   <div
-                    class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                    class="w-11 h-11 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-100 transition-colors"
                   >
-                    <i
-                      class="fa-solid fa-chart-line text-purple-500 text-xl"
-                    ></i>
+                    <i class="fa-solid fa-arrow-trend-up text-emerald-500"></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-slate-900 mb-2">
-                      😤 "Meu fornecedor aumentou o preço e eu nem percebi"
+                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
+                      "Inflação silenciosa"
                     </h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                      Fornecedores reajustam preços silenciosamente. Sem
-                      monitoramento, você continua vendendo pelo preço antigo.
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                      Fornecedores sobem e você não repassa.
                     </p>
                   </div>
                 </div>
               </div>
               <div
-                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
               >
                 <div class="flex items-start gap-4">
                   <div
-                    class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                    class="w-11 h-11 bg-sky-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-sky-100 transition-colors"
                   >
-                    <i
-                      class="fa-solid fa-credit-card text-blue-500 text-xl"
-                    ></i>
+                    <i class="fa-solid fa-credit-card text-sky-500"></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-slate-900 mb-2">
-                      😡 "As taxas da maquininha estão comendo meu lucro"
+                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
+                      "Taxas abusivas"
                     </h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                      Taxa de débito, crédito à vista, parcelado, antecipação...
-                      Cada venda tem uma mordida diferente. Você pode estar
-                      perdendo 3-5% do faturamento.
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                      Perdendo 5% só com taxas financeiras.
                     </p>
                   </div>
                 </div>
               </div>
               <div
-                class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all"
+                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
               >
                 <div class="flex items-start gap-4">
                   <div
-                    class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0"
+                    class="w-11 h-11 bg-pink-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-pink-100 transition-colors"
                   >
-                    <i
-                      class="fa-solid fa-file-invoice-dollar text-green-600 text-xl"
-                    ></i>
+                    <i class="fa-solid fa-scale-balanced text-pink-500"></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-slate-900 mb-2">
-                      😨 "Não sei quanto preciso vender para pagar as contas"
+                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
+                      "Ponto de equilíbrio?"
                     </h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                      Qual é o seu ponto de equilíbrio? Quantos dias do mês você
-                      trabalha só para cobrir custos fixos? Sem essa clareza,
-                      você não sabe se está construindo riqueza ou cavando um
-                      buraco.
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                      Quantos dias só para pagar contas?
                     </p>
                   </div>
                 </div>
@@ -638,94 +530,26 @@
             </div>
           </div>
 
-          <!-- Vicious Cycle -->
           <div
-            class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-10 mb-20 text-white"
-          >
-            <h3 class="font-bold text-xl mb-8 flex items-center justify-center">
-              <i
-                class="fa-solid fa-triangle-exclamation text-yellow-400 mr-3"
-              ></i>
-              O ciclo vicioso da cegueira financeira
-            </h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div class="relative group">
-                <div
-                  class="bg-slate-800 rounded-2xl p-6 border border-slate-700 group-hover:border-slate-600 transition-colors"
-                >
-                  <i
-                    class="fa-solid fa-eye-slash text-3xl text-slate-400 mb-4"
-                  ></i>
-                  <p class="text-sm font-medium">
-                    Sem visibilidade do lucro real
-                  </p>
-                </div>
-                <i
-                  class="fa-solid fa-arrow-right text-slate-600 absolute -right-3 top-1/2 -translate-y-1/2 hidden md:block text-xl"
-                ></i>
-              </div>
-              <div class="relative group">
-                <div
-                  class="bg-slate-800 rounded-2xl p-6 border border-slate-700 group-hover:border-slate-600 transition-colors"
-                >
-                  <i class="fa-solid fa-tag text-3xl text-orange-400 mb-4"></i>
-                  <p class="text-sm font-medium">Preços mal calculados</p>
-                </div>
-                <i
-                  class="fa-solid fa-arrow-right text-slate-600 absolute -right-3 top-1/2 -translate-y-1/2 hidden md:block text-xl"
-                ></i>
-              </div>
-              <div class="relative group">
-                <div
-                  class="bg-slate-800 rounded-2xl p-6 border border-slate-700 group-hover:border-slate-600 transition-colors"
-                >
-                  <i
-                    class="fa-solid fa-money-bill-transfer text-3xl text-red-400 mb-4"
-                  ></i>
-                  <p class="text-sm font-medium">Caixa sempre apertado</p>
-                </div>
-                <i
-                  class="fa-solid fa-arrow-right text-slate-600 absolute -right-3 top-1/2 -translate-y-1/2 hidden md:block text-xl"
-                ></i>
-              </div>
-              <div class="group">
-                <div
-                  class="bg-red-900/50 rounded-2xl p-6 border border-red-700 group-hover:border-red-600 transition-colors"
-                >
-                  <i
-                    class="fa-solid fa-store-slash text-3xl text-red-400 mb-4"
-                  ></i>
-                  <p class="text-sm font-bold">Empresa fecha</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- The Solution -->
-          <div
-            class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 rounded-3xl p-10 border border-green-200"
+            class="fade-in bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 rounded-3xl p-10 border border-emerald-100"
           >
             <div class="flex flex-col md:flex-row items-start gap-8">
               <div
-                class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-green-500/30"
+                class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-emerald-500/25 float-animation"
               >
-                <i class="fa-solid fa-lightbulb text-white text-3xl"></i>
+                <i class="fa-solid fa-wand-magic-sparkles text-white text-3xl"></i>
               </div>
               <div>
-                <h3 class="font-bold text-green-900 text-2xl mb-4">
-                  E se você tivesse um "diretor financeiro" 24 horas por dia?
+                <h3 class="font-bold text-emerald-900 text-2xl mb-4">
+                  E se você tivesse um CFO 24/7?
                 </h3>
-                <p class="text-green-800 text-lg mb-4 leading-relaxed">
-                  Imagine ter alguém que monitora seus custos automaticamente,
-                  avisa quando um fornecedor aumenta preços, calcula o preço
-                  ideal de cada produto, prevê quando o caixa vai apertar e
-                  sugere o que fazer —
-                  <strong>antes do problema acontecer</strong>.
+                <p class="text-emerald-800/80 text-lg mb-4 leading-relaxed">
+                  Imagine uma IA que monitora custos, alerta sobre preços, 
+                  calcula o preço ideal e projeta seu caixa —
+                  <strong class="text-emerald-900">antes do problema acontecer</strong>.
                 </p>
-                <p class="text-green-700">
-                  É exatamente isso que o <strong>Contta Business</strong> faz.
-                  Com Inteligência Artificial, transformamos dados em decisões
-                  que protegem seu negócio.
+                <p class="text-emerald-600 text-sm">
+                  O <strong>Contta Business</strong> automatiza a burocracia e protege seu lucro.
                 </p>
               </div>
             </div>
@@ -733,888 +557,333 @@
         </div>
       </section>
 
-      <!-- Features Section - Bento Grid -->
-      <section id="funcionalidades" class="py-24 bg-slate-50">
+      <section id="funcionalidades" class="py-28 bg-slate-50/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <!-- Section Header -->
-          <div class="text-center mb-16">
+          <div class="fade-in text-center mb-20">
             <span
-              class="inline-flex items-center px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-sm font-medium mb-4"
+              class="inline-flex items-center px-4 py-1.5 bg-brand-50 text-brand-600 rounded-full text-sm font-medium mb-6"
             >
-              ✅ AI-Driven
+              <i class="fa-solid fa-bolt mr-2"></i> Funcionalidades
             </span>
-            <h2 class="text-4xl font-bold text-slate-900 mb-6">
-              Funcionalidades Prescritivas
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Automação Prescritiva
             </h2>
-            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
-              O Contta é prescritivo: a IA identifica o risco e sugere a ação.
+            <p class="text-xl text-slate-500 max-w-xl mx-auto">
+              Nossa IA não apenas mostra gráficos. Ela diz exatamente o que fazer.
             </p>
           </div>
 
-          <!-- Bento Grid -->
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Card 1 - Large -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             <div
-              class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-brand-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 lg:col-span-2"
+              class="fade-in stagger-1 glass card-hover gradient-border p-7 rounded-2xl group"
             >
               <div
-                class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-brand-50 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity"
-              ></div>
-              <div
-                class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity"
+                class="w-12 h-12 bg-gradient-to-br from-sky-400 to-sky-600 rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-sky-500/25 group-hover:scale-110 transition-transform duration-500"
               >
-                <i
-                  class="fa-solid fa-shield-halved text-7xl text-brand-600"
-                ></i>
+                <i class="fa-solid fa-building-columns text-white"></i>
               </div>
-              <div class="relative z-10">
+              <h3 class="text-lg font-bold text-slate-900 mb-2">
+                Automação Bancária
+              </h3>
+              <p class="text-slate-500 text-sm mb-4">
+                Conexão via Open Finance. Transações aparecem categorizadas automaticamente.
+              </p>
+              <div
+                class="bg-slate-50 p-3 rounded-xl text-xs border border-slate-100 text-slate-500 font-mono"
+              >
+                <i class="fa-solid fa-wand-magic-sparkles text-sky-500 mr-2"></i>
+                "Adeus, digitação manual."
+              </div>
+            </div>
+
+            <div
+              class="fade-in stagger-2 glass card-hover gradient-border p-7 rounded-2xl lg:col-span-2 group relative overflow-hidden"
+            >
+              <div class="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-brand-200/30 to-violet-200/30 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+              <div class="relative">
                 <div
-                  class="w-14 h-14 bg-gradient-to-br from-brand-400 to-brand-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-brand-500/30"
+                  class="w-12 h-12 bg-gradient-to-br from-brand-400 to-violet-600 rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-brand-500/25 group-hover:scale-110 transition-transform duration-500"
                 >
-                  <i class="fa-solid fa-shield-halved text-white text-xl"></i>
+                  <i class="fa-solid fa-shield-halved text-white"></i>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">
-                  1. Guardião de Preços
+                <h3 class="text-lg font-bold text-slate-900 mb-2">
+                  Guardião de Preços
                 </h3>
-                <p class="text-slate-600 mb-4">
-                  Monitora variações em notas e custos de fornecedores
-                  automaticamente.
+                <p class="text-slate-500 text-sm mb-4">
+                  A IA monitora variações de custo dos fornecedores e alerta se sua margem cair.
                 </p>
                 <div
-                  class="bg-slate-50 p-4 rounded-xl text-sm border border-slate-100 text-slate-600 font-mono"
+                  class="bg-slate-50 p-3 rounded-xl text-xs border border-slate-100 text-slate-500 font-mono"
                 >
                   <i class="fa-solid fa-robot text-brand-500 mr-2"></i>
-                  "A IA detectou alta de 8% no fornecedor. Sugestão: ajuste para
-                  R$ 5,49 para manter margem."
+                  "Fornecedor subiu 8%. Ajuste para R$ 5,49."
                 </div>
               </div>
             </div>
 
-            <!-- Card 2 -->
             <div
-              class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-purple-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              class="fade-in stagger-3 glass card-hover gradient-border p-7 rounded-2xl group"
             >
               <div
-                class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-purple-50 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity"
-              ></div>
-              <div
-                class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity"
+                class="w-12 h-12 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-violet-500/25 group-hover:scale-110 transition-transform duration-500"
               >
-                <i class="fa-solid fa-calculator text-6xl text-purple-600"></i>
+                <i class="fa-solid fa-tags text-white"></i>
               </div>
-              <div class="relative z-10">
-                <div
-                  class="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30"
-                >
-                  <i class="fa-solid fa-calculator text-white text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">
-                  2. Precificação Inteligente
-                </h3>
-                <p class="text-slate-600 mb-4">
-                  Calcula preço ideal cruzando impostos, taxas e custos.
-                </p>
-                <div
-                  class="bg-slate-50 p-4 rounded-xl text-sm border border-slate-100 text-slate-600 font-mono"
-                >
-                  <i class="fa-solid fa-robot text-purple-500 mr-2"></i>
-                  "R$ 10,00 gera prejuízo. Recomendado: R$ 14,50 para lucro de
-                  15%."
-                </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">
+                Precificação Inteligente
+              </h3>
+              <p class="text-slate-500 text-sm">
+                Calcula o preço ideal cruzando impostos, taxas e custos fixos.
+              </p>
+            </div>
+
+            <div
+              class="fade-in stagger-4 glass card-hover gradient-border p-7 rounded-2xl group"
+            >
+              <div
+                class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-amber-500/25 group-hover:scale-110 transition-transform duration-500"
+              >
+                <i class="fa-solid fa-chart-line text-white"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">
+                Profeta do Caixa
+              </h3>
+              <p class="text-slate-500 text-sm mb-4">
+                Projeta o caixa futuro com base no histórico.
+              </p>
+              <div
+                class="bg-slate-50 p-3 rounded-xl text-xs border border-slate-100 text-slate-500 font-mono"
+              >
+                <i class="fa-solid fa-robot text-amber-500 mr-2"></i>
+                "Risco no dia 20. Antecipe R$ 2k."
               </div>
             </div>
 
-            <!-- Card 3 -->
             <div
-              class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-orange-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              class="fade-in stagger-5 glass card-hover gradient-border p-7 rounded-2xl group"
             >
               <div
-                class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-orange-50 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity"
-              ></div>
-              <div
-                class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity"
+                class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-emerald-500/25 group-hover:scale-110 transition-transform duration-500"
               >
-                <i
-                  class="fa-solid fa-satellite-dish text-6xl text-orange-600"
-                ></i>
+                <i class="fa-solid fa-microscope text-white"></i>
               </div>
-              <div class="relative z-10">
-                <div
-                  class="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/30"
-                >
-                  <i class="fa-solid fa-satellite-dish text-white text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">
-                  3. Profeta do Fluxo de Caixa
-                </h3>
-                <p class="text-slate-600 mb-4">
-                  Projeta caixa futuro usando séries temporais e sazonalidade.
-                </p>
-                <div
-                  class="bg-slate-50 p-4 rounded-xl text-sm border border-slate-100 text-slate-600 font-mono"
-                >
-                  <i class="fa-solid fa-robot text-orange-500 mr-2"></i>
-                  "Risco de falta de R$ 2.000 no dia 20. Antecipe recebíveis."
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div
-              class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-green-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            >
-              <div
-                class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-green-50 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity"
-              ></div>
-              <div
-                class="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity"
-              >
-                <i
-                  class="fa-solid fa-magnifying-glass-dollar text-6xl text-green-600"
-                ></i>
-              </div>
-              <div class="relative z-10">
-                <div
-                  class="w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/30"
-                >
-                  <i
-                    class="fa-solid fa-magnifying-glass-dollar text-white text-xl"
-                  ></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">
-                  4. Raio-X dos Custos
-                </h3>
-                <p class="text-slate-600 mb-4">
-                  Unit Economics, custos fixos/variáveis e ponto de equilíbrio.
-                </p>
-                <div
-                  class="bg-slate-50 p-4 rounded-xl text-sm border border-slate-100 text-slate-600 font-mono"
-                >
-                  <i class="fa-solid fa-robot text-green-500 mr-2"></i>
-                  "Ponto de equilíbrio dia 19. A partir do dia 20, operação em
-                  lucro."
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 5 - Full Width -->
-            <div
-              class="bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-2xl shadow-xl relative overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 lg:col-span-3"
-            >
-              <div
-                class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-yellow-500/10 to-transparent rounded-bl-full"
-              ></div>
-              <div
-                class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-brand-500/10 to-transparent rounded-tr-full"
-              ></div>
-              <div
-                class="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-8"
-              >
-                <div class="flex-shrink-0">
-                  <div
-                    class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center shadow-xl shadow-yellow-500/30"
-                  >
-                    <i class="fa-solid fa-chess-knight text-white text-3xl"></i>
-                  </div>
-                </div>
-                <div class="flex-1">
-                  <h3 class="text-2xl font-bold text-white mb-3">
-                    5. Estrategista Tributário
-                  </h3>
-                  <p class="text-slate-300 mb-4 text-lg">
-                    Simula cenários fiscais complexos para otimização
-                    tributária.
-                  </p>
-                  <div
-                    class="bg-white/10 backdrop-blur p-4 rounded-xl text-sm border border-white/20 text-slate-200 font-mono"
-                  >
-                    <i class="fa-solid fa-robot text-yellow-400 mr-2"></i>
-                    "Alerta IA: Fator R em 24%. Aumentar pró-labore em R$ 200
-                    economiza R$ 8.400/ano em impostos."
-                  </div>
-                </div>
-              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">
+                Raio-X dos Custos
+              </h3>
+              <p class="text-slate-500 text-sm">
+                Análise de ponto de equilíbrio e unit economics.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Architecture Section -->
-      <section id="arquitetura" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <!-- Section Header -->
-          <div class="text-center mb-16">
+      <section id="arquitetura" class="py-28 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="fade-in text-center mb-20">
             <span
-              class="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-4"
+              class="inline-flex items-center px-4 py-1.5 bg-violet-50 text-violet-600 rounded-full text-sm font-medium mb-6"
             >
-              🧠 IA Híbrida
+              <i class="fa-solid fa-microchip mr-2"></i> Tecnologia Híbrida
             </span>
-            <h2 class="text-4xl font-bold text-slate-900 mb-6">Edge + Nuvem</h2>
-            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
-              Usamos o melhor dos dois mundos: rapidez local e poder cognitivo
-              na nuvem.
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Rapidez + Inteligência
+            </h2>
+            <p class="text-xl text-slate-500 max-w-xl mx-auto">
+              Combinamos a velocidade do seu celular com a inteligência da nuvem.
             </p>
           </div>
 
-          <!-- Architecture Table -->
-          <div
-            class="overflow-x-auto rounded-2xl border border-slate-200 shadow-lg mb-16"
-          >
-            <table class="min-w-full divide-y divide-slate-200">
-              <thead class="bg-slate-50">
-                <tr>
-                  <th
-                    scope="col"
-                    class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
-                  >
-                    Camada
-                  </th>
-                  <th
-                    scope="col"
-                    class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
-                  >
-                    Modelo de IA
-                  </th>
-                  <th
-                    scope="col"
-                    class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
-                  >
-                    Função Inteligente
-                  </th>
-                  <th
-                    scope="col"
-                    class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider"
-                  >
-                    Benefício
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="bg-white divide-y divide-slate-200">
-                <tr
-                  class="bg-orange-50/50 hover:bg-orange-50 transition-colors"
-                >
-                  <td
-                    class="px-6 py-5 whitespace-nowrap text-sm font-bold text-slate-900"
-                  >
-                    Edge (Dispositivo)
-                  </td>
-                  <td
-                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-800 font-medium"
-                  >
-                    <i class="fa-brands fa-google text-orange-500 mr-2"></i
-                    >TensorFlow Lite
-                  </td>
-                  <td class="px-6 py-5 text-sm text-slate-600">
-                    Categorização instantânea, detecção de anomalias locais
-                  </td>
-                  <td
-                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-700"
-                  >
-                    <span
-                      class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800"
-                      >Privacidade Total</span
-                    >
-                  </td>
-                </tr>
-                <tr
-                  class="bg-purple-50/50 hover:bg-purple-50 transition-colors"
-                >
-                  <td
-                    class="px-6 py-5 whitespace-nowrap text-sm font-bold text-slate-900"
-                  >
-                    Nuvem (Cognitiva)
-                  </td>
-                  <td
-                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-800 font-medium"
-                  >
-                    <i class="fa-solid fa-gem text-purple-500 mr-2"></i>Google
-                    Gemini
-                  </td>
-                  <td class="px-6 py-5 text-sm text-slate-600">
-                    Análise de documentos (OCR), Copiloto de Decisão, Cenários
-                    complexos
-                  </td>
-                  <td
-                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-700"
-                  >
-                    <span
-                      class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
-                      >Raciocínio Avançado</span
-                    >
-                  </td>
-                </tr>
-                <tr class="hover:bg-slate-50 transition-colors">
-                  <td
-                    class="px-6 py-5 whitespace-nowrap text-sm font-medium text-slate-500"
-                  >
-                    Persistência
-                  </td>
-                  <td
-                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-500"
-                  >
-                    Drift + SQLCipher
-                  </td>
-                  <td class="px-6 py-5 text-sm text-slate-500">
-                    Banco de dados local vetorial/relacional
-                  </td>
-                  <td
-                    class="px-6 py-5 whitespace-nowrap text-sm text-slate-500"
-                  >
-                    Segurança (AES-256)
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Pipeline Card -->
-          <div
-            class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-300 p-10 rounded-3xl shadow-2xl border border-slate-700"
-          >
-            <div class="flex items-center mb-8">
-              <div
-                class="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-purple-500/30"
-              >
-                <i class="fa-solid fa-microchip text-white text-xl"></i>
+          <div class="fade-in space-y-4">
+            <div class="glass rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 card-hover">
+              <div class="w-14 h-14 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-lg shadow-amber-500/25 flex-shrink-0">
+                <i class="fa-solid fa-mobile-screen text-white text-xl"></i>
               </div>
-              <h4 class="text-white font-bold text-2xl">
-                Pipeline de Inteligência
-              </h4>
+              <div class="flex-1">
+                <h3 class="font-bold text-slate-900 mb-1">No seu Celular</h3>
+                <p class="text-slate-500 text-sm">Categoriza suas compras na hora, mesmo <strong class="text-slate-700">sem internet</strong>.</p>
+              </div>
+              <span class="px-4 py-2 bg-emerald-50 text-emerald-600 text-xs font-semibold rounded-full">Dados locais</span>
             </div>
-            <div class="grid md:grid-cols-4 gap-6">
-              <div
-                class="bg-slate-800/50 rounded-xl p-6 border border-slate-700"
-              >
-                <div
-                  class="w-10 h-10 bg-brand-500/20 rounded-lg flex items-center justify-center mb-4"
-                >
-                  <span class="text-brand-400 font-bold">1</span>
-                </div>
-                <h5 class="text-white font-semibold mb-2">Ingestão</h5>
-                <p class="text-sm text-slate-400">
-                  Dados entram via Open Finance ou input manual.
-                </p>
+            
+            <div class="glass rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 card-hover">
+              <div class="w-14 h-14 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/25 flex-shrink-0">
+                <i class="fa-solid fa-cloud text-white text-xl"></i>
               </div>
-              <div
-                class="bg-slate-800/50 rounded-xl p-6 border border-slate-700"
-              >
-                <div
-                  class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4"
-                >
-                  <span class="text-orange-400 font-bold">2</span>
-                </div>
-                <h5 class="text-white font-semibold mb-2">Edge AI (TFLite)</h5>
-                <p class="text-sm text-slate-400">
-                  O app categoriza a transação em &lt; 100ms sem internet.
-                </p>
+              <div class="flex-1">
+                <h3 class="font-bold text-slate-900 mb-1">Na Nuvem</h3>
+                <p class="text-slate-500 text-sm">Analisa cenários complexos e documentos (OCR) quando você pede.</p>
               </div>
-              <div
-                class="bg-slate-800/50 rounded-xl p-6 border border-slate-700"
-              >
-                <div
-                  class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center mb-4"
-                >
-                  <span class="text-green-400 font-bold">3</span>
-                </div>
-                <h5 class="text-white font-semibold mb-2">Análise de Padrão</h5>
-                <p class="text-sm text-slate-400">
-                  O modelo local recalcula projeções de caixa instantaneamente.
-                </p>
+              <span class="px-4 py-2 bg-sky-50 text-sky-600 text-xs font-semibold rounded-full">Anonimizado</span>
+            </div>
+            
+            <div class="glass rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 card-hover">
+              <div class="w-14 h-14 bg-gradient-to-br from-slate-500 to-slate-700 rounded-xl flex items-center justify-center shadow-lg shadow-slate-500/25 flex-shrink-0">
+                <i class="fa-solid fa-vault text-white text-xl"></i>
               </div>
-              <div
-                class="bg-slate-800/50 rounded-xl p-6 border border-slate-700"
-              >
-                <div
-                  class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4"
-                >
-                  <span class="text-purple-400 font-bold">4</span>
-                </div>
-                <h5 class="text-white font-semibold mb-2">
-                  Consultoria (Gemini)
-                </h5>
-                <p class="text-sm text-slate-400">
-                  Se houver risco complexo, o usuário ativa o "Copiloto" para
-                  análise profunda.
-                </p>
+              <div class="flex-1">
+                <h3 class="font-bold text-slate-900 mb-1">Cofre Digital</h3>
+                <p class="text-slate-500 text-sm">Seus dados financeiros ficam trancados com chaves que só você tem.</p>
               </div>
+              <span class="px-4 py-2 bg-emerald-50 text-emerald-600 text-xs font-semibold rounded-full">Proteção máxima</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Security Section -->
-      <section id="seguranca" class="py-24 bg-slate-50">
+      <section id="seguranca" class="py-28 bg-slate-50/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
+          <div class="fade-in text-center mb-20">
             <span
-              class="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-4"
+              class="inline-flex items-center px-4 py-1.5 bg-emerald-50 text-emerald-600 rounded-full text-sm font-medium mb-6"
             >
-              🔐 Proteção Total
+              <i class="fa-solid fa-shield-check mr-2"></i> Segurança Bancária
             </span>
-            <h2 class="text-4xl font-bold text-slate-900 mb-6">
-              Segurança e Privacidade
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Seus dados são seus. Ponto.
             </h2>
+            <p class="text-lg text-slate-500 max-w-xl mx-auto">
+              Seguimos a LGPD e padrões de criptografia militar.
+            </p>
           </div>
 
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             <div
-              class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              class="fade-in stagger-1 glass card-hover gradient-border p-6 rounded-2xl text-center group"
             >
-              <div
-                class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4"
-              >
-                <i class="fa-solid fa-lock text-green-600 text-xl"></i>
+              <div class="w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-emerald-500/25 group-hover:scale-110 transition-transform duration-500">
+                <i class="fa-solid fa-file-shield text-white text-lg"></i>
               </div>
-              <h4 class="font-bold text-slate-900 mb-2">Criptografia Local</h4>
-              <p class="text-sm text-slate-600">
-                SQLCipher (AES-256) para todos os dados locais.
+              <h4 class="font-bold text-slate-900 mb-2">LGPD</h4>
+              <p class="text-xs text-slate-500">
+                Total conformidade. Você controla o que compartilha.
               </p>
             </div>
             <div
-              class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              class="fade-in stagger-2 glass card-hover gradient-border p-6 rounded-2xl text-center group"
             >
-              <div
-                class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4"
-              >
-                <i class="fa-solid fa-fingerprint text-blue-600 text-xl"></i>
+              <div class="w-14 h-14 bg-gradient-to-br from-sky-400 to-sky-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-sky-500/25 group-hover:scale-110 transition-transform duration-500">
+                <i class="fa-solid fa-eye text-white text-lg"></i>
               </div>
-              <h4 class="font-bold text-slate-900 mb-2">Acesso Biométrico</h4>
-              <p class="text-sm text-slate-600">
-                Proteção via Biometria + PIN.
+              <h4 class="font-bold text-slate-900 mb-2">Leitura Apenas</h4>
+              <p class="text-xs text-slate-500">
+                Nunca movimentamos seu dinheiro, apenas lemos.
               </p>
             </div>
             <div
-              class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              class="fade-in stagger-3 glass card-hover gradient-border p-6 rounded-2xl text-center group"
             >
-              <div
-                class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4"
-              >
-                <i class="fa-solid fa-wifi-slash text-purple-600 text-xl"></i>
+              <div class="w-14 h-14 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-violet-500/25 group-hover:scale-110 transition-transform duration-500">
+                <i class="fa-solid fa-lock text-white text-lg"></i>
               </div>
-              <h4 class="font-bold text-slate-900 mb-2">Offline-first</h4>
-              <p class="text-sm text-slate-600">
-                Visibilidade total do status de sincronização.
+              <h4 class="font-bold text-slate-900 mb-2">AES-256</h4>
+              <p class="text-xs text-slate-500">
+                Criptografia militar no seu celular.
               </p>
             </div>
             <div
-              class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              class="fade-in stagger-4 glass card-hover gradient-border p-6 rounded-2xl text-center group"
             >
-              <div
-                class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4"
-              >
-                <i class="fa-solid fa-user-check text-yellow-600 text-xl"></i>
+              <div class="w-14 h-14 bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-rose-500/25 group-hover:scale-110 transition-transform duration-500">
+                <i class="fa-solid fa-fingerprint text-white text-lg"></i>
               </div>
-              <h4 class="font-bold text-slate-900 mb-2">Consentimento</h4>
-              <p class="text-sm text-slate-600">
-                Aprovação explícita para envio de dados à nuvem.
+              <h4 class="font-bold text-slate-900 mb-2">Biometria</h4>
+              <p class="text-xs text-slate-500">
+                Só você vê suas finanças.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Roadmap Section -->
-      <section id="roadmap" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
-            <span
-              class="inline-flex items-center px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-sm font-medium mb-4"
-            >
-              🗺️ Em Desenvolvimento
-            </span>
-            <h2 class="text-4xl font-bold text-slate-900 mb-6">
-              Roadmap e Futuro
-            </h2>
-          </div>
-
-          <div
-            class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent"
-          >
-            <!-- Item Completo 1 -->
-            <div
-              class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-            >
-              <div
-                class="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-green-500 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
-              >
-                <i class="fa-solid fa-check"></i>
-              </div>
-              <div
-                class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white border border-slate-200 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div class="font-bold text-lg text-slate-900 mb-2">
-                  Base & Inteligência
-                </div>
-                <div class="text-slate-600">
-                  Lançamentos, DRE, Custos, Alertas, Projeções e Briefing.
-                </div>
-              </div>
-            </div>
-
-            <!-- Item Completo 2 -->
-            <div
-              class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-            >
-              <div
-                class="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-green-500 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
-              >
-                <i class="fa-solid fa-check"></i>
-              </div>
-              <div
-                class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white border border-slate-200 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div class="font-bold text-lg text-slate-900 mb-2">
-                  Ecossistema
-                </div>
-                <div class="text-slate-600">
-                  Multi-empresa e portal do contador.
-                </div>
-              </div>
-            </div>
-
-            <!-- Item Futuro -->
-            <div
-              class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
-            >
-              <div
-                class="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-lg shadow-brand-500/30 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
-              >
-                <i class="fa-solid fa-rocket"></i>
-              </div>
-              <div
-                class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-gradient-to-br from-brand-50 to-white border-2 border-brand-200 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div class="font-bold text-lg text-slate-900 mb-4">
-                  Em Breve (Alto Impacto)
-                </div>
-                <ul class="text-slate-600 space-y-3">
-                  <li class="flex items-start gap-2">
-                    <i class="fa-solid fa-message-bot text-brand-500 mt-1"></i>
-                    <span
-                      ><strong>Copiloto de Decisão:</strong> Chat para simular
-                      parcelamentos e impacto no caixa.</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <i class="fa-solid fa-flask text-brand-500 mt-1"></i>
-                    <span
-                      ><strong>Modo Cenários (What-if):</strong> Simular preços,
-                      descontos e estoque.</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <i class="fa-solid fa-credit-card text-brand-500 mt-1"></i>
-                    <span
-                      ><strong>Auditor de Maquininha:</strong> Detecção de taxas
-                      abusivas.</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <i
-                      class="fa-solid fa-cart-shopping text-brand-500 mt-1"
-                    ></i>
-                    <span
-                      ><strong>Assistente de Compras:</strong> Quando e quanto
-                      comprar.</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <i class="fa-solid fa-bell text-brand-500 mt-1"></i>
-                    <span
-                      ><strong>Monitor Tributário:</strong> Alertas de DAS e
-                      NFe.</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <i class="fa-solid fa-heart-pulse text-brand-500 mt-1"></i>
-                    <span
-                      ><strong>Survival Score:</strong> Pontuação de risco do
-                      negócio (0-100).</span
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Glossary Section -->
-      <section id="glossario" class="py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
-            <span
-              class="inline-flex items-center px-3 py-1 bg-slate-200 text-slate-700 rounded-full text-sm font-medium mb-4"
-            >
-              📚 Referência
-            </span>
-            <h2 class="text-4xl font-bold text-slate-900 mb-6">
-              Glossário Brasileiro
-            </h2>
-          </div>
-
-          <div class="grid md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
-            <div class="space-y-6">
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term"
-                  >Markup</span
-                >
-                <p class="text-slate-600 mt-1">
-                  Percentual aplicado sobre o custo para formar o preço. Ex:
-                  custo R$ 10, markup 50% = preço R$ 15.
-                </p>
-              </div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term"
-                  >Margem (de lucro)</span
-                >
-                <p class="text-slate-600 mt-1">
-                  Percentual do lucro em relação ao preço de venda. Ex: preço R$
-                  15, custo R$ 10 = margem 33,3%.
-                </p>
-              </div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term">CMV</span>
-                <p class="text-slate-600 mt-1">
-                  Custo da Mercadoria Vendida. Quanto o estoque custou nas
-                  vendas do período.
-                </p>
-              </div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term">DRE</span>
-                <p class="text-slate-600 mt-1">
-                  Demonstração do Resultado. Receitas, custos, despesas e
-                  lucro/prejuízo.
-                </p>
-              </div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term"
-                  >Ponto de Equilíbrio</span
-                >
-                <p class="text-slate-600 mt-1">
-                  Mínimo de vendas para cobrir custos. A partir daqui, começa o
-                  lucro.
-                </p>
-              </div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term"
-                  >Fator R</span
-                >
-                <p class="text-slate-600 mt-1">
-                  Indicador do Simples (Folha/Receita) que pode mudar o anexo de
-                  tributação.
-                </p>
-              </div>
-            </div>
-
-            <div class="space-y-6">
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term"
-                  >Simples Nacional</span
-                >
-                <p class="text-slate-600 mt-1">
-                  Regime simplificado para MEs e EPPs, dividido em anexos e
-                  faixas.
-                </p>
-              </div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term"
-                  >Lucro Presumido</span
-                >
-                <p class="text-slate-600 mt-1">
-                  IRPJ/CSLL calculados por presunção de lucro conforme a
-                  atividade.
-                </p>
-              </div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term"
-                  >Lucro Real</span
-                >
-                <p class="text-slate-600 mt-1">
-                  Baseado no lucro contábil ajustado (LALUR). Permite créditos.
-                </p>
-              </div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term"
-                  >ICMS-ST</span
-                >
-                <p class="text-slate-600 mt-1">
-                  Substituição Tributária. O imposto é recolhido antecipadamente
-                  na cadeia.
-                </p>
-              </div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term"
-                  >Open Finance</span
-                >
-                <p class="text-slate-600 mt-1">
-                  Compartilhamento padronizado de dados financeiros (extratos
-                  bancários).
-                </p>
-              </div>
-              <div class="bg-white p-5 rounded-xl border border-slate-200">
-                <span class="font-bold text-slate-900 glossary-term">DAS</span>
-                <p class="text-slate-600 mt-1">
-                  Documento de Arrecadação do Simples Nacional.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
       <section
         id="contato"
-        class="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-brand-900"
+        class="py-28 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden"
       >
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <!-- Platform Availability Banner -->
-          <div class="text-center mb-16">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.02\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+        
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="fade-in text-center mb-16">
             <div
-              class="inline-flex items-center px-4 py-2 bg-white/10 text-white rounded-full text-sm font-medium mb-8 backdrop-blur"
+              class="inline-flex items-center px-4 py-2 glass-dark rounded-full text-sm font-medium mb-8 text-white/80"
             >
-              <i class="fa-solid fa-mobile-screen mr-2"></i>
+              <i class="fa-solid fa-rocket mr-2 icon-pulse"></i>
               Disponível para Mobile
             </div>
-            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Pronto para proteger seu negócio?
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+              Assuma o controle <span class="gradient-text">hoje</span>.
             </h2>
-            <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              O Contta Business AI está disponível para iOS e Android. Versão
-              Web em desenvolvimento.
+            <p class="text-xl text-slate-400 mb-10 max-w-xl mx-auto">
+              Baixe o Contta Business AI e pare de perder dinheiro.
             </p>
 
-            <!-- Platform Cards -->
-            <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
-              <div
-                class="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur rounded-2xl border border-white/20"
-              >
-                <i class="fa-brands fa-apple text-white text-2xl"></i>
+            <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+              <a href="#" class="btn-primary shine flex items-center gap-3 px-7 py-4 bg-white text-slate-900 rounded-2xl group">
+                <i class="fa-brands fa-apple text-3xl group-hover:scale-110 transition-transform"></i>
                 <div class="text-left">
-                  <span class="block text-white font-semibold">iOS</span>
-                  <span class="text-green-400 text-sm">✓ Disponível</span>
+                  <span class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider">Baixar na</span>
+                  <span class="block text-base font-bold">App Store</span>
                 </div>
-              </div>
-              <div
-                class="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur rounded-2xl border border-white/20"
-              >
-                <i class="fa-brands fa-android text-green-400 text-2xl"></i>
+              </a>
+              <a href="#" class="btn-primary shine flex items-center gap-3 px-7 py-4 bg-white text-slate-900 rounded-2xl group">
+                <i class="fa-brands fa-google-play text-3xl text-emerald-500 group-hover:scale-110 transition-transform"></i>
                 <div class="text-left">
-                  <span class="block text-white font-semibold">Android</span>
-                  <span class="text-green-400 text-sm">✓ Disponível</span>
+                  <span class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider">Disponível no</span>
+                  <span class="block text-base font-bold">Google Play</span>
                 </div>
-              </div>
-              <div
-                class="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur rounded-2xl border border-white/20"
-              >
-                <i class="fa-solid fa-globe text-brand-400 text-2xl"></i>
-                <div class="text-left">
-                  <span class="block text-white font-semibold">Web</span>
-                  <span class="text-brand-400 text-sm">Em desenvolvimento</span>
-                </div>
-              </div>
+              </a>
             </div>
           </div>
 
-          <!-- Contact Info -->
-          <div class="grid md:grid-cols-2 gap-8">
+          <div class="fade-in grid md:grid-cols-2 gap-6">
             <div
-              class="bg-white/5 backdrop-blur rounded-3xl p-8 border border-white/10"
+              class="glass-dark rounded-3xl p-8"
             >
-              <h3 class="text-2xl font-bold text-white mb-6">
-                Entre em Contato
-              </h3>
-              <p class="text-slate-300 mb-8">
-                Quer saber mais sobre o Contta Business AI? Estamos prontos para
-                ajudar.
-              </p>
-
-              <div class="space-y-6">
+              <h3 class="text-xl font-bold text-white mb-6">Fale Conosco</h3>
+              <div class="space-y-5">
                 <a
                   href="mailto:contato@contta.com.br"
                   class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group"
                 >
-                  <div
-                    class="w-12 h-12 bg-brand-500/20 rounded-xl flex items-center justify-center group-hover:bg-brand-500/30 transition-colors"
-                  >
+                  <div class="w-12 h-12 bg-brand-500/20 rounded-xl flex items-center justify-center group-hover:bg-brand-500/30 transition-colors">
                     <i class="fa-solid fa-envelope text-brand-400"></i>
                   </div>
                   <div>
-                    <span class="block text-sm text-slate-400">E-mail</span>
+                    <span class="block text-xs text-slate-500 uppercase tracking-wider">E-mail</span>
                     <span class="font-medium">contato@contta.com.br</span>
                   </div>
                 </a>
-
                 <a
-                  href="https://wa.me/5511999999999"
-                  target="_blank"
+                  href="#"
                   class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group"
                 >
-                  <div
-                    class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center group-hover:bg-green-500/30 transition-colors"
-                  >
-                    <i class="fa-brands fa-whatsapp text-green-400 text-xl"></i>
+                  <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center group-hover:bg-emerald-500/30 transition-colors">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
                   </div>
                   <div>
-                    <span class="block text-sm text-slate-400">WhatsApp</span>
-                    <span class="font-medium">+55 (11) 99999-9999</span>
-                  </div>
-                </a>
-
-                <a
-                  href="https://linkedin.com/company/contta"
-                  target="_blank"
-                  class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group"
-                >
-                  <div
-                    class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-colors"
-                  >
-                    <i
-                      class="fa-brands fa-linkedin-in text-blue-400 text-xl"
-                    ></i>
-                  </div>
-                  <div>
-                    <span class="block text-sm text-slate-400">LinkedIn</span>
-                    <span class="font-medium">Contta Tecnologia</span>
+                    <span class="block text-xs text-slate-500 uppercase tracking-wider">WhatsApp</span>
+                    <span class="font-medium">Falar com Consultor</span>
                   </div>
                 </a>
               </div>
             </div>
 
             <div
-              class="bg-white/5 backdrop-blur rounded-3xl p-8 border border-white/10"
+              class="glass-dark rounded-3xl p-8"
             >
-              <h3 class="text-2xl font-bold text-white mb-6">
-                Envie uma Mensagem
-              </h3>
+              <h3 class="text-xl font-bold text-white mb-6">Dúvidas?</h3>
               <form class="space-y-4">
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Seu nome"
-                    class="w-full px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Seu e-mail"
-                    class="w-full px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <textarea
-                    rows="4"
-                    placeholder="Sua mensagem"
-                    class="w-full px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-none"
-                  ></textarea>
-                </div>
+                <input
+                  type="email"
+                  placeholder="Seu melhor e-mail"
+                  class="input-modern w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-500"
+                />
                 <button
                   type="submit"
-                  class="w-full px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-600 text-white font-semibold rounded-xl hover:from-brand-600 hover:to-brand-700 transition-all shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50"
+                  class="btn-primary ripple w-full px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-600 text-white font-semibold rounded-xl"
                 >
-                  <i class="fa-solid fa-paper-plane mr-2"></i>Enviar Mensagem
+                  Enviar
                 </button>
               </form>
             </div>
@@ -1622,179 +891,67 @@
         </div>
       </section>
 
-      <!-- Tech Stack / Trust Strip -->
-      <section class="py-16 bg-white border-t border-slate-100">
+      <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p
-            class="text-center text-sm text-slate-500 uppercase tracking-wider mb-8"
+            class="fade-in text-center text-xs text-slate-400 uppercase tracking-widest mb-10"
           >
-            Tecnologias que impulsionam o Contta
+            Tecnologia de Ponta
           </p>
           <div
-            class="flex flex-wrap items-center justify-center gap-8 md:gap-12"
+            class="fade-in flex flex-wrap items-center justify-center gap-10 md:gap-16"
           >
-            <div class="tech-logo text-center p-4">
-              <i
-                class="fa-brands fa-flutter text-4xl text-blue-400 mb-2 block"
-              ></i>
-              <span class="text-xs font-medium text-slate-600">Flutter</span>
+            <div class="tech-logo text-center group cursor-pointer">
+              <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-50 transition-colors">
+                <i class="fa-solid fa-bolt text-3xl text-slate-300 group-hover:text-amber-500 transition-colors"></i>
+              </div>
+              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Alta Performance</span>
             </div>
-            <div class="tech-logo text-center p-4">
-              <i
-                class="fa-solid fa-database text-4xl text-slate-600 mb-2 block"
-              ></i>
-              <span class="text-xs font-medium text-slate-600"
-                >Drift + SQLCipher</span
-              >
+            
+            <div class="tech-logo text-center group cursor-pointer">
+              <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-slate-100 transition-colors">
+                <i class="fa-solid fa-shield-halved text-3xl text-slate-300 group-hover:text-slate-700 transition-colors"></i>
+              </div>
+              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">AES-256</span>
             </div>
-            <div class="tech-logo text-center p-4">
-              <i
-                class="fa-solid fa-brain text-4xl text-purple-500 mb-2 block"
-              ></i>
-              <span class="text-xs font-medium text-slate-600"
-                >TFLite + Gemini</span
-              >
+            
+            <div class="tech-logo text-center group cursor-pointer">
+              <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-sky-50 transition-colors">
+                <i class="fa-brands fa-google text-3xl text-slate-300 group-hover:text-sky-500 transition-colors"></i>
+              </div>
+              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Google AI</span>
             </div>
-            <div class="tech-logo text-center p-4">
-              <i
-                class="fa-solid fa-water text-4xl text-blue-300 mb-2 block"
-              ></i>
-              <span class="text-xs font-medium text-slate-600"
-                >Riverpod 2.0</span
-              >
-            </div>
-            <div class="tech-logo text-center p-4">
-              <i
-                class="fa-solid fa-fingerprint text-4xl text-green-500 mb-2 block"
-              ></i>
-              <span class="text-xs font-medium text-slate-600">Supabase</span>
+            
+            <div class="tech-logo text-center group cursor-pointer">
+              <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-emerald-50 transition-colors">
+                <i class="fa-solid fa-building-columns text-3xl text-slate-300 group-hover:text-emerald-600 transition-colors"></i>
+              </div>
+              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Open Finance</span>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-16">
+    <footer class="bg-slate-900 text-slate-400 py-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Disclaimer -->
         <div
-          class="bg-yellow-500/10 border border-yellow-500/30 rounded-2xl p-6 mb-12"
+          class="flex flex-col md:flex-row items-center justify-between gap-6"
         >
-          <div class="flex items-start gap-4">
-            <i
-              class="fa-solid fa-triangle-exclamation text-yellow-500 text-xl mt-1"
-            ></i>
-            <div>
-              <strong class="block mb-2 text-yellow-500"
-                >Disclaimer Importante</strong
-              >
-              <p class="text-slate-400 text-sm mb-2">
-                O Contta Business fornece análises e recomendações baseadas em
-                dados.
-                <strong class="text-slate-300"
-                  >O sistema não substitui contadores ou advogados.</strong
-                >
-              </p>
-              <p class="text-slate-500 text-sm">
-                Recomendações tributárias devem ser validadas por profissionais.
-                O usuário é responsável pelas decisões tomadas.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer Bottom -->
-        <div
-          class="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-slate-800"
-        >
-          <div class="flex items-center space-x-2">
-            <div
-              class="w-8 h-8 bg-gradient-to-br from-brand-500 to-brand-700 rounded-lg flex items-center justify-center text-white"
-            >
-              <i class="fa-solid fa-chart-pie text-sm"></i>
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-gradient-to-br from-brand-500 to-brand-600 rounded-lg flex items-center justify-center">
+              <i class="fa-solid fa-chart-pie text-white text-xs"></i>
             </div>
             <span class="font-bold text-white">Contta</span>
           </div>
-
           <p class="text-sm text-slate-500">
-            &copy; 2025 Contta Tecnologia Ltda. Inteligência para a economia
-            real.
+            &copy; 2026 Contta Tecnologia Ltda. Todos os direitos reservados.
           </p>
-
-          <div class="flex items-center space-x-6">
-            <a
-              href="#"
-              class="text-slate-400 hover:text-brand-400 transition-colors text-sm"
-              >Licença</a
-            >
-            <a
-              href="#"
-              class="text-slate-400 hover:text-brand-400 transition-colors text-sm"
-              >Contato</a
-            >
-            <a
-              href="#"
-              class="text-slate-400 hover:text-brand-400 transition-colors text-sm"
-              >Reportar Bug</a
-            >
-          </div>
         </div>
       </div>
     </footer>
 
-    <script>
-      // Navbar scroll effect
-      const navbar = document.getElementById("navbar");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          navbar.classList.add("navbar-scrolled");
-        } else {
-          navbar.classList.remove("navbar-scrolled");
-        }
-      });
-
-      // Mobile menu toggle
-      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const menuIcon = document.getElementById("menu-icon");
-
-      mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        if (mobileMenu.classList.contains("hidden")) {
-          menuIcon.classList.remove("fa-xmark");
-          menuIcon.classList.add("fa-bars");
-        } else {
-          menuIcon.classList.remove("fa-bars");
-          menuIcon.classList.add("fa-xmark");
-        }
-      });
-
-      // Close mobile menu on link click
-      mobileMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
-          menuIcon.classList.remove("fa-xmark");
-          menuIcon.classList.add("fa-bars");
-        });
-      });
-
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            const offset = 80; // navbar height
-            const targetPosition =
-              target.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-    </script>
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
   </body>
 </html>
