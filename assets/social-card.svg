@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Contta</title>
+  <desc id="desc">Card social da Contta para diagnóstico financeiro de pequenas empresas.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#173f38" />
+      <stop offset="100%" stop-color="#102d29" />
+    </linearGradient>
+    <radialGradient id="glow" cx="20%" cy="15%" r="70%">
+      <stop offset="0%" stop-color="#2f8b73" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#2f8b73" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" rx="40" />
+  <rect width="1200" height="630" fill="url(#glow)" rx="40" />
+  <g fill="none" stroke="#f7f2ea" stroke-opacity="0.12">
+    <path d="M874 102c116 44 202 128 236 252" />
+    <path d="M96 536c136-108 248-170 408-170 162 0 288 56 438 118" />
+  </g>
+  <rect x="80" y="76" width="82" height="82" rx="24" fill="#1f6c58" />
+  <text x="121" y="129" fill="#f7f2ea" font-family="Sora, sans-serif" font-size="36" font-weight="700" text-anchor="middle">C</text>
+  <text x="80" y="238" fill="#dcefe9" font-family="Manrope, sans-serif" font-size="24" font-weight="700" letter-spacing="5">CONTTA</text>
+  <text x="80" y="318" fill="#f7f2ea" font-family="Sora, sans-serif" font-size="68" font-weight="700">
+    <tspan x="80" dy="0">Entenda margem, caixa</tspan>
+    <tspan x="80" dy="82">e impostos antes do aperto.</tspan>
+  </text>
+  <text x="80" y="516" fill="#dce6de" font-family="Manrope, sans-serif" font-size="31" font-weight="600">
+    Diagnóstico financeiro prático para pequenas empresas brasileiras.
+  </text>
+</svg>

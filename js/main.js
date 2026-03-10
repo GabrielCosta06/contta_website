@@ -1,272 +1,270 @@
-/* ============================================
-   Contta Business AI - Modern JavaScript
-   Premium Animations & Interactions
-   ============================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Add page transition class
-  document.body.classList.add('page-transition');
-  
-  initNavbarScroll();
+  initHeaderState();
   initMobileMenu();
-  initSmoothScroll();
-  initScrollAnimations();
-  initCounterAnimations();
-  initParallaxEffects();
-  initMagneticButtons();
-  initTiltCards();
+  initSmoothScroll(prefersReducedMotion);
+  initReveal(prefersReducedMotion);
+  initLeadForm();
 });
 
-/**
- * Navbar scroll effect - glassmorphism on scroll
- */
-function initNavbarScroll() {
-  const navbar = document.getElementById('navbar');
-  if (!navbar) return;
+function initHeaderState() {
+  const header = document.querySelector(".site-header");
 
-  let lastScroll = 0;
-  
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    
-    if (currentScroll > 50) {
-      navbar.classList.add('navbar-scrolled');
-    } else {
-      navbar.classList.remove('navbar-scrolled');
-    }
-    
-    // Hide/show navbar on scroll direction
-    if (currentScroll > lastScroll && currentScroll > 500) {
-      navbar.style.transform = 'translateY(-100%)';
-    } else {
-      navbar.style.transform = 'translateY(0)';
-    }
-    
-    lastScroll = currentScroll;
-  }, { passive: true });
+  if (!header) {
+    return;
+  }
+
+  const syncHeader = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 12);
+  };
+
+  syncHeader();
+  window.addEventListener("scroll", syncHeader, { passive: true });
 }
 
-/**
- * Mobile menu toggle with smooth animation
- */
 function initMobileMenu() {
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
+  const toggle = document.querySelector(".site-nav__toggle");
+  const panel = document.getElementById("site-menu");
+  const header = document.querySelector(".site-header");
 
-  if (!mobileMenuBtn || !mobileMenu || !menuIcon) return;
+  if (!toggle || !panel || !header) {
+    return;
+  }
 
-  mobileMenuBtn.addEventListener('click', () => {
-    const isHidden = mobileMenu.classList.contains('hidden');
-    
-    if (isHidden) {
-      mobileMenu.classList.remove('hidden');
-      mobileMenu.style.opacity = '0';
-      mobileMenu.style.transform = 'translateY(-10px)';
-      
-      requestAnimationFrame(() => {
-        mobileMenu.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        mobileMenu.style.opacity = '1';
-        mobileMenu.style.transform = 'translateY(0)';
-      });
-      
-      menuIcon.classList.remove('fa-bars');
-      menuIcon.classList.add('fa-xmark');
-    } else {
-      mobileMenu.style.opacity = '0';
-      mobileMenu.style.transform = 'translateY(-10px)';
-      
-      setTimeout(() => {
-        mobileMenu.classList.add('hidden');
-      }, 300);
-      
-      menuIcon.classList.remove('fa-xmark');
-      menuIcon.classList.add('fa-bars');
+  const setOpen = (isOpen) => {
+    panel.dataset.open = String(isOpen);
+    toggle.classList.toggle("is-open", isOpen);
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    document.body.classList.toggle("menu-open", isOpen && window.innerWidth < 901);
+  };
+
+  setOpen(false);
+
+  toggle.addEventListener("click", () => {
+    setOpen(panel.dataset.open !== "true");
+  });
+
+  panel.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth < 901) {
+        setOpen(false);
+      }
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (window.innerWidth >= 901 || panel.dataset.open !== "true") {
+      return;
+    }
+
+    if (!header.contains(event.target)) {
+      setOpen(false);
     }
   });
 
-  // Close mobile menu on link click
-  mobileMenu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileMenu.style.opacity = '0';
-      setTimeout(() => {
-        mobileMenu.classList.add('hidden');
-      }, 300);
-      menuIcon.classList.remove('fa-xmark');
-      menuIcon.classList.add('fa-bars');
-    });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setOpen(false);
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 901) {
+      setOpen(false);
+    }
   });
 }
 
-/**
- * Smooth scroll with easing
- */
-function initSmoothScroll() {
+function initSmoothScroll(prefersReducedMotion) {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
+    anchor.addEventListener("click", (event) => {
+      const targetId = anchor.getAttribute("href");
+
+      if (!targetId || targetId === "#") {
+        return;
+      }
+
       const target = document.querySelector(targetId);
-      
-      if (target) {
-        const offset = 80;
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth',
-        });
-      }
-    });
-  });
-}
 
-/**
- * Intersection Observer for scroll animations
- */
-function initScrollAnimations() {
-  const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-scale');
-  
-  if (animatedElements.length === 0) return;
-  
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+      if (!target) {
+        return;
       }
-    });
-  }, observerOptions);
-  
-  animatedElements.forEach(el => observer.observe(el));
-}
 
-/**
- * Animated number counters
- */
-function initCounterAnimations() {
-  const counters = document.querySelectorAll('.counter');
-  
-  if (counters.length === 0) return;
-  
-  const observerOptions = {
-    threshold: 0.5
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const counter = entry.target;
-        const target = parseInt(counter.getAttribute('data-target'));
-        const duration = 2000;
-        const start = performance.now();
-        
-        const updateCounter = (currentTime) => {
-          const elapsed = currentTime - start;
-          const progress = Math.min(elapsed / duration, 1);
-          
-          // Easing function (ease-out-expo)
-          const easeOutExpo = 1 - Math.pow(2, -10 * progress);
-          const current = Math.floor(target * easeOutExpo);
-          
-          counter.textContent = current + '%';
-          
-          if (progress < 1) {
-            requestAnimationFrame(updateCounter);
-          } else {
-            counter.textContent = target + '%';
-          }
-        };
-        
-        requestAnimationFrame(updateCounter);
-        observer.unobserve(counter);
-      }
-    });
-  }, observerOptions);
-  
-  counters.forEach(counter => observer.observe(counter));
-}
+      event.preventDefault();
 
-/**
- * Subtle parallax effect for blobs
- */
-function initParallaxEffects() {
-  const blobs = document.querySelectorAll('.blob');
-  
-  if (blobs.length === 0) return;
-  
-  let ticking = false;
-  
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const scrollY = window.scrollY;
-        
-        blobs.forEach((blob, index) => {
-          const speed = 0.05 + (index * 0.02);
-          const yPos = scrollY * speed;
-          blob.style.transform = `translateY(${yPos}px)`;
-        });
-        
-        ticking = false;
+      const header = document.querySelector(".site-header");
+      const offset = header ? header.offsetHeight + 14 : 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top,
+        behavior: prefersReducedMotion ? "auto" : "smooth",
       });
-      ticking = true;
-    }
-  }, { passive: true });
-}
-
-/**
- * Magnetic button effect
- */
-function initMagneticButtons() {
-  const magneticElements = document.querySelectorAll('.magnetic, .btn-primary');
-  
-  magneticElements.forEach(el => {
-    el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      
-      el.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
-    });
-    
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = 'translate(0, 0)';
     });
   });
 }
 
-/**
- * 3D tilt effect for cards
- */
-function initTiltCards() {
-  const tiltCards = document.querySelectorAll('.tilt-card');
-  
-  tiltCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = (y - centerY) / 10;
-      const rotateY = (centerX - x) / 10;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-    });
+function initReveal(prefersReducedMotion) {
+  const items = Array.from(document.querySelectorAll(".reveal"));
+
+  if (!items.length) {
+    return;
+  }
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    items.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.18,
+      rootMargin: "0px 0px -48px 0px",
+    }
+  );
+
+  items.forEach((item) => observer.observe(item));
+}
+
+function initLeadForm() {
+  const form = document.getElementById("lead-form");
+  const status = document.getElementById("form-status");
+  const emailInput = form?.elements.namedItem("email");
+  const whatsappInput = form?.elements.namedItem("whatsapp");
+  const fallback = document.getElementById("message-fallback");
+  const fallbackMessage = document.getElementById("fallback-message");
+  const retryEmailLink = document.getElementById("retry-email-link");
+  const copyMessageButton = document.getElementById("copy-message-button");
+
+  if (
+    !form ||
+    !status ||
+    !(emailInput instanceof HTMLInputElement) ||
+    !(whatsappInput instanceof HTMLInputElement) ||
+    !(fallback instanceof HTMLElement) ||
+    !(fallbackMessage instanceof HTMLTextAreaElement) ||
+    !(retryEmailLink instanceof HTMLAnchorElement) ||
+    !(copyMessageButton instanceof HTMLButtonElement)
+  ) {
+    return;
+  }
+
+  const setStatus = (message, state) => {
+    status.textContent = message;
+    status.dataset.state = state || "";
+  };
+
+  const syncContactValidity = () => {
+    const hasEmail = emailInput.value.trim() !== "";
+    const hasWhatsapp = whatsappInput.value.trim() !== "";
+    const message =
+      hasEmail || hasWhatsapp
+        ? ""
+        : "Informe pelo menos um e-mail ou WhatsApp para retorno.";
+
+    emailInput.setCustomValidity(message);
+    whatsappInput.setCustomValidity(message);
+  };
+
+  const copyFallbackMessage = async () => {
+    fallbackMessage.focus();
+    fallbackMessage.select();
+    fallbackMessage.setSelectionRange(0, fallbackMessage.value.length);
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(fallbackMessage.value);
+      } else {
+        document.execCommand("copy");
+      }
+
+      copyMessageButton.textContent = "Mensagem copiada";
+      setStatus(
+        "Mensagem copiada. Você pode enviar para contato@contta.com.br ou continuar no WhatsApp.",
+        "success"
+      );
+    } catch (error) {
+      setStatus(
+        "Não foi possível copiar automaticamente. Selecione a mensagem abaixo e copie manualmente.",
+        "error"
+      );
+    }
+  };
+
+  syncContactValidity();
+  emailInput.addEventListener("input", syncContactValidity);
+  whatsappInput.addEventListener("input", syncContactValidity);
+  copyMessageButton.addEventListener("click", copyFallbackMessage);
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    setStatus("", "");
+    fallback.hidden = true;
+    copyMessageButton.textContent = "Copiar mensagem";
+    syncContactValidity();
+
+    if (!form.reportValidity()) {
+      setStatus("Revise os campos obrigatórios antes de continuar.", "error");
+      return;
+    }
+
+    const data = new FormData(form);
+
+    if (data.get("consent") !== "yes") {
+      setStatus("É preciso autorizar o contato comercial para enviar os dados.", "error");
+      return;
+    }
+
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const whatsapp = String(data.get("whatsapp") || "").trim();
+    const businessName = String(data.get("business_name") || "").trim();
+    const challenge = String(data.get("challenge") || "").trim();
+
+    const subject = businessName
+      ? `Diagnóstico inicial Contta - ${businessName}`
+      : "Diagnóstico inicial Contta";
+    const body = [
+      "Olá, equipe Contta.",
+      "",
+      "Quero solicitar um diagnóstico inicial.",
+      "",
+      `Nome: ${name}`,
+      `Empresa: ${businessName}`,
+      `E-mail: ${email || "Não informado"}`,
+      `WhatsApp: ${whatsapp || "Não informado"}`,
+      "",
+      "Principal desafio:",
+      challenge,
+    ].join("\n");
+
+    const fallbackText = [
+      `Assunto: ${subject}`,
+      "Para: contato@contta.com.br",
+      "",
+      body,
+    ].join("\n");
+    const mailtoUrl =
+      `mailto:contato@contta.com.br?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    fallbackMessage.value = fallbackText;
+    retryEmailLink.href = mailtoUrl;
+    fallback.hidden = false;
+    setStatus(
+      "Tentando abrir seu aplicativo de e-mail. Se nada acontecer, use a mensagem pronta abaixo ou continue pelo WhatsApp.",
+      "success"
+    );
+
+    window.location.href = mailtoUrl;
   });
 }
