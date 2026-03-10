@@ -1,957 +1,757 @@
 <!doctype html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Contta Business AI - O primeiro CFO Digital para PMEs. Automatize seu financeiro, preveja o caixa e otimize impostos com Inteligência Artificial."
+      content="Contta e o CFO de IA para PMEs brasileiras: protege margem, projeta fluxo de caixa, simula regimes tributarios e organiza DRE, custos e orcamento com operacao mobile-first."
     />
+    <meta
+      name="keywords"
+      content="CFO de IA, PMEs brasileiras, fluxo de caixa, precificacao inteligente, DRE, orcamento, regime tributario, Open Finance"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0f3b36" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="canonical" href="https://contta.com.br/" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 
-    <meta property="og:title" content="Contta Business AI - Seu CFO Digital" />
+    <meta property="og:site_name" content="Contta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://contta.com.br/" />
+    <meta property="og:title" content="Contta | CFO de IA para PMEs brasileiras" />
     <meta
       property="og:description"
-      content="Pare de apenas registrar o passado. Comece a prever o futuro do seu caixa com IA."
+      content="Proteja margem, caixa e impostos com precificacao inteligente, Auto-DRE, simulacao tributaria e operacao financeira mobile-first."
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://contta.com.br/preview.jpg" />
-    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content="https://contta.com.br/assets/social-card.svg" />
 
-    <title>Contta Business AI - O Escudo Financeiro da sua Empresa</title>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contta | CFO de IA para PMEs brasileiras" />
+    <meta
+      name="twitter:description"
+      content="Fluxo de caixa previsto, margem protegida e decisao financeira prescritiva para pequenas empresas no Brasil."
+    />
+    <meta name="twitter:image" content="https://contta.com.br/assets/social-card.svg" />
 
-    <!-- External Libraries -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Contta | CFO de IA para PMEs brasileiras</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8yZ88G1P4iN6aK6cQ4ctWJg8HcVXDkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-
-    <!-- Tailwind Config -->
-    <script src="js/tailwind.config.js"></script>
-
-    <!-- Custom Styles -->
     <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "Contta",
+            "url": "https://contta.com.br/",
+            "email": "contato@contta.com.br",
+            "telephone": "+55 62 99178-0703"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Contta Business",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "iOS, Android",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "BRL"
+            },
+            "description": "Sistema operacional financeiro IA-first para pequenas e medias empresas brasileiras, com precificacao, fluxo de caixa, DRE, orcamento e simulacao tributaria."
+          }
+        ]
+      }
+    </script>
   </head>
-  <body class="bg-white text-slate-800 font-sans antialiased">
-    <nav
-      id="navbar"
-      class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
-      style="transition: transform 0.3s ease, background 0.3s ease;"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-          <a href="#" class="flex items-center space-x-2.5 group">
-            <div
-              class="w-10 h-10 bg-gradient-to-br from-brand-500 to-violet-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/25 group-hover:shadow-brand-500/40 transition-shadow"
-            >
-              <i class="fa-solid fa-chart-pie text-lg"></i>
-            </div>
-            <span class="text-xl font-bold text-slate-900">Contta</span>
-          </a>
-
-          <div class="hidden md:flex items-center space-x-1">
-            <a
-              href="#problema"
-              class="reveal-line px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
-              >O Problema</a
-            >
-            <a
-              href="#funcionalidades"
-              class="reveal-line px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
-              >Funcionalidades</a
-            >
-            <a
-              href="#arquitetura"
-              class="reveal-line px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
-              >Tecnologia</a
-            >
-            <a
-              href="#seguranca"
-              class="reveal-line px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
-              >Segurança</a
-            >
-          </div>
-
-          <div class="hidden md:flex items-center space-x-4">
-            <a
-              href="#contato"
-              class="btn-primary shine px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-full shadow-lg shadow-brand-500/25"
-            >
-              Começar Agora
-            </a>
-          </div>
-
-          <button
-            id="mobile-menu-btn"
-            class="md:hidden text-slate-500 hover:text-slate-900 focus:outline-none p-2 transition-colors"
-          >
-            <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
-          </button>
-        </div>
-      </div>
-
-      <div
-        id="mobile-menu"
-        class="hidden md:hidden glass border-t border-slate-100/50"
-      >
-        <div class="px-4 py-6 space-y-3">
-          <a
-            href="#problema"
-            class="block px-4 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-colors"
-            >O Problema</a
-          >
-          <a
-            href="#funcionalidades"
-            class="block px-4 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-colors"
-            >Funcionalidades</a
-          >
-          <a
-            href="#arquitetura"
-            class="block px-4 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-colors"
-            >Tecnologia</a
-          >
-          <a
-            href="#seguranca"
-            class="block px-4 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-colors"
-            >Segurança</a
-          >
-          <div class="pt-4">
-            <a
-              href="#contato"
-              class="block w-full text-center px-5 py-3.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-xl"
-            >
-              Começar Agora
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <section
-      id="introducao"
-      class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
-    >
-      <!-- Animated Background Blobs -->
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
-      
-      <div class="absolute inset-0 bg-gradient-to-br from-slate-50/90 via-white/80 to-brand-50/90"></div>
-
-      <div
-        class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center"
-      >
-        <div
-          class="fade-in inline-flex items-center px-4 py-2 glass rounded-full text-sm font-medium mb-8 text-purple-700"
-        >
-          <i class="fa-solid fa-sparkles mr-2 icon-pulse"></i>
-          Inteligência Artificial de sobrevivência para PMEs
-        </div>
-
-        <h1
-          class="fade-in stagger-1 text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight"
-        >
-          Contta Business <span class="gradient-text">AI</span>
-        </h1>
-
-        <p
-          class="fade-in stagger-2 text-xl sm:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed"
-        >
-          O primeiro <strong>CFO Digital</strong> que trabalha 24/7 pela sua
-          empresa.
-          <br class="hidden md:block" />
-          Não apenas registra o passado —
-          <strong class="text-slate-800"
-            >prevê o futuro e blinda seu caixa.</strong
-          >
-        </p>
-
-        <p class="fade-in stagger-3 text-lg text-slate-500 mb-12 max-w-2xl mx-auto">
-          Adeus, planilhas e PDFs manuais. Conecte suas contas via Open Finance
-          e receba
-          <strong>recomendações táticas</strong> para proteger sua margem e
-          evitar quebra de caixa.
-        </p>
-
-        <div class="fade-in stagger-4 flex flex-col items-center justify-center gap-6 mb-16">
-          <div class="flex flex-wrap items-center justify-center gap-3">
-            <div
-              class="flex items-center gap-2 px-4 py-2.5 glass rounded-full hover:scale-105 transition-transform duration-300"
-            >
-              <i class="fa-brands fa-apple text-slate-800 text-xl"></i>
-              <span class="text-sm font-medium text-slate-700">iOS</span>
-              <span
-                class="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 text-xs font-semibold rounded-full"
-                >Disponível</span
-              >
-            </div>
-            <div
-              class="flex items-center gap-2 px-4 py-2.5 glass rounded-full hover:scale-105 transition-transform duration-300"
-            >
-              <i class="fa-brands fa-android text-green-600 text-xl"></i>
-              <span class="text-sm font-medium text-slate-700">Android</span>
-              <span
-                class="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 text-xs font-semibold rounded-full"
-                >Disponível</span
-              >
-            </div>
-            <div
-              class="flex items-center gap-2 px-4 py-2.5 glass rounded-full hover:scale-105 transition-transform duration-300"
-            >
-              <i class="fa-solid fa-globe text-brand-500 text-xl"></i>
-              <span class="text-sm font-medium text-slate-700">Web</span>
-              <span
-                class="px-2 py-0.5 bg-brand-500/10 text-brand-600 text-xs font-semibold rounded-full"
-                >Em breve</span
-              >
-            </div>
-          </div>
-          <a
-            href="#contato"
-            class="btn-primary shine px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 rounded-full shadow-xl shadow-brand-500/25"
-          >
-            <i class="fa-solid fa-rocket mr-2"></i>Começar Agora
-          </a>
-        </div>
-
-        <div class="grid sm:grid-cols-3 gap-5 max-w-4xl mx-auto">
-          <div
-            class="fade-in-scale stagger-1 glass card-hover gradient-border p-6 rounded-2xl"
-          >
-            <div
-              class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-emerald-500/30"
-            >
-              <i class="fa-solid fa-coins text-white"></i>
-            </div>
-            <h3 class="font-bold text-slate-900 mb-2">Lucro Real Líquido</h3>
-            <p class="text-sm text-slate-600">
-              Cálculo automático de margem limpa após impostos e taxas.
-            </p>
-          </div>
-          <div
-            class="fade-in-scale stagger-2 glass card-hover gradient-border p-6 rounded-2xl"
-          >
-            <div
-              class="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-rose-500/30"
-            >
-              <i class="fa-solid fa-brain text-white"></i>
-            </div>
-            <h3 class="font-bold text-slate-900 mb-2">IA Preditiva de Caixa</h3>
-            <p class="text-sm text-slate-600">
-              Previsão de insolvência antes que ela aconteça.
-            </p>
-          </div>
-          <div
-            class="fade-in-scale stagger-3 glass card-hover gradient-border p-6 rounded-2xl"
-          >
-            <div
-              class="w-12 h-12 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-violet-500/30"
-            >
-              <i class="fa-solid fa-scale-balanced text-white"></i>
-            </div>
-            <h3 class="font-bold text-slate-900 mb-2">Eficiência Fiscal</h3>
-            <p class="text-sm text-slate-600">
-              Monitoramento contínuo para evitar impostos indevidos.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-24 bg-gradient-to-b from-white to-slate-50/50">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="fade-in text-center mb-16">
-          <span class="inline-flex items-center px-3 py-1 bg-brand-50 text-brand-600 rounded-full text-sm font-medium mb-4">
-            <i class="fa-solid fa-desktop mr-2"></i> Preview
+  <body>
+    <header class="site-header">
+      <div class="section-shell site-header__inner">
+        <a class="brand" href="index.html" aria-label="Voltar para o inicio da Contta">
+          <span class="brand__mark">
+            <i class="fa-solid fa-chart-line"></i>
           </span>
-          <h2 class="text-3xl font-bold text-slate-900 mb-4">
-            Interface Inteligente
-          </h2>
-          <p class="text-lg text-slate-500 max-w-xl mx-auto">
-            Veja como o Contta transforma dados bancários brutos em decisões
-            inteligentes
-          </p>
-        </div>
+          <span class="brand__text">
+            <strong>Contta</strong>
+            <small>CFO de IA</small>
+          </span>
+        </a>
 
-        <div class="fade-in-scale mock-window mx-auto max-w-4xl">
-          <div
-            class="bg-white rounded-3xl shadow-2xl shadow-slate-200/80 border border-slate-100 overflow-hidden"
+        <button
+          class="site-nav__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-menu"
+          aria-label="Abrir menu de navegacao"
+        >
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <div class="site-nav__panel" id="site-menu" data-open="false">
+          <nav class="site-nav" aria-label="Navegacao principal">
+            <a href="#problemas">Problemas</a>
+            <a href="#produto">Produto</a>
+            <a href="#prova">Prova operacional</a>
+            <a href="#seguranca">Seguranca</a>
+            <a href="#contato">Contato</a>
+          </nav>
+          <a
+            class="button button--primary button--compact"
+            data-config-link="whatsappUrl"
+            data-track="whatsapp_nav"
+            href="mailto:contato@contta.com.br"
+            rel="noopener noreferrer"
           >
-            <div
-              class="bg-slate-50 px-5 py-4 flex items-center space-x-2 border-b border-slate-100"
-            >
-              <div class="flex items-center gap-2">
-                <div class="w-3 h-3 rounded-full bg-rose-400"></div>
-                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
-                <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
-              </div>
-              <div class="flex-1 text-center">
-                <div class="inline-flex items-center px-4 py-1.5 bg-white rounded-lg border border-slate-200">
-                  <i class="fa-solid fa-lock text-emerald-500 text-xs mr-2"></i>
-                  <span class="text-xs text-slate-500 font-medium">app.contta.com.br</span>
-                </div>
-              </div>
-            </div>
-            <div
-              class="aspect-video bg-gradient-to-br from-slate-50 to-slate-100/50 flex items-center justify-center p-8"
-            >
-              <div class="text-center">
-                <div
-                  class="w-24 h-24 bg-gradient-to-br from-brand-500 to-violet-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-brand-500/30 float-animation"
-                >
-                  <i class="fa-solid fa-chart-pie text-white text-4xl"></i>
-                </div>
-                <p class="text-slate-400 text-lg font-medium">
-                  Insira aqui o screenshot do dashboard
-                </p>
-                <p class="text-slate-300 text-sm mt-2">
-                  Tamanho recomendado: 1920x1080
-                </p>
-              </div>
-            </div>
-          </div>
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            Falar no WhatsApp
+          </a>
         </div>
       </div>
-    </section>
+    </header>
 
     <main>
-      <section id="problema" class="py-28 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="fade-in text-center mb-20">
-            <span
-              class="inline-flex items-center px-4 py-1.5 bg-rose-50 text-rose-600 rounded-full text-sm font-medium mb-6"
-            >
-              <span class="mr-2">🇧🇷</span> Realidade Brasileira
-            </span>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Por que tantas PMEs fecham?
-            </h2>
-            <p class="text-xl text-slate-500 max-w-2xl mx-auto">
-              <strong class="text-slate-700">6 em cada 10 empresas</strong> fecham antes de 5 anos — 
-              não por falta de clientes, mas por falta de gestão de caixa.
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-6 mb-20">
-            <div
-              class="fade-in stagger-1 tilt-card group bg-gradient-to-br from-rose-50 to-white rounded-3xl p-8 text-center border border-rose-100 hover:border-rose-200 transition-colors"
-            >
-              <div
-                class="w-16 h-16 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-rose-500/25 group-hover:scale-110 transition-transform duration-500"
-              >
-                <i class="fa-solid fa-store-slash text-white text-2xl"></i>
-              </div>
-              <div class="text-5xl font-extrabold text-rose-600 mb-2 counter" data-target="60">0%</div>
-              <div class="text-base font-medium text-slate-700 mb-1">
-                das PMEs fecham em até 5 anos
-              </div>
-              <div class="text-xs text-slate-400 uppercase tracking-wider">Fonte: IBGE/Sebrae</div>
-            </div>
-            <div
-              class="fade-in stagger-2 tilt-card group bg-gradient-to-br from-amber-50 to-white rounded-3xl p-8 text-center border border-amber-100 hover:border-amber-200 transition-colors"
-            >
-              <div
-                class="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-amber-500/25 group-hover:scale-110 transition-transform duration-500"
-              >
-                <i class="fa-solid fa-piggy-bank text-white text-2xl"></i>
-              </div>
-              <div class="text-5xl font-extrabold text-amber-600 mb-2 counter" data-target="29">0%</div>
-              <div class="text-base font-medium text-slate-700 mb-1">
-                fecham por falta de capital de giro
-              </div>
-              <div class="text-xs text-slate-400 uppercase tracking-wider">Principal causa</div>
-            </div>
-            <div
-              class="fade-in stagger-3 tilt-card group bg-gradient-to-br from-violet-50 to-white rounded-3xl p-8 text-center border border-violet-100 hover:border-violet-200 transition-colors"
-            >
-              <div
-                class="w-16 h-16 bg-gradient-to-br from-violet-500 to-violet-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-violet-500/25 group-hover:scale-110 transition-transform duration-500"
-              >
-                <i class="fa-solid fa-chart-line text-white text-2xl"></i>
-              </div>
-              <div class="text-5xl font-extrabold text-violet-600 mb-2 counter" data-target="18">0%</div>
-              <div class="text-base font-medium text-slate-700 mb-1">
-                fecham por problemas de gestão
-              </div>
-              <div class="text-xs text-slate-400 uppercase tracking-wider">Erros evitáveis</div>
-            </div>
-          </div>
-
-          <div
-            class="fade-in bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 md:p-10 mb-20 text-white shadow-2xl relative overflow-hidden"
-          >
-            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"30\" height=\"30\" viewBox=\"0 0 30 30\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z\" fill=\"rgba(255,255,255,0.05)\"%3E%3C/path%3E%3C/svg%3E')] opacity-50"></div>
-            <div class="relative flex flex-col md:flex-row items-start md:items-center gap-6">
-              <div
-                class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 backdrop-blur"
-              >
-                <i class="fa-solid fa-triangle-exclamation text-amber-400 text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold mb-3">
-                  A verdade que ninguém conta
-                </h3>
-                <p class="text-slate-300 text-lg leading-relaxed">
-                  Empresas não quebram quando param de vender. Elas quebram
-                  quando o dinheiro acaba antes de chegar.
-                  <strong class="text-white">
-                    Você pode ter R$ 100 mil em vendas e ainda assim fechar as
-                    portas no mês seguinte.
-                  </strong>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="fade-in mb-20">
-            <h3 class="text-2xl font-bold text-slate-900 mb-10 text-center">
-              Você se identifica?
-            </h3>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div
-                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
-              >
-                <div class="flex items-start gap-4">
-                  <div
-                    class="w-11 h-11 bg-rose-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-rose-100 transition-colors"
-                  >
-                    <i class="fa-solid fa-calculator text-rose-500"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
-                      "Vendo, mas não sobra"
-                    </h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">
-                      Impostos e taxas corroem seu lucro sem você ver.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
-              >
-                <div class="flex items-start gap-4">
-                  <div
-                    class="w-11 h-11 bg-amber-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-amber-100 transition-colors"
-                  >
-                    <i class="fa-solid fa-hourglass-half text-amber-500"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
-                      "Correndo atrás de dinheiro"
-                    </h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">
-                      Paga em 7 dias, recebe em 30. O buraco se abre.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
-              >
-                <div class="flex items-start gap-4">
-                  <div
-                    class="w-11 h-11 bg-violet-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-violet-100 transition-colors"
-                  >
-                    <i class="fa-solid fa-receipt text-violet-500"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
-                      "Impostos são um labirinto"
-                    </h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">
-                      MEI, Simples, Fator R... pagando mais do que deveria.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
-              >
-                <div class="flex items-start gap-4">
-                  <div
-                    class="w-11 h-11 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-100 transition-colors"
-                  >
-                    <i class="fa-solid fa-arrow-trend-up text-emerald-500"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
-                      "Inflação silenciosa"
-                    </h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">
-                      Fornecedores sobem e você não repassa.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
-              >
-                <div class="flex items-start gap-4">
-                  <div
-                    class="w-11 h-11 bg-sky-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-sky-100 transition-colors"
-                  >
-                    <i class="fa-solid fa-credit-card text-sky-500"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
-                      "Taxas abusivas"
-                    </h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">
-                      Perdendo 5% só com taxas financeiras.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="card-hover bg-white rounded-2xl p-6 border border-slate-100 group"
-              >
-                <div class="flex items-start gap-4">
-                  <div
-                    class="w-11 h-11 bg-pink-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-pink-100 transition-colors"
-                  >
-                    <i class="fa-solid fa-scale-balanced text-pink-500"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">
-                      "Ponto de equilíbrio?"
-                    </h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">
-                      Quantos dias só para pagar contas?
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="fade-in bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 rounded-3xl p-10 border border-emerald-100"
-          >
-            <div class="flex flex-col md:flex-row items-start gap-8">
-              <div
-                class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-emerald-500/25 float-animation"
-              >
-                <i class="fa-solid fa-wand-magic-sparkles text-white text-3xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-emerald-900 text-2xl mb-4">
-                  E se você tivesse um CFO 24/7?
-                </h3>
-                <p class="text-emerald-800/80 text-lg mb-4 leading-relaxed">
-                  Imagine uma IA que monitora custos, alerta sobre preços, 
-                  calcula o preço ideal e projeta seu caixa —
-                  <strong class="text-emerald-900">antes do problema acontecer</strong>.
-                </p>
-                <p class="text-emerald-600 text-sm">
-                  O <strong>Contta Business</strong> automatiza a burocracia e protege seu lucro.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="funcionalidades" class="py-28 bg-slate-50/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="fade-in text-center mb-20">
-            <span
-              class="inline-flex items-center px-4 py-1.5 bg-brand-50 text-brand-600 rounded-full text-sm font-medium mb-6"
-            >
-              <i class="fa-solid fa-bolt mr-2"></i> Funcionalidades
-            </span>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Automação Prescritiva
-            </h2>
-            <p class="text-xl text-slate-500 max-w-xl mx-auto">
-              Nossa IA não apenas mostra gráficos. Ela diz exatamente o que fazer.
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div
-              class="fade-in stagger-1 glass card-hover gradient-border p-7 rounded-2xl group"
-            >
-              <div
-                class="w-12 h-12 bg-gradient-to-br from-sky-400 to-sky-600 rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-sky-500/25 group-hover:scale-110 transition-transform duration-500"
-              >
-                <i class="fa-solid fa-building-columns text-white"></i>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2">
-                Automação Bancária
-              </h3>
-              <p class="text-slate-500 text-sm mb-4">
-                Conexão via Open Finance. Transações aparecem categorizadas automaticamente.
-              </p>
-              <div
-                class="bg-slate-50 p-3 rounded-xl text-xs border border-slate-100 text-slate-500 font-mono"
-              >
-                <i class="fa-solid fa-wand-magic-sparkles text-sky-500 mr-2"></i>
-                "Adeus, digitação manual."
-              </div>
-            </div>
-
-            <div
-              class="fade-in stagger-2 glass card-hover gradient-border p-7 rounded-2xl lg:col-span-2 group relative overflow-hidden"
-            >
-              <div class="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-brand-200/30 to-violet-200/30 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
-              <div class="relative">
-                <div
-                  class="w-12 h-12 bg-gradient-to-br from-brand-400 to-violet-600 rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-brand-500/25 group-hover:scale-110 transition-transform duration-500"
-                >
-                  <i class="fa-solid fa-shield-halved text-white"></i>
-                </div>
-                <h3 class="text-lg font-bold text-slate-900 mb-2">
-                  Guardião de Preços
-                </h3>
-                <p class="text-slate-500 text-sm mb-4">
-                  A IA monitora variações de custo dos fornecedores e alerta se sua margem cair.
-                </p>
-                <div
-                  class="bg-slate-50 p-3 rounded-xl text-xs border border-slate-100 text-slate-500 font-mono"
-                >
-                  <i class="fa-solid fa-robot text-brand-500 mr-2"></i>
-                  "Fornecedor subiu 8%. Ajuste para R$ 5,49."
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="fade-in stagger-3 glass card-hover gradient-border p-7 rounded-2xl group"
-            >
-              <div
-                class="w-12 h-12 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-violet-500/25 group-hover:scale-110 transition-transform duration-500"
-              >
-                <i class="fa-solid fa-tags text-white"></i>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2">
-                Precificação Inteligente
-              </h3>
-              <p class="text-slate-500 text-sm">
-                Calcula o preço ideal cruzando impostos, taxas e custos fixos.
-              </p>
-            </div>
-
-            <div
-              class="fade-in stagger-4 glass card-hover gradient-border p-7 rounded-2xl group"
-            >
-              <div
-                class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-amber-500/25 group-hover:scale-110 transition-transform duration-500"
-              >
-                <i class="fa-solid fa-chart-line text-white"></i>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2">
-                Profeta do Caixa
-              </h3>
-              <p class="text-slate-500 text-sm mb-4">
-                Projeta o caixa futuro com base no histórico.
-              </p>
-              <div
-                class="bg-slate-50 p-3 rounded-xl text-xs border border-slate-100 text-slate-500 font-mono"
-              >
-                <i class="fa-solid fa-robot text-amber-500 mr-2"></i>
-                "Risco no dia 20. Antecipe R$ 2k."
-              </div>
-            </div>
-
-            <div
-              class="fade-in stagger-5 glass card-hover gradient-border p-7 rounded-2xl group"
-            >
-              <div
-                class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-5 shadow-lg shadow-emerald-500/25 group-hover:scale-110 transition-transform duration-500"
-              >
-                <i class="fa-solid fa-microscope text-white"></i>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2">
-                Raio-X dos Custos
-              </h3>
-              <p class="text-slate-500 text-sm">
-                Análise de ponto de equilíbrio e unit economics.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="arquitetura" class="py-28 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="fade-in text-center mb-20">
-            <span
-              class="inline-flex items-center px-4 py-1.5 bg-violet-50 text-violet-600 rounded-full text-sm font-medium mb-6"
-            >
-              <i class="fa-solid fa-microchip mr-2"></i> Tecnologia Híbrida
-            </span>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Rapidez + Inteligência
-            </h2>
-            <p class="text-xl text-slate-500 max-w-xl mx-auto">
-              Combinamos a velocidade do seu celular com a inteligência da nuvem.
-            </p>
-          </div>
-
-          <div class="fade-in space-y-4">
-            <div class="glass rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 card-hover">
-              <div class="w-14 h-14 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-lg shadow-amber-500/25 flex-shrink-0">
-                <i class="fa-solid fa-mobile-screen text-white text-xl"></i>
-              </div>
-              <div class="flex-1">
-                <h3 class="font-bold text-slate-900 mb-1">No seu Celular</h3>
-                <p class="text-slate-500 text-sm">Categoriza suas compras na hora, mesmo <strong class="text-slate-700">sem internet</strong>.</p>
-              </div>
-              <span class="px-4 py-2 bg-emerald-50 text-emerald-600 text-xs font-semibold rounded-full">Dados locais</span>
-            </div>
-            
-            <div class="glass rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 card-hover">
-              <div class="w-14 h-14 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/25 flex-shrink-0">
-                <i class="fa-solid fa-cloud text-white text-xl"></i>
-              </div>
-              <div class="flex-1">
-                <h3 class="font-bold text-slate-900 mb-1">Na Nuvem</h3>
-                <p class="text-slate-500 text-sm">Analisa cenários complexos e documentos (OCR) quando você pede.</p>
-              </div>
-              <span class="px-4 py-2 bg-sky-50 text-sky-600 text-xs font-semibold rounded-full">Anonimizado</span>
-            </div>
-            
-            <div class="glass rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 card-hover">
-              <div class="w-14 h-14 bg-gradient-to-br from-slate-500 to-slate-700 rounded-xl flex items-center justify-center shadow-lg shadow-slate-500/25 flex-shrink-0">
-                <i class="fa-solid fa-vault text-white text-xl"></i>
-              </div>
-              <div class="flex-1">
-                <h3 class="font-bold text-slate-900 mb-1">Cofre Digital</h3>
-                <p class="text-slate-500 text-sm">Seus dados financeiros ficam trancados com chaves que só você tem.</p>
-              </div>
-              <span class="px-4 py-2 bg-emerald-50 text-emerald-600 text-xs font-semibold rounded-full">Proteção máxima</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="seguranca" class="py-28 bg-slate-50/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="fade-in text-center mb-20">
-            <span
-              class="inline-flex items-center px-4 py-1.5 bg-emerald-50 text-emerald-600 rounded-full text-sm font-medium mb-6"
-            >
-              <i class="fa-solid fa-shield-check mr-2"></i> Segurança Bancária
-            </span>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Seus dados são seus. Ponto.
-            </h2>
-            <p class="text-lg text-slate-500 max-w-xl mx-auto">
-              Seguimos a LGPD e padrões de criptografia militar.
-            </p>
-          </div>
-
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div
-              class="fade-in stagger-1 glass card-hover gradient-border p-6 rounded-2xl text-center group"
-            >
-              <div class="w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-emerald-500/25 group-hover:scale-110 transition-transform duration-500">
-                <i class="fa-solid fa-file-shield text-white text-lg"></i>
-              </div>
-              <h4 class="font-bold text-slate-900 mb-2">LGPD</h4>
-              <p class="text-xs text-slate-500">
-                Total conformidade. Você controla o que compartilha.
-              </p>
-            </div>
-            <div
-              class="fade-in stagger-2 glass card-hover gradient-border p-6 rounded-2xl text-center group"
-            >
-              <div class="w-14 h-14 bg-gradient-to-br from-sky-400 to-sky-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-sky-500/25 group-hover:scale-110 transition-transform duration-500">
-                <i class="fa-solid fa-eye text-white text-lg"></i>
-              </div>
-              <h4 class="font-bold text-slate-900 mb-2">Privacidade</h4>
-              <p class="text-xs text-slate-500">
-                Nem nós podemos ver seus dados financeiros, graças à criptografia ponta-a-ponta.
-              </p>
-            </div>
-            <div
-              class="fade-in stagger-3 glass card-hover gradient-border p-6 rounded-2xl text-center group"
-            >
-              <div class="w-14 h-14 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-violet-500/25 group-hover:scale-110 transition-transform duration-500">
-                <i class="fa-solid fa-lock text-white text-lg"></i>
-              </div>
-              <h4 class="font-bold text-slate-900 mb-2">AES-256</h4>
-              <p class="text-xs text-slate-500">
-                Criptografia militar no seu celular.
-              </p>
-            </div>
-            <div
-              class="fade-in stagger-4 glass card-hover gradient-border p-6 rounded-2xl text-center group"
-            >
-              <div class="w-14 h-14 bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl flex items-center justify-center mb-4 mx-auto shadow-lg shadow-rose-500/25 group-hover:scale-110 transition-transform duration-500">
-                <i class="fa-solid fa-fingerprint text-white text-lg"></i>
-              </div>
-              <h4 class="font-bold text-slate-900 mb-2">Biometria</h4>
-              <p class="text-xs text-slate-500">
-                Só você vê suas finanças.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="contato"
-        class="py-28 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden"
-      >
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.02\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-        
-        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="fade-in text-center mb-16">
-            <div
-              class="inline-flex items-center px-4 py-2 glass-dark rounded-full text-sm font-medium mb-8 text-white/80"
-            >
-              <i class="fa-solid fa-rocket mr-2 icon-pulse"></i>
-              Disponível para Mobile
-            </div>
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-              Assuma o controle <span class="gradient-text">hoje</span>.
-            </h2>
-            <p class="text-xl text-slate-400 mb-10 max-w-xl mx-auto">
-              Baixe o Contta Business AI e pare de perder dinheiro.
-            </p>
-
-            <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
-              <a href="#" class="btn-primary shine flex items-center gap-3 px-7 py-4 bg-white text-slate-900 rounded-2xl group">
-                <i class="fa-brands fa-apple text-3xl group-hover:scale-110 transition-transform"></i>
-                <div class="text-left">
-                  <span class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider">Baixar na</span>
-                  <span class="block text-base font-bold">App Store</span>
-                </div>
-              </a>
-              <a href="#" class="btn-primary shine flex items-center gap-3 px-7 py-4 bg-white text-slate-900 rounded-2xl group">
-                <i class="fa-brands fa-google-play text-3xl text-emerald-500 group-hover:scale-110 transition-transform"></i>
-                <div class="text-left">
-                  <span class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider">Disponível no</span>
-                  <span class="block text-base font-bold">Google Play</span>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="fade-in grid md:grid-cols-2 gap-6">
-            <div
-              class="glass-dark rounded-3xl p-8"
-            >
-              <h3 class="text-xl font-bold text-white mb-6">Fale Conosco</h3>
-              <div class="space-y-5">
-                <a
-                  href="mailto:contato@contta.com.br"
-                  class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group"
-                >
-                  <div class="w-12 h-12 bg-brand-500/20 rounded-xl flex items-center justify-center group-hover:bg-brand-500/30 transition-colors">
-                    <i class="fa-solid fa-envelope text-brand-400"></i>
-                  </div>
-                  <div>
-                    <span class="block text-xs text-slate-500 uppercase tracking-wider">E-mail</span>
-                    <span class="font-medium">contato@contta.com.br</span>
-                  </div>
-                </a>
-                <a
-                  href="#"
-                  class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group"
-                >
-                  <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center group-hover:bg-emerald-500/30 transition-colors">
-                    <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
-                  </div>
-                  <div>
-                    <span class="block text-xs text-slate-500 uppercase tracking-wider">WhatsApp</span>
-                    <span class="font-medium">Falar com Consultor</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-
-            <div
-              class="glass-dark rounded-3xl p-8"
-            >
-              <h3 class="text-xl font-bold text-white mb-6">Dúvidas?</h3>
-              <form class="space-y-4">
-                <input
-                  type="email"
-                  placeholder="Seu melhor e-mail"
-                  class="input-modern w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-500"
-                />
-                <button
-                  type="submit"
-                  class="btn-primary ripple w-full px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-600 text-white font-semibold rounded-xl"
-                >
-                  Enviar
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            class="fade-in text-center text-xs text-slate-400 uppercase tracking-widest mb-10"
-          >
-            Tecnologia de Ponta
+      <section class="hero section-shell" id="topo">
+        <div class="hero__copy">
+          <span class="eyebrow reveal">CFO de IA para PMEs brasileiras</span>
+          <h1 class="hero__title reveal delay-1">
+            Proteja margem, caixa e impostos antes que o problema apareca.
+          </h1>
+          <p class="hero__lead reveal delay-2">
+            A Contta transforma transacoes, custos e regras fiscais em decisoes
+            praticas: precificacao inteligente, fluxo de caixa previsto, Auto-DRE,
+            simulacao de regimes e operacao financeira mobile-first para o
+            contexto brasileiro.
           </p>
-          <div
-            class="fade-in flex flex-wrap items-center justify-center gap-10 md:gap-16"
-          >
-            <div class="tech-logo text-center group cursor-pointer">
-              <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-50 transition-colors">
-                <i class="fa-solid fa-bolt text-3xl text-slate-300 group-hover:text-amber-500 transition-colors"></i>
+
+          <div class="hero__actions reveal delay-3">
+            <a
+              class="button button--primary"
+              data-config-link="whatsappUrl"
+              data-track="whatsapp_hero"
+              href="mailto:contato@contta.com.br"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              Falar com um especialista
+            </a>
+            <a class="button button--secondary" href="#lead-form">
+              Receber diagnostico inicial
+            </a>
+          </div>
+
+          <div class="hero__highlights reveal delay-4" aria-label="Principais destaques">
+            <span class="pill">
+              <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+              Operacao offline-first no celular
+            </span>
+            <span class="pill">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              SQLCipher AES-256, biometria e PIN
+            </span>
+            <span class="pill">
+              <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+              Open Finance, PIX e rotina fiscal no Brasil
+            </span>
+          </div>
+
+          <div class="hero__stats reveal delay-4">
+            <article class="stat-card">
+              <strong>7 / 15 / 30 dias</strong>
+              <span>Projecoes de fluxo de caixa com alertas taticos.</span>
+            </article>
+            <article class="stat-card">
+              <strong>MEI, Simples, LP e LR</strong>
+              <span>Simulacao tributaria com Fator R e comparativos de regime.</span>
+            </article>
+            <article class="stat-card">
+              <strong>Preco + custos + orcamento</strong>
+              <span>Loop operacional para defender margem e capital de giro.</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal delay-2">
+          <div class="product-window" aria-label="Mockup operacional do produto">
+            <div class="product-window__bar">
+              <div class="window-dots" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
-              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Alta Performance</span>
+              <div class="product-window__address">app.contta.com.br</div>
+              <span class="status-chip status-chip--positive">Fluxo real anonymizado</span>
             </div>
-            
-            <div class="tech-logo text-center group cursor-pointer">
-              <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-slate-100 transition-colors">
-                <i class="fa-solid fa-shield-halved text-3xl text-slate-300 group-hover:text-slate-700 transition-colors"></i>
+
+            <div class="product-window__body">
+              <aside class="product-sidebar">
+                <span class="product-sidebar__title">Contta Ops</span>
+                <ul class="product-sidebar__nav">
+                  <li class="is-active">Resumo financeiro</li>
+                  <li>Precificacao</li>
+                  <li>Fluxo de caixa</li>
+                  <li>Custos e orcamento</li>
+                  <li>Tributario</li>
+                </ul>
+              </aside>
+
+              <div class="product-canvas">
+                <div class="metric-strip">
+                  <article class="metric-panel">
+                    <span class="metric-panel__label">Margem protegida</span>
+                    <strong>20,4%</strong>
+                    <small>Preco sugerido atualizado hoje.</small>
+                  </article>
+                  <article class="metric-panel">
+                    <span class="metric-panel__label">Caixa projetado</span>
+                    <strong>+R$ 18,6 mil</strong>
+                    <small>Alerta em 20/03 para DAS.</small>
+                  </article>
+                  <article class="metric-panel">
+                    <span class="metric-panel__label">Fator R</span>
+                    <strong>24%</strong>
+                    <small>Simulacao aponta economia anual.</small>
+                  </article>
+                </div>
+
+                <div class="product-grid">
+                  <article class="product-panel product-panel--wide">
+                    <header class="product-panel__header">
+                      <div>
+                        <span class="panel-kicker">Guardiao de precos</span>
+                        <h2>Fornecedor alterou custo de leite em 8%</h2>
+                      </div>
+                      <span class="status-chip">Aja hoje</span>
+                    </header>
+                    <p>
+                      Para manter margem liquida em 20%, atualize o preco sugerido
+                      para <strong>R$ 5,49</strong> e acompanhe o ponto de equilibrio.
+                    </p>
+                    <div class="mini-chart" aria-hidden="true">
+                      <span></span>
+                      <span></span>
+                      <span class="is-tall"></span>
+                      <span></span>
+                      <span class="is-medium"></span>
+                    </div>
+                  </article>
+
+                  <article class="product-panel">
+                    <header class="product-panel__header">
+                      <div>
+                        <span class="panel-kicker">Cash Flow Prophet</span>
+                        <h2>Caixa 15 dias</h2>
+                      </div>
+                    </header>
+                    <ul class="timeline-list">
+                      <li><span>Hoje</span><strong>R$ 26,8 mil</strong></li>
+                      <li><span>Dia 20</span><strong class="warning">Risco de gap</strong></li>
+                      <li><span>Acao</span><strong>Promocao PIX + renegociacao</strong></li>
+                    </ul>
+                  </article>
+
+                  <article class="product-panel">
+                    <header class="product-panel__header">
+                      <div>
+                        <span class="panel-kicker">Auto-DRE + Orcamento</span>
+                        <h2>Centro de custos</h2>
+                      </div>
+                    </header>
+                    <ul class="budget-list">
+                      <li><span>CMV</span><strong>Dentro do previsto</strong></li>
+                      <li><span>Taxas</span><strong class="warning">+12% acima do limite</strong></li>
+                      <li><span>Pessoal</span><strong>Em linha</strong></li>
+                    </ul>
+                  </article>
+
+                  <article class="product-panel">
+                    <header class="product-panel__header">
+                      <div>
+                        <span class="panel-kicker">Regime tributario</span>
+                        <h2>Otimizador de Fator R</h2>
+                      </div>
+                    </header>
+                    <p>
+                      Ajustar folha em R$ 2 mil/mês pode destravar
+                      <strong>economia estimada de R$ 8,4 mil/ano</strong>.
+                    </p>
+                  </article>
+                </div>
+
+                <p class="product-canvas__note">
+                  Mockup editorial baseado nos fluxos descritos no app Contta:
+                  precificacao, caixa, DRE, custos/orcamento e simulacao tributaria.
+                </p>
               </div>
-              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">AES-256</span>
             </div>
-            
-            <div class="tech-logo text-center group cursor-pointer">
-              <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-sky-50 transition-colors">
-                <i class="fa-brands fa-google text-3xl text-slate-300 group-hover:text-sky-500 transition-colors"></i>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--muted" id="problemas">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <span class="eyebrow eyebrow--muted">Onde a PME trava</span>
+            <h2>O problema nao e vender. O problema e sobreviver com margem e caixa.</h2>
+            <p>
+              O README do produto e claro: pequenas empresas quebram por cegueira
+              financeira, desalinhamento de caixa e complexidade tributaria. A
+              landing page agora fala desse problema com a mesma profundidade do
+              app.
+            </p>
+          </div>
+
+          <div class="issue-grid">
+            <article class="issue-card reveal delay-1">
+              <span class="issue-card__icon">
+                <i class="fa-solid fa-percent" aria-hidden="true"></i>
+              </span>
+              <h3>Preco sem margem real</h3>
+              <p>
+                Markup confundido com margem, impostos escondidos e custo de
+                fornecedor mudando sem ajuste de tabela.
+              </p>
+            </article>
+
+            <article class="issue-card reveal delay-2">
+              <span class="issue-card__icon">
+                <i class="fa-solid fa-wave-square" aria-hidden="true"></i>
+              </span>
+              <h3>Caixa desalinhado com as obrigacoes</h3>
+              <p>
+                Estoque e contas vencem antes dos recebiveis. O dinheiro some
+                mesmo quando as vendas continuam acontecendo.
+              </p>
+            </article>
+
+            <article class="issue-card reveal delay-3">
+              <span class="issue-card__icon">
+                <i class="fa-solid fa-receipt" aria-hidden="true"></i>
+              </span>
+              <h3>Tributario sem simulacao</h3>
+              <p>
+                Simples, Lucro Presumido, Lucro Real, Fator R, NFe e rotina fiscal
+                precisam sair da intuicao e virar processo orientado por dados.
+              </p>
+            </article>
+          </div>
+
+          <article class="loop-card reveal delay-4">
+            <div class="loop-card__copy">
+              <span class="section-label">Loop operacional</span>
+              <h3>Precificacao + Custos + Orcamento = margem protegida</h3>
+              <p>
+                A Contta conecta a ultima DRE, custos fixos e variaveis e limites
+                por categoria para que o dono do negocio saiba quanto pode gastar,
+                quanto precisa vender e qual preco sustenta lucro de verdade.
+              </p>
+            </div>
+            <div class="loop-steps" aria-label="Etapas do loop operacional">
+              <div>
+                <strong>1. Precificacao</strong>
+                <span>Preco, margem e ponto de equilibrio com base em custo e imposto.</span>
               </div>
-              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Google AI</span>
-            </div>
-            
-            <div class="tech-logo text-center group cursor-pointer">
-              <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-emerald-50 transition-colors">
-                <i class="fa-solid fa-building-columns text-3xl text-slate-300 group-hover:text-emerald-600 transition-colors"></i>
+              <div>
+                <strong>2. Custos</strong>
+                <span>Visibilidade de custos fixos, variaveis e pressao sobre a operacao.</span>
               </div>
-              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Open Finance</span>
+              <div>
+                <strong>3. Orcamento</strong>
+                <span>Limites por categoria, alertas de desvio e excesso antes do estouro.</span>
+              </div>
             </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="produto">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <span class="eyebrow">O que o Contta faz</span>
+            <h2>Seis frentes operacionais para trocar planilha por decisao prescritiva.</h2>
+            <p>
+              Em vez de prometer “IA” de forma abstrata, a homepage passa a
+              mostrar os modulos concretos que ja existem no produto e os fluxos
+              em rollout controlado.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card reveal delay-1">
+              <span class="feature-card__icon">
+                <i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
+              </span>
+              <h3>Guardiao de precos</h3>
+              <p>
+                Detecta variacao de custo em nota de fornecedor e sugere preco para
+                defender margem liquida.
+              </p>
+            </article>
+
+            <article class="feature-card reveal delay-2">
+              <span class="feature-card__icon">
+                <i class="fa-solid fa-chart-area" aria-hidden="true"></i>
+              </span>
+              <h3>Fluxo de caixa 7/15/30 dias</h3>
+              <p>
+                Projecoes com alerta antecipado para DAS, folha, fornecedores e
+                risco de capital de giro.
+              </p>
+            </article>
+
+            <article class="feature-card reveal delay-3">
+              <span class="feature-card__icon">
+                <i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i>
+              </span>
+              <h3>Auto-DRE, custos e orcamento</h3>
+              <p>
+                Categoriza transacoes, separa custos fixos/variaveis e compara
+                gasto real com o planejado.
+              </p>
+            </article>
+
+            <article class="feature-card reveal delay-1">
+              <span class="feature-card__icon">
+                <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+              </span>
+              <h3>Regimes tributarios e Fator R</h3>
+              <p>
+                Simula MEI, Simples, Lucro Presumido e Lucro Real com leitura
+                financeira orientada a economia tributaria.
+              </p>
+            </article>
+
+            <article class="feature-card reveal delay-2">
+              <span class="feature-card__icon">
+                <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+              </span>
+              <h3>Open Finance e conciliacao</h3>
+              <p>
+                Sincroniza operacao bancaria com consentimento e reduz digitacao
+                manual com matching e categorizacao.
+              </p>
+            </article>
+
+            <article class="feature-card reveal delay-3">
+              <span class="feature-card__icon">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              </span>
+              <h3>PIX, SEFAZ, eSocial e briefings</h3>
+              <p>
+                API bancaria, documentos fiscais e rotinas operacionais aparecem
+                com visao de rollout controlado e readiness por modulo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--dark" id="prova">
+        <div class="section-shell">
+          <div class="section-heading section-heading--dark reveal">
+            <span class="eyebrow eyebrow--dark">Prova operacional</span>
+            <h2>O posicionamento agora espelha o README do produto, sem esconder o estagio de cada modulo.</h2>
+            <p>
+              O site passa a diferenciar o que ja forma o nucleo do produto e o
+              que depende de credenciais, rollout e readiness operacional.
+            </p>
+          </div>
+
+          <div class="proof-grid">
+            <article class="proof-card reveal delay-1">
+              <header>
+                <h3>Nucleo financeiro atual</h3>
+                <span class="status-chip status-chip--positive">Em operacao</span>
+              </header>
+              <ul class="proof-list">
+                <li>Precificacao com custo, imposto, margem e ponto de equilibrio.</li>
+                <li>Auto-DRE, custos fixos/variaveis e orcamento por categoria.</li>
+                <li>Fluxo de caixa, relatorios fiscais e compartilhamento por WhatsApp.</li>
+              </ul>
+            </article>
+
+            <article class="proof-card reveal delay-2">
+              <header>
+                <h3>Regimes e integracoes</h3>
+                <span class="status-chip">Rollout controlado</span>
+              </header>
+              <ul class="proof-list">
+                <li>MEI, Simples, Lucro Presumido e Lucro Real com Fator R.</li>
+                <li>Open Finance (Belvo), conciliacao automatica e webhooks.</li>
+                <li>PIX API, SEFAZ, eSocial e e-commerce dependem de credenciais e readiness.</li>
+              </ul>
+            </article>
+
+            <article class="proof-card reveal delay-3">
+              <header>
+                <h3>Arquitetura e seguranca</h3>
+                <span class="status-chip status-chip--neutral">Base do produto</span>
+              </header>
+              <ul class="proof-list">
+                <li>Offline-first para operar mesmo fora dos grandes centros.</li>
+                <li>Drift + SQLite criptografado com SQLCipher (AES-256).</li>
+                <li>Biometria, PIN local e analise em nuvem acionada com consentimento.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="seguranca">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <span class="eyebrow">Seguranca e confianca</span>
+            <h2>Privacidade tratada como requisito operacional, nao como rodape de marketing.</h2>
+            <p>
+              As claims de seguranca foram alinhadas ao README: criptografia local,
+              autenticao reforcada e envio para nuvem somente quando houver
+              necessidade e consentimento.
+            </p>
+          </div>
+
+          <div class="security-grid">
+            <article class="security-card reveal delay-1">
+              <span class="security-card__icon">
+                <i class="fa-solid fa-database" aria-hidden="true"></i>
+              </span>
+              <h3>Base local criptografada</h3>
+              <p>Persistencia Drift + SQLite com SQLCipher e AES-256 para dados sensiveis.</p>
+            </article>
+
+            <article class="security-card reveal delay-2">
+              <span class="security-card__icon">
+                <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
+              </span>
+              <h3>Acesso protegido</h3>
+              <p>Biometria e PIN reforcam o acesso local ao app e reduzem exposicao indevida.</p>
+            </article>
+
+            <article class="security-card reveal delay-3">
+              <span class="security-card__icon">
+                <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+              </span>
+              <h3>Nuvem sob consentimento</h3>
+              <p>Analises complexas e OCR podem usar nuvem, sem romper a logica mobile-first.</p>
+            </article>
+
+            <article class="security-card reveal delay-4">
+              <span class="security-card__icon">
+                <i class="fa-solid fa-file-contract" aria-hidden="true"></i>
+              </span>
+              <h3>LGPD e rotina fiscal</h3>
+              <p>Coleta do site com consentimento explicito e posicionamento honesto sobre compliance.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--accent" id="contato">
+        <div class="section-shell cta-layout">
+          <div class="cta-card reveal">
+            <span class="eyebrow eyebrow--dark">Converse com a Contta</span>
+            <h2>Leve seu financeiro para uma operacao que enxerga margem, caixa e imposto no mesmo lugar.</h2>
+            <p>
+              Use o WhatsApp como caminho principal para qualificacao e deixe seus
+              dados abaixo se preferir que o time retorne com um diagnostico inicial.
+            </p>
+
+            <div class="cta-actions">
+              <a
+                class="button button--light"
+                data-config-link="whatsappUrl"
+                data-track="whatsapp_contact"
+                href="mailto:contato@contta.com.br"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                Falar com um consultor
+              </a>
+            </div>
+
+            <div class="contact-list">
+              <a class="contact-item" href="mailto:contato@contta.com.br">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <span>
+                  <strong>E-mail</strong>
+                  contato@contta.com.br
+                </span>
+              </a>
+              <a class="contact-item" data-config-link="phoneHref" href="tel:+5562991780703">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                <span>
+                  <strong>Telefone</strong>
+                  <span data-config-text="phoneDisplay">(62) 99178-0703</span>
+                </span>
+              </a>
+            </div>
+
+            <div class="store-group" data-config-requires-any="appStoreUrl,playStoreUrl">
+              <p class="store-group__label">Links de instalacao</p>
+              <div class="store-links">
+                <a
+                  class="store-link"
+                  data-config-link="appStoreUrl"
+                  data-track="app_store_click"
+                  href=""
+                  rel="noopener noreferrer"
+                >
+                  <i class="fa-brands fa-apple" aria-hidden="true"></i>
+                  <span>
+                    <small>Baixar na</small>
+                    App Store
+                  </span>
+                </a>
+                <a
+                  class="store-link"
+                  data-config-link="playStoreUrl"
+                  data-track="play_store_click"
+                  href=""
+                  rel="noopener noreferrer"
+                >
+                  <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+                  <span>
+                    <small>Disponivel no</small>
+                    Google Play
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card reveal delay-2">
+            <h2>Receber diagnostico inicial</h2>
+            <p>
+              Preencha o formulario para qualificar sua operacao. Se nao houver
+              endpoint de CRM configurado, a Contta abre um e-mail pronto para envio.
+            </p>
+
+            <form class="lead-form" id="lead-form" novalidate>
+              <div class="field-grid">
+                <label class="field">
+                  <span>Nome</span>
+                  <input
+                    type="text"
+                    name="name"
+                    autocomplete="name"
+                    required
+                    placeholder="Seu nome"
+                  />
+                </label>
+
+                <label class="field">
+                  <span>E-mail</span>
+                  <input
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                    placeholder="voce@empresa.com.br"
+                  />
+                </label>
+
+                <label class="field">
+                  <span>WhatsApp ou telefone</span>
+                  <input
+                    type="tel"
+                    name="phone_or_whatsapp"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    required
+                    placeholder="(62) 99999-9999"
+                  />
+                </label>
+
+                <label class="field">
+                  <span>Empresa</span>
+                  <input
+                    type="text"
+                    name="business_name"
+                    autocomplete="organization"
+                    required
+                    placeholder="Nome do negocio"
+                  />
+                </label>
+              </div>
+
+              <label class="field field--full">
+                <span>Maior dor hoje</span>
+                <textarea
+                  name="biggest_pain"
+                  rows="4"
+                  maxlength="500"
+                  required
+                  placeholder="Ex.: margem apertada, caixa imprevisivel, imposto alto, muita digitacao manual..."
+                ></textarea>
+              </label>
+
+              <label class="consent-field">
+                <input type="checkbox" name="consent" value="yes" required />
+                <span>
+                  Concordo em compartilhar meus dados para contato comercial da
+                  Contta e li a
+                  <a href="privacy.html">Politica de Privacidade</a>.
+                </span>
+              </label>
+
+              <div class="form-actions">
+                <button class="button button--primary" type="submit">
+                  <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                  Enviar diagnostico
+                </button>
+                <p class="form-note">Resposta assincrona. Sem refresh de pagina.</p>
+              </div>
+
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          class="flex flex-col md:flex-row items-center justify-between gap-6"
-        >
-          <div class="flex items-center space-x-3">
-            <div class="w-8 h-8 bg-gradient-to-br from-brand-500 to-brand-600 rounded-lg flex items-center justify-center">
-              <i class="fa-solid fa-chart-pie text-white text-xs"></i>
-            </div>
-            <span class="font-bold text-white">Contta</span>
-          </div>
-          <p class="text-sm text-slate-500">
-            &copy; 2026 Contta Tecnologia Ltda. Todos os direitos reservados.
+    <footer class="site-footer">
+      <div class="section-shell site-footer__inner">
+        <div>
+          <a class="brand brand--footer" href="index.html">
+            <span class="brand__mark">
+              <i class="fa-solid fa-chart-line"></i>
+            </span>
+            <span class="brand__text">
+              <strong>Contta</strong>
+              <small>Contta Tecnologia Ltda.</small>
+            </span>
+          </a>
+          <p class="site-footer__copy">
+            Operacao financeira orientada por IA para PMEs brasileiras, com foco
+            em margem, caixa, custos e rotina tributaria.
           </p>
+        </div>
+
+        <div class="site-footer__links">
+          <a href="privacy.html">Politica de Privacidade</a>
+          <a href="terms.html">Termos de Uso</a>
+          <a href="mailto:contato@contta.com.br">contato@contta.com.br</a>
         </div>
       </div>
     </footer>
 
-    <!-- Main JavaScript -->
+    <script src="js/site-config.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
