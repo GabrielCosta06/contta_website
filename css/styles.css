@@ -153,6 +153,10 @@ ul {
   padding-bottom: 104px;
 }
 
+.section--tight-top {
+  padding-top: 56px;
+}
+
 .section--proof {
   background:
     radial-gradient(circle at top right, rgba(15, 118, 110, 0.08), transparent 26%),
@@ -472,9 +476,16 @@ ul {
   margin-top: 28px;
 }
 
+.hero__subactions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 16px;
+}
+
 .hero__support {
   max-width: 38ch;
-  margin-top: 26px;
+  margin-top: 18px;
   font-size: 0.98rem;
 }
 
@@ -1334,6 +1345,10 @@ ul {
     padding: 78px 0;
   }
 
+  .section--tight-top {
+    padding-top: 44px;
+  }
+
   .hero__title {
     max-width: 12ch;
   }
@@ -1403,6 +1418,7 @@ ul {
   }
 
   .hero__actions,
+  .hero__subactions,
   .form-actions,
   .legal-cta,
   .contact-direct {
