@@ -1,30 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Contta</title>
-  <desc id="desc">Card social da Contta para diagnóstico financeiro de pequenas empresas.</desc>
+  <title id="title">Contta Business</title>
+  <desc id="desc">Card social da Contta Business para margem, caixa e decisão fiscal de PMEs brasileiras.</desc>
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#17385d" />
-      <stop offset="100%" stop-color="#0f223a" />
+      <stop offset="0%" stop-color="#143432" />
+      <stop offset="100%" stop-color="#0b1617" />
     </linearGradient>
-    <radialGradient id="glow" cx="20%" cy="15%" r="70%">
-      <stop offset="0%" stop-color="#4aa8ff" stop-opacity="0.7" />
-      <stop offset="100%" stop-color="#4aa8ff" stop-opacity="0" />
+    <radialGradient id="glowA" cx="15%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#16857d" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#16857d" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowB" cx="88%" cy="84%" r="40%">
+      <stop offset="0%" stop-color="#dbc081" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#dbc081" stop-opacity="0" />
     </radialGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)" rx="40" />
-  <rect width="1200" height="630" fill="url(#glow)" rx="40" />
-  <g fill="none" stroke="#edf5ff" stroke-opacity="0.12">
-    <path d="M874 102c116 44 202 128 236 252" />
-    <path d="M96 536c136-108 248-170 408-170 162 0 288 56 438 118" />
+  <rect width="1200" height="630" fill="url(#glowA)" rx="40" />
+  <rect width="1200" height="630" fill="url(#glowB)" rx="40" />
+  <g fill="none" stroke="#eef7f4" stroke-opacity="0.12">
+    <path d="M836 104c126 42 220 128 264 254" />
+    <path d="M86 532c148-96 278-148 434-148 174 0 300 50 496 132" />
   </g>
-  <rect x="80" y="76" width="82" height="82" rx="24" fill="#4aa8ff" />
+  <rect x="80" y="76" width="82" height="82" rx="24" fill="#16857d" />
   <text x="121" y="129" fill="#ffffff" font-family="Sora, sans-serif" font-size="36" font-weight="700" text-anchor="middle">C</text>
-  <text x="80" y="238" fill="#dceeff" font-family="Manrope, sans-serif" font-size="24" font-weight="700" letter-spacing="5">CONTTA</text>
-  <text x="80" y="318" fill="#edf5ff" font-family="Sora, sans-serif" font-size="68" font-weight="700">
-    <tspan x="80" dy="0">Entenda margem, caixa</tspan>
-    <tspan x="80" dy="82">e impostos antes do aperto.</tspan>
+  <text x="80" y="234" fill="#b8ddd6" font-family="Manrope, sans-serif" font-size="24" font-weight="700" letter-spacing="5">CONTTA BUSINESS</text>
+  <text x="80" y="314" fill="#eef7f4" font-family="Sora, sans-serif" font-size="66" font-weight="700">
+    <tspan x="80" dy="0">Veja margem, caixa</tspan>
+    <tspan x="80" dy="80">e risco fiscal com mais clareza.</tspan>
   </text>
-  <text x="80" y="516" fill="#d8e7f7" font-family="Manrope, sans-serif" font-size="31" font-weight="600">
-    Diagnóstico financeiro prático para pequenas empresas brasileiras.
+  <text x="80" y="514" fill="#d9ece8" font-family="Manrope, sans-serif" font-size="31" font-weight="600">
+    Inteligência financeira para PMEs brasileiras com contexto operacional real.
   </text>
 </svg>

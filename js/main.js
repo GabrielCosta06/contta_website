@@ -137,134 +137,238 @@ function initReveal(prefersReducedMotion) {
 
 function initLeadForm() {
   const form = document.getElementById("lead-form");
-  const status = document.getElementById("form-status");
-  const emailInput = form?.elements.namedItem("email");
-  const whatsappInput = form?.elements.namedItem("whatsapp");
-  const fallback = document.getElementById("message-fallback");
-  const fallbackMessage = document.getElementById("fallback-message");
-  const retryEmailLink = document.getElementById("retry-email-link");
-  const copyMessageButton = document.getElementById("copy-message-button");
+  const feedback = document.getElementById("form-feedback");
+  const submitButton = document.getElementById("submit-button");
+  const submitLabel = submitButton?.querySelector(".button__label");
 
   if (
-    !form ||
-    !status ||
-    !(emailInput instanceof HTMLInputElement) ||
-    !(whatsappInput instanceof HTMLInputElement) ||
-    !(fallback instanceof HTMLElement) ||
-    !(fallbackMessage instanceof HTMLTextAreaElement) ||
-    !(retryEmailLink instanceof HTMLAnchorElement) ||
-    !(copyMessageButton instanceof HTMLButtonElement)
+    !(form instanceof HTMLFormElement) ||
+    !(feedback instanceof HTMLElement) ||
+    !(submitButton instanceof HTMLButtonElement) ||
+    !(submitLabel instanceof HTMLElement)
   ) {
     return;
   }
 
-  const setStatus = (message, state) => {
-    status.textContent = message;
-    status.dataset.state = state || "";
+  const fieldConfig = {
+    name: {
+      input: document.getElementById("name"),
+      error: document.getElementById("error-name"),
+      wrapper: form.querySelector('[data-field="name"]'),
+      validate: (value) => (value.trim().length >= 2 ? "" : "Informe seu nome."),
+    },
+    company: {
+      input: document.getElementById("company"),
+      error: document.getElementById("error-company"),
+      wrapper: form.querySelector('[data-field="company"]'),
+      validate: (value) => (value.trim().length >= 2 ? "" : "Informe o nome da empresa."),
+    },
+    challenge: {
+      input: document.getElementById("challenge"),
+      error: document.getElementById("error-challenge"),
+      wrapper: form.querySelector('[data-field="challenge"]'),
+      validate: (value) => (value.trim() ? "" : "Selecione o principal desafio."),
+    },
+    contact: {
+      input: document.getElementById("contact"),
+      error: document.getElementById("error-contact"),
+      wrapper: form.querySelector('[data-field="contact"]'),
+      validate: validateContact,
+    },
+    consent: {
+      input: document.getElementById("consent"),
+      error: document.getElementById("error-consent"),
+      wrapper: form.querySelector('[data-field="consent"]'),
+      validate: (_, element) => (element.checked ? "" : "Autorize o contato comercial para enviar."),
+    },
   };
 
-  const syncContactValidity = () => {
-    const hasEmail = emailInput.value.trim() !== "";
-    const hasWhatsapp = whatsappInput.value.trim() !== "";
-    const message =
-      hasEmail || hasWhatsapp
-        ? ""
-        : "Informe pelo menos um e-mail ou WhatsApp para retorno.";
+  const defaultSubmitLabel = submitLabel.textContent || "Enviar";
+  const apiEndpoint = form.dataset.apiEndpoint || form.getAttribute("action") || "";
 
-    emailInput.setCustomValidity(message);
-    whatsappInput.setCustomValidity(message);
+  if (!Object.values(fieldConfig).every(isFieldBinding)) {
+    return;
+  }
+
+  const setFeedback = (message, state) => {
+    feedback.hidden = false;
+    feedback.textContent = message;
+    feedback.dataset.state = state || "";
   };
 
-  const copyFallbackMessage = async () => {
-    fallbackMessage.focus();
-    fallbackMessage.select();
-    fallbackMessage.setSelectionRange(0, fallbackMessage.value.length);
+  const clearFeedback = () => {
+    feedback.hidden = true;
+    feedback.textContent = "";
+    feedback.dataset.state = "";
+  };
+
+  const setFieldError = (fieldName, message) => {
+    const field = fieldConfig[fieldName];
+    field.error.textContent = message;
+    field.wrapper.classList.toggle("is-invalid", Boolean(message));
+    field.input.setAttribute("aria-invalid", String(Boolean(message)));
+  };
+
+  const clearFieldError = (fieldName) => {
+    setFieldError(fieldName, "");
+  };
+
+  const setBusy = (isBusy) => {
+    form.setAttribute("aria-busy", String(isBusy));
+    submitButton.disabled = isBusy;
+    submitLabel.textContent = isBusy ? "Enviando..." : defaultSubmitLabel;
+  };
+
+  const validateField = (fieldName) => {
+    const field = fieldConfig[fieldName];
+    const value = getFieldValue(field.input);
+    const message = field.validate(value, field.input);
+    setFieldError(fieldName, message);
+    return !message;
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+
+    Object.keys(fieldConfig).forEach((fieldName) => {
+      const valid = validateField(fieldName);
+      if (!valid) {
+        isValid = false;
+      }
+    });
+
+    return isValid;
+  };
+
+  Object.entries(fieldConfig).forEach(([fieldName, field]) => {
+    const eventName = field.input instanceof HTMLSelectElement ? "change" : "input";
+
+    field.input.addEventListener(eventName, () => {
+      clearFieldError(fieldName);
+      clearFeedback();
+    });
+
+    field.input.addEventListener("blur", () => {
+      validateField(fieldName);
+    });
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    clearFeedback();
+
+    if (!validateForm()) {
+      setFeedback("Revise os campos destacados antes de enviar.", "error");
+      return;
+    }
+
+    if (!apiEndpoint) {
+      setFeedback("O endpoint do formulário ainda não está configurado.", "error");
+      return;
+    }
+
+    const payload = {
+      name: getFieldValue(fieldConfig.name.input).trim(),
+      company: getFieldValue(fieldConfig.company.input).trim(),
+      challenge: getFieldValue(fieldConfig.challenge.input).trim(),
+      contact: getFieldValue(fieldConfig.contact.input).trim(),
+      consent: true,
+      source: "website",
+      page: window.location.pathname,
+      submittedAt: new Date().toISOString(),
+    };
+
+    setBusy(true);
 
     try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(fallbackMessage.value);
-      } else {
-        document.execCommand("copy");
-      }
+      const response = await postLead(apiEndpoint, payload);
+      const successMessage =
+        response?.message ||
+        "Recebemos seu cenário. A equipe da Contta vai responder pelo contato informado.";
 
-      copyMessageButton.textContent = "Mensagem copiada";
-      setStatus(
-        "Mensagem copiada. Você pode enviar para contato@contta.com.br ou continuar no WhatsApp.",
-        "success"
-      );
+      form.reset();
+      Object.keys(fieldConfig).forEach(clearFieldError);
+      setFeedback(successMessage, "success");
     } catch (error) {
-      setStatus(
-        "Não foi possível copiar automaticamente. Selecione a mensagem abaixo e copie manualmente.",
-        "error"
-      );
+      setFeedback(resolveErrorMessage(error), "error");
+    } finally {
+      setBusy(false);
     }
-  };
-
-  syncContactValidity();
-  emailInput.addEventListener("input", syncContactValidity);
-  whatsappInput.addEventListener("input", syncContactValidity);
-  copyMessageButton.addEventListener("click", copyFallbackMessage);
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    setStatus("", "");
-    fallback.hidden = true;
-    copyMessageButton.textContent = "Copiar mensagem";
-    syncContactValidity();
-
-    if (!form.reportValidity()) {
-      setStatus("Revise os campos obrigatórios antes de continuar.", "error");
-      return;
-    }
-
-    const data = new FormData(form);
-
-    if (data.get("consent") !== "yes") {
-      setStatus("É preciso autorizar o contato comercial para enviar os dados.", "error");
-      return;
-    }
-
-    const name = String(data.get("name") || "").trim();
-    const email = String(data.get("email") || "").trim();
-    const whatsapp = String(data.get("whatsapp") || "").trim();
-    const businessName = String(data.get("business_name") || "").trim();
-    const challenge = String(data.get("challenge") || "").trim();
-
-    const subject = businessName
-      ? `Diagnóstico inicial Contta - ${businessName}`
-      : "Diagnóstico inicial Contta";
-    const body = [
-      "Olá, equipe Contta.",
-      "",
-      "Quero solicitar um diagnóstico inicial.",
-      "",
-      `Nome: ${name}`,
-      `Empresa: ${businessName}`,
-      `E-mail: ${email || "Não informado"}`,
-      `WhatsApp: ${whatsapp || "Não informado"}`,
-      "",
-      "Principal desafio:",
-      challenge,
-    ].join("\n");
-
-    const fallbackText = [
-      `Assunto: ${subject}`,
-      "Para: contato@contta.com.br",
-      "",
-      body,
-    ].join("\n");
-    const mailtoUrl =
-      `mailto:contato@contta.com.br?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
-
-    fallbackMessage.value = fallbackText;
-    retryEmailLink.href = mailtoUrl;
-    fallback.hidden = false;
-    setStatus(
-      "Tentando abrir seu aplicativo de e-mail. Se nada acontecer, use a mensagem pronta abaixo ou continue pelo WhatsApp.",
-      "success"
-    );
-
-    window.location.href = mailtoUrl;
   });
+}
+
+function isFieldBinding(field) {
+  return (
+    field?.input instanceof HTMLElement &&
+    field?.error instanceof HTMLElement &&
+    field?.wrapper instanceof HTMLElement &&
+    typeof field?.validate === "function"
+  );
+}
+
+function getFieldValue(element) {
+  if (element instanceof HTMLInputElement || element instanceof HTMLSelectElement) {
+    return element.value || "";
+  }
+
+  return "";
+}
+
+function validateContact(value) {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return "Informe um WhatsApp ou e-mail para retorno.";
+  }
+
+  if (trimmed.includes("@")) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(trimmed) ? "" : "Informe um e-mail válido.";
+  }
+
+  const digits = trimmed.replace(/\D/g, "");
+  return digits.length >= 10 && digits.length <= 13
+    ? ""
+    : "Informe um WhatsApp com DDD ou um e-mail válido.";
+}
+
+async function postLead(endpoint, payload) {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), 12000);
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+
+    const contentType = response.headers.get("content-type") || "";
+    const isJson = contentType.includes("application/json");
+    const data = isJson ? await response.json().catch(() => null) : null;
+
+    if (!response.ok) {
+      throw new Error(data?.message || "Não foi possível enviar agora.");
+    }
+
+    return data;
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+function resolveErrorMessage(error) {
+  if (error?.name === "AbortError") {
+    return "O envio demorou mais que o esperado. Tente novamente ou siga pelo WhatsApp.";
+  }
+
+  if (typeof error?.message === "string" && error.message.trim()) {
+    return error.message;
+  }
+
+  return "Não foi possível enviar agora. Tente novamente ou siga pelo WhatsApp.";
 }
