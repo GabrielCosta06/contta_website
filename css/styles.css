@@ -459,9 +459,10 @@ ul {
 }
 
 .hero__lead {
-  max-width: 60ch;
+  max-width: 42ch;
   margin-top: 18px;
   font-size: 1.08rem;
+  color: #415157;
 }
 
 .hero__actions {
@@ -472,7 +473,7 @@ ul {
 }
 
 .hero__support {
-  max-width: 64ch;
+  max-width: 38ch;
   margin-top: 26px;
   font-size: 0.98rem;
 }
@@ -561,6 +562,10 @@ ul {
   color: rgba(238, 247, 244, 0.8);
 }
 
+.signal-card p {
+  max-width: 30ch;
+}
+
 .board-note,
 .workflow-note {
   margin-top: 20px;
@@ -577,6 +582,11 @@ ul {
 
 .section-heading h2 {
   font-size: clamp(2.1rem, 4vw, 3.2rem);
+}
+
+.section-heading p {
+  max-width: 52ch;
+  color: #44545a;
 }
 
 .section-heading--dark p {
@@ -665,6 +675,13 @@ ul {
   color: var(--ink-soft);
 }
 
+.proof-priority p,
+.proof-summary-card p,
+.proof-download p,
+.proof-download__list li {
+  max-width: 36ch;
+}
+
 .proof-priority-grid,
 .proof-summary-grid {
   display: grid;
@@ -721,6 +738,7 @@ ul {
 
 .proof-note {
   font-size: 0.94rem;
+  max-width: 44ch;
 }
 
 .proof-download h3 {
@@ -815,6 +833,18 @@ ul {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent-strong);
+}
+
+.problem-card p,
+.pillar-meta p,
+.workflow-card p,
+.insight-block p,
+.comparison-list li,
+.brazil-point p,
+.trust-point p,
+.contact-panel p,
+.form-card p {
+  max-width: 38ch;
 }
 
 .workflow-card {
