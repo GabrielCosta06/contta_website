@@ -1,3 +1,4 @@
+import { FeatureIcon } from "@/components/feature-icon";
 import { LeadForm } from "@/components/lead-form";
 import { Reveal } from "@/components/reveal";
 import {
@@ -147,13 +148,30 @@ export default function HomePage() {
             </p>
           </Reveal>
 
-          <div className="pillar-grid">
+          <div className="capability-grid">
             {deliveryPillars.map((pillar, index) => (
-              <Reveal className="pillar" delay={index * 80} key={pillar.kicker}>
-                <span className="section-label">{pillar.kicker}</span>
-                <h3>{pillar.title}</h3>
-                <p>{pillar.description}</p>
-                <dl className="pillar__details">
+              <Reveal className="capability-card" delay={index * 80} key={pillar.kicker}>
+                <div className="capability-card__head">
+                  <div className="capability-card__icon">
+                    <FeatureIcon name={pillar.icon} />
+                  </div>
+                  <div className="capability-card__labels">
+                    <span className="section-label">{pillar.kicker}</span>
+                    <span className="capability-card__tag">{pillar.tag}</span>
+                  </div>
+                </div>
+
+                <div className="capability-card__copy">
+                  <h3>{pillar.title}</h3>
+                  <p>{pillar.description}</p>
+                </div>
+
+                <article className="capability-card__signal">
+                  <span>Sinal que aparece</span>
+                  <strong>{pillar.signal}</strong>
+                </article>
+
+                <dl className="capability-card__meta">
                   <div>
                     <dt>Decisão que destrava</dt>
                     <dd>{pillar.action}</dd>
@@ -182,11 +200,19 @@ export default function HomePage() {
               <span className="section-label">Artefato Tangível</span>
               <h3>Baixe a amostra completa de leitura</h3>
               <p>Resumo executivo, margem, caixa e fiscal em quatro páginas.</p>
-              <ul className="proof-download__list">
+              <div className="proof-download__stack">
                 {sampleDownloadItems.map((item) => (
-                  <li key={item}>{item}</li>
+                  <article className="proof-download-item" key={item.title}>
+                    <div className="proof-download-item__icon">
+                      <FeatureIcon name={item.icon} />
+                    </div>
+                    <div className="proof-download-item__body">
+                      <h4>{item.title}</h4>
+                      <p>{item.detail}</p>
+                    </div>
+                  </article>
                 ))}
-              </ul>
+              </div>
               <a className="button button--primary" href={siteConfig.samplePdfHref} download>
                 Baixar Amostra de Leitura
               </a>
@@ -220,7 +246,12 @@ export default function HomePage() {
               <div className="report-sheet__highlights">
                 {sampleHighlights.map((highlight) => (
                   <article className="report-highlight" key={highlight.label}>
-                    <span>{highlight.label}</span>
+                    <div className="report-highlight__head">
+                      <div className="report-highlight__icon">
+                        <FeatureIcon name={highlight.icon} />
+                      </div>
+                      <span>{highlight.label}</span>
+                    </div>
                     <p>{highlight.detail}</p>
                   </article>
                 ))}
@@ -243,12 +274,26 @@ export default function HomePage() {
             <p>A Contta organiza a base, prioriza sinais e ajuda a agir cedo.</p>
           </Reveal>
 
-          <div className="workflow-band">
+          <div className="workflow-track">
             {workflowSteps.map((step, index) => (
-              <Reveal className="workflow-step" delay={index * 90} key={step.step}>
-                <span className="workflow-step__index">{step.step}</span>
-                <h3>{step.title}</h3>
-                <p>{step.detail}</p>
+              <Reveal className="workflow-story" delay={index * 90} key={step.step}>
+                <div className="workflow-story__head">
+                  <span className="workflow-step__index">{step.step}</span>
+                  <div className="workflow-story__icon">
+                    <FeatureIcon name={step.icon} />
+                  </div>
+                </div>
+
+                <div className="workflow-story__copy">
+                  <span className="workflow-story__eyebrow">{step.eyebrow}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.detail}</p>
+                </div>
+
+                <article className="workflow-story__outcome">
+                  <span>Resultado</span>
+                  <p>{step.outcome}</p>
+                </article>
               </Reveal>
             ))}
           </div>
@@ -263,22 +308,31 @@ export default function HomePage() {
             <p>Três exemplos do tipo de leitura que a Contta destaca para orientar decisão.</p>
           </Reveal>
 
-          <div className="insight-grid">
+          <div className="signal-gallery">
             {insightExamples.map((item, index) => (
-              <Reveal className="insight" delay={index * 80} key={item.kicker}>
-                <span className="section-label">{item.kicker}</span>
-                <h3>{item.title}</h3>
-                <div className="insight__stack">
-                  <article className="insight__block">
+              <Reveal className="signal-card" delay={index * 80} key={item.kicker}>
+                <div className="signal-card__header">
+                  <div className="signal-card__icon">
+                    <FeatureIcon name={item.icon} />
+                  </div>
+                  <div className="signal-card__intro">
+                    <span className="section-label">{item.kicker}</span>
+                    <h3>{item.title}</h3>
+                  </div>
+                </div>
+
+                <article className="signal-card__metric">
+                  <span>Sinal numérico</span>
+                  <strong>{item.signal}</strong>
+                </article>
+
+                <div className="signal-card__stack">
+                  <article className="signal-card__body">
                     <span>Cenário</span>
                     <p>{item.context}</p>
                   </article>
-                  <article className="insight__block insight__block--signal">
-                    <span>Sinal Numérico</span>
-                    <strong>{item.signal}</strong>
-                  </article>
-                  <article className="insight__block">
-                    <span>Ação Recomendada</span>
+                  <article className="signal-card__body">
+                    <span>Ação recomendada</span>
                     <p>{item.action}</p>
                   </article>
                 </div>
@@ -288,33 +342,71 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section--soft" id="brasil">
-        <div className="section-shell context-grid">
-          <Reveal className="context-panel">
+      <section className="section section--soft context-section" id="brasil">
+        <div className="section-shell">
+          <Reveal className="section-heading context-section__heading">
             <span className="eyebrow">Por que isso é diferente no Brasil</span>
-            <h2>No Brasil, margem e caixa erram mais fácil quando tributo, prazo e custo são lidos separadamente.</h2>
-            <div className="context-points">
-              {brazilPoints.map((point) => (
-                <article key={point.title}>
-                  <h3>{point.title}</h3>
-                  <p>{point.detail}</p>
-                </article>
-              ))}
-            </div>
+            <h2>Sem contexto Brasil, margem e caixa parecem saudáveis até o problema aparecer.</h2>
+            <p>
+              A Contta organiza tributo, prazo, custo e premissas em uma leitura mais fácil de
+              escanear e mais rápida de agir.
+            </p>
           </Reveal>
 
-          <Reveal className="context-panel context-panel--solid" delay={120}>
-            <span className="eyebrow eyebrow--light">Base operacional</span>
-            <h2>Confiança vem de dados protegidos, sync visível e premissas claras.</h2>
-            <div className="trust-grid">
-              {trustPoints.map((point) => (
-                <article key={point.title}>
-                  <h3>{point.title}</h3>
-                  <p>{point.detail}</p>
-                </article>
-              ))}
-            </div>
-          </Reveal>
+          <div className="context-showcase">
+            <Reveal className="showcase-card showcase-card--market">
+              <div className="showcase-card__intro">
+                <span className="section-label">Atritos do mercado</span>
+                <h3>Quatro pontos que distorcem a leitura financeira.</h3>
+                <p>O risco raramente vem de um número isolado. Ele nasce do contexto escondido.</p>
+              </div>
+
+              <div className="showcase-chip-row" aria-label="Principais fatores">
+                {brazilPoints.map((point) => (
+                  <span className="showcase-chip" key={point.tag}>
+                    {point.tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="showcase-list">
+                {brazilPoints.map((point) => (
+                  <article className="showcase-item showcase-item--market" key={point.title}>
+                    <div className="showcase-item__icon">
+                      <FeatureIcon name={point.icon} />
+                    </div>
+                    <div className="showcase-item__body">
+                      <span className="showcase-item__tag">{point.tag}</span>
+                      <h4>{point.title}</h4>
+                      <p>{point.detail}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal className="showcase-card showcase-card--platform" delay={120}>
+              <div className="showcase-card__intro showcase-card__intro--light">
+                <span className="section-label section-label--light">Leitura confiável</span>
+                <h3>O que a plataforma deixa visível para a decisão ficar mais segura.</h3>
+                <p>Mais leitura operacional, menos suposição escondida no processo.</p>
+              </div>
+
+              <div className="showcase-list showcase-list--platform">
+                {trustPoints.map((point) => (
+                  <article className="showcase-item showcase-item--platform" key={point.title}>
+                    <div className="showcase-item__icon showcase-item__icon--light">
+                      <FeatureIcon name={point.icon} />
+                    </div>
+                    <div className="showcase-item__body">
+                      <h4>{point.title}</h4>
+                      <p>{point.detail}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -325,9 +417,16 @@ export default function HomePage() {
             <h2>Envie seu cenário e receba uma leitura inicial de margem, caixa e fiscal.</h2>
             <p>A equipe responde com uma leitura inicial e o próximo passo sugerido.</p>
 
-            <ul className="contact-panel__bullets">
+            <ul className="contact-signal-list">
               {contactBullets.map((item) => (
-                <li key={item}>{item}</li>
+                <li className="contact-signal" key={item.text}>
+                  <div className="contact-signal__icon">
+                    <FeatureIcon name={item.icon} />
+                  </div>
+                  <div className="contact-signal__body">
+                    <p>{item.text}</p>
+                  </div>
+                </li>
               ))}
             </ul>
 

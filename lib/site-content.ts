@@ -55,23 +55,32 @@ export const heroMetrics = [
 
 export const deliveryPillars = [
   {
+    icon: "chart",
+    tag: "Margem",
     kicker: "Proteção de margem",
     title: "Preço, custo e DRE no mesmo quadro.",
     description: "A Contta cruza preço, mix, custo, despesa e imposto antes da margem sumir no fim do mês.",
+    signal: "Preço mínimo, desconto e mix na mesma leitura.",
     action: "Revisar preço mínimo, desconto, meta ou composição do mix antes de destruir rentabilidade.",
     reason: "O desvio quase sempre nasce em pequenos erros repetidos.",
   },
   {
+    icon: "wallet",
+    tag: "Caixa",
     kicker: "Clareza de caixa",
     title: "Pressão financeira com antecedência.",
     description: "Pendências, recebíveis e saídas deixam de competir no escuro e passam a formar uma cadência visível.",
+    signal: "Lacuna de giro antes do vencimento crítico.",
     action: "Cobrar antes, reordenar pagamentos e segurar gasto não essencial com prazo mais claro.",
     reason: "A quebra acontece no timing, não apenas na receita consolidada.",
   },
   {
+    icon: "receipt",
+    tag: "Fiscal",
     kicker: "Contexto fiscal Brasil",
     title: "Regime, Fator R e premissas explícitas.",
     description: "O número fiscal deixa de parecer exato quando faltam hipóteses de enquadramento ou composição de folha.",
+    signal: "Premissas fiscais visíveis antes da decisão.",
     action: "Revisar premissas com antecedência antes de confiar no fiscal para preço, caixa e margem.",
     reason: "No Brasil, contexto tributário muda leitura operacional.",
   },
@@ -80,45 +89,74 @@ export const deliveryPillars = [
 export const workflowSteps = [
   {
     step: "1",
+    icon: "layers",
+    eyebrow: "Base única",
     title: "Organizar a base financeira",
     detail: "Receita, custo, despesa, orçamento e fiscal mínimo entram no mesmo sistema de leitura.",
+    outcome: "A leitura começa com menos fricção entre áreas e planilhas.",
   },
   {
     step: "2",
+    icon: "target",
+    eyebrow: "Prioridade real",
     title: "Priorizar sinais de decisão",
     detail: "O software destaca o que pressiona margem, caixa e confiança fiscal agora.",
+    outcome: "A equipe enxerga o que muda resultado, não só o que faz barulho.",
   },
   {
     step: "3",
+    icon: "flow",
+    eyebrow: "Ação prática",
     title: "Agir cedo",
     detail: "Com prioridade clara, o financeiro revisa preço, prazo, gasto ou encaminha a análise ao contador.",
+    outcome: "A próxima ação fica mais simples, mais rápida e mais defensável.",
   },
 ] as const;
 
 export const sampleHighlights = [
   {
+    icon: "chart",
     label: "O que revisar agora",
     detail: "Preço mínimo, faixa de desconto e política comercial antes da próxima compra.",
   },
   {
+    icon: "wallet",
     label: "Próxima ação financeira",
     detail: "Cobrar antes e reordenar pagamentos até D+11 para reduzir a lacuna.",
   },
   {
+    icon: "receipt",
     label: "Premissa explícita",
     detail: "O custo fiscal ainda depende do enquadramento e da folha validada.",
   },
 ] as const;
 
 export const sampleDownloadItems = [
-  "Resumo executivo com os 3 sinais prioritários.",
-  "Leitura de margem com preço, custo, faixa mínima e ação recomendada.",
-  "Pressão de caixa em 14 e 30 dias com lacuna prevista.",
-  "Contexto fiscal com premissas, risco e encaminhamento ao contador.",
+  {
+    icon: "file",
+    title: "Resumo executivo",
+    detail: "Os 3 sinais prioritários já organizados na primeira página.",
+  },
+  {
+    icon: "chart",
+    title: "Leitura de margem",
+    detail: "Preço, custo, faixa mínima e ação recomendada no mesmo quadro.",
+  },
+  {
+    icon: "wallet",
+    title: "Pressão de caixa",
+    detail: "Horizonte de 14 e 30 dias com lacuna prevista e timing visível.",
+  },
+  {
+    icon: "receipt",
+    title: "Contexto fiscal",
+    detail: "Premissas, risco e encaminhamento ao contador sem zona cinzenta.",
+  },
 ] as const;
 
 export const insightExamples = [
   {
+    icon: "chart",
     kicker: "Margem",
     title: "A margem caiu sem o desconto mudar.",
     context: "Preço a R$ 168; custo foi a R$ 114; despesa fixa em R$ 18; imposto em 7,6%.",
@@ -126,6 +164,7 @@ export const insightExamples = [
     action: "Rever preço mínimo, desconto e mix antes da próxima compra.",
   },
   {
+    icon: "wallet",
     kicker: "Caixa",
     title: "O mês fecha, mas os próximos 14 dias apertam.",
     context: "Saídas de R$ 86 mil; entradas confirmadas de R$ 63 mil nos próximos 14 dias.",
@@ -133,6 +172,7 @@ export const insightExamples = [
     action: "Cobrar antes, renegociar prazo ou segurar compra não crítica.",
   },
   {
+    icon: "receipt",
     kicker: "Fiscal",
     title: "A premissa fiscal ainda muda o número.",
     context: "Folha em 27,2% da receita; pró-labore e mix ainda afetam o Fator R.",
@@ -143,33 +183,70 @@ export const insightExamples = [
 
 export const brazilPoints = [
   {
-    title: "Complexidade tributária",
-    detail: "Regime, anexos, Fator R e obrigações mudam a leitura do custo real.",
+    icon: "shield",
+    tag: "Tributo",
+    title: "Tributação em movimento",
+    detail: "Regime, anexos e Fator R mudam o custo real com facilidade.",
   },
   {
-    title: "Capital de giro desalinhado",
-    detail: "Comprar em 30 dias e receber em 31 ainda pode quebrar a semana financeira.",
+    icon: "flow",
+    tag: "Prazo",
+    title: "Giro desalinhado",
+    detail: "Comprar em 30 dias e receber em 31 já pressiona a semana financeira.",
   },
   {
-    title: "Estrutura de custo pouco visível",
-    detail: "Despesa fixa mal alocada faz preço parecer melhor do que realmente é.",
+    icon: "layers",
+    tag: "Custo",
+    title: "Custo escondido",
+    detail: "Despesa mal alocada faz o preço parecer saudável quando não está.",
   },
   {
-    title: "Falsa confiança",
-    detail: "Número incompleto parece exato quando faltam premissas e revisão operacional.",
+    icon: "radar",
+    tag: "Confiança",
+    title: "Precisão ilusória",
+    detail: "Premissas ocultas passam segurança demais para um número ainda incompleto.",
   },
 ] as const;
 
 export const trustPoints = [
-  { title: "Offline-first", detail: "A operação não depende de conexão o tempo inteiro." },
-  { title: "Dados locais criptografados", detail: "Informação sensível fica em armazenamento local protegido." },
-  { title: "Visibilidade de sync", detail: "Você vê o que sincronizou, falhou ou está pendente." },
-  { title: "Premissas explícitas", detail: "Quando falta dado, a hipótese aparece na leitura." },
-  { title: "Limite contábil claro", detail: "Apoia a rotina financeira, mas não substitui o contador." },
+  {
+    icon: "offline",
+    title: "Offline-first",
+    detail: "A operação continua funcionando mesmo com conexão instável.",
+  },
+  {
+    icon: "lock",
+    title: "Dados protegidos",
+    detail: "Informação sensível fica em armazenamento local protegido.",
+  },
+  {
+    icon: "sync",
+    title: "Sync visível",
+    detail: "Você enxerga o que sincronizou, falhou ou ficou pendente.",
+  },
+  {
+    icon: "spark",
+    title: "Premissas explícitas",
+    detail: "Quando falta dado, a hipótese aparece com clareza na leitura.",
+  },
+  {
+    icon: "boundary",
+    title: "Limite contábil claro",
+    detail: "Ajuda a rotina financeira sem invadir o papel do contador.",
+  },
 ] as const;
 
 export const contactBullets = [
-  "Custo subiu e o preço ficou no automático.",
-  "Caixa aperta antes dos recebíveis entrarem.",
-  "Regime, Fator R ou premissas fiscais ainda geram dúvida.",
+  {
+    icon: "chart",
+    text: "Custo subiu e o preço ficou no automático.",
+  },
+  {
+    icon: "wallet",
+    text: "Caixa aperta antes dos recebíveis entrarem.",
+  },
+  {
+    icon: "receipt",
+    text: "Regime, Fator R ou premissas fiscais ainda geram dúvida.",
+  },
 ] as const;
