@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Amostra de Leitura Contta Business</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --brand-blue: #134176;
+        --brand-blue-deep: #0b2440;
+        --brand-teal: #2ea7a1;
+        --brand-teal-soft: #d8efeb;
+        --paper: #f7fbfc;
+        --paper-warm: #eef5f8;
+        --ink: #12304d;
+        --ink-soft: #46627b;
+        --line: rgba(19, 65, 118, 0.12);
+        --white: #ffffff;
+        --danger-soft: #fdeceb;
+        --success-soft: #e7f6ef;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0d1f36;
+        font-family: "Manrope", sans-serif;
+        color: var(--ink);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        counter-reset: page;
+      }
+
+      .page {
+        position: relative;
+        width: 210mm;
+        height: 297mm;
+        margin: 0 auto;
+        overflow: hidden;
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+        page-break-after: always;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      .page__inner {
+        position: relative;
+        height: 297mm;
+        padding: 16mm 16mm 15mm;
+      }
+
+      .cover {
+        background:
+          radial-gradient(circle at 18% 14%, rgba(46, 167, 161, 0.3), transparent 28%),
+          radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.08), transparent 30%),
+          linear-gradient(155deg, #0c2137 0%, #123a67 54%, #15508b 100%);
+        color: #eef6ff;
+      }
+
+      .cover::before {
+        content: "";
+        position: absolute;
+        inset: 12mm 12mm auto auto;
+        width: 140mm;
+        height: 140mm;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(46, 167, 161, 0.16), transparent 72%);
+        filter: blur(12px);
+      }
+
+      .cover::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 88mm;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.14) 12%,
+          rgba(46, 167, 161, 0.54) 48%,
+          rgba(255, 255, 255, 0.12) 86%,
+          transparent 100%
+        );
+      }
+
+      .cover-mark {
+        position: absolute;
+        right: -24mm;
+        bottom: 28mm;
+        width: 116mm;
+        opacity: 0.08;
+        transform: rotate(-10deg);
+      }
+
+      .topbar,
+      .section-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10mm;
+      }
+
+      .brand-lockup {
+        display: inline-flex;
+        align-items: center;
+        gap: 5mm;
+      }
+
+      .brand-lockup img {
+        height: 10mm;
+        width: auto;
+      }
+
+      .business-pill,
+      .sample-pill,
+      .folio-pill,
+      .metric-label,
+      .section-kicker,
+      .signal-kicker,
+      .action-label,
+      .footer-note,
+      .question-label,
+      .legend-label,
+      .chip,
+      .contact-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .business-pill,
+      .folio-pill {
+        padding: 2.4mm 4.4mm;
+        color: var(--brand-blue);
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      .sample-pill {
+        padding: 2.5mm 4.6mm;
+        color: rgba(239, 248, 255, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .cover-copy {
+        position: relative;
+        z-index: 1;
+        margin-top: 19mm;
+        max-width: 122mm;
+      }
+
+      .cover-copy p:first-child {
+        margin: 0;
+        color: #9fe3dd;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Sora", sans-serif;
+        letter-spacing: -0.04em;
+      }
+
+      .cover-copy h1 {
+        margin-top: 5mm;
+        font-size: 31px;
+        line-height: 1.05;
+        max-width: 108mm;
+      }
+
+      .cover-copy .lead {
+        margin-top: 6mm;
+        max-width: 101mm;
+        color: rgba(236, 245, 255, 0.86);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .summary-sheet {
+        position: absolute;
+        right: 16mm;
+        bottom: 16mm;
+        left: 16mm;
+        display: grid;
+        gap: 6mm;
+        padding: 11mm;
+        border-radius: 10mm;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 249, 250, 0.98));
+        box-shadow:
+          0 18px 60px rgba(5, 15, 29, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.94);
+        color: var(--ink);
+      }
+
+      .sheet-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 8mm;
+        padding-bottom: 6mm;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .sheet-head strong {
+        display: block;
+        font-size: 17px;
+      }
+
+      .sheet-head span {
+        display: block;
+        margin-top: 1.5mm;
+        color: var(--ink-soft);
+        font-size: 11px;
+      }
+
+      .sheet-grid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 7mm;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4mm;
+      }
+
+      .metric {
+        display: grid;
+        gap: 2mm;
+        padding: 5mm;
+        border: 1px solid rgba(19, 65, 118, 0.08);
+        border-radius: 6mm;
+        background:
+          radial-gradient(circle at top right, rgba(46, 167, 161, 0.12), transparent 44%),
+          linear-gradient(180deg, #eff7f9 0%, #ffffff 100%);
+      }
+
+      .metric-label {
+        justify-self: start;
+        padding: 0;
+        color: var(--ink-soft);
+        background: transparent;
+      }
+
+      .metric strong {
+        font-size: 19px;
+        line-height: 1;
+      }
+
+      .metric p {
+        color: var(--ink-soft);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .signal-stack {
+        display: grid;
+        gap: 4mm;
+      }
+
+      .signal-row {
+        display: grid;
+        grid-template-columns: 10mm 1fr;
+        gap: 4mm;
+        padding: 4.5mm 5mm;
+        border-radius: 5.5mm;
+        background: #f7fbfc;
+        border: 1px solid rgba(19, 65, 118, 0.07);
+      }
+
+      .signal-index {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 10mm;
+        height: 10mm;
+        border-radius: 3.4mm;
+        color: var(--brand-blue);
+        font-size: 10px;
+        font-weight: 800;
+        background: var(--brand-teal-soft);
+      }
+
+      .signal-row h3 {
+        font-size: 14px;
+      }
+
+      .signal-row p {
+        margin-top: 1.6mm;
+        color: var(--ink-soft);
+        font-size: 10.5px;
+        line-height: 1.45;
+      }
+
+      .footer-note {
+        justify-self: start;
+        padding: 0;
+        color: var(--ink-soft);
+        background: transparent;
+      }
+
+      .analysis-page {
+        background:
+          linear-gradient(180deg, #f8fbfc 0%, #eef4f7 100%);
+      }
+
+      .analysis-page .page__inner {
+        display: grid;
+        gap: 9mm;
+      }
+
+      .section-topbar {
+        padding-bottom: 4mm;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-topbar .brand-lockup img {
+        height: 8.4mm;
+      }
+
+      .section-body {
+        display: grid;
+        grid-template-columns: 76mm 1fr;
+        gap: 8mm;
+      }
+
+      .hero-panel {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        gap: 5mm;
+        padding: 8mm;
+        border-radius: 9mm;
+        color: #eef6ff;
+        background:
+          radial-gradient(circle at top right, rgba(46, 167, 161, 0.28), transparent 32%),
+          linear-gradient(180deg, #123a67 0%, #0b233d 100%);
+      }
+
+      .hero-panel::after {
+        content: "";
+        position: absolute;
+        inset: auto -16mm -20mm auto;
+        width: 58mm;
+        height: 58mm;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(46, 167, 161, 0.18), transparent 70%);
+      }
+
+      .section-kicker {
+        justify-self: start;
+        padding: 0;
+        color: #9fe3dd;
+        background: transparent;
+      }
+
+      .hero-panel h2 {
+        font-size: 25px;
+        line-height: 1.06;
+      }
+
+      .hero-panel p {
+        max-width: 58mm;
+        color: rgba(237, 245, 255, 0.86);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .focus-metric {
+        display: grid;
+        gap: 2mm;
+        margin-top: 2mm;
+        padding: 5mm;
+        border-radius: 6mm;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .focus-metric span,
+      .detail-card span,
+      .decision-box span,
+      .question-label,
+      .legend-label,
+      .stat-card span,
+      .timeline-event strong,
+      .chip,
+      .contact-pill {
+        color: inherit;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .focus-metric strong {
+        font-family: "Sora", sans-serif;
+        font-size: 30px;
+        line-height: 1;
+      }
+
+      .focus-metric p {
+        max-width: none;
+        font-size: 11px;
+      }
+
+      .main-panel {
+        display: grid;
+        gap: 5.5mm;
+      }
+
+      .headline-strip,
+      .question-box,
+      .cta-strip,
+      .timeline-panel,
+      .assumption-panel {
+        padding: 6mm 6.5mm;
+        border-radius: 7mm;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--line);
+      }
+
+      .headline-strip {
+        display: grid;
+        gap: 2.5mm;
+        background:
+          radial-gradient(circle at top right, rgba(46, 167, 161, 0.08), transparent 36%),
+          rgba(255, 255, 255, 0.94);
+      }
+
+      .headline-strip h3 {
+        font-size: 19px;
+        line-height: 1.12;
+      }
+
+      .headline-strip p,
+      .detail-card p,
+      .decision-box p,
+      .question-box p,
+      .assumption-panel p,
+      .timeline-note p,
+      .cta-strip p,
+      .timeline-event p {
+        color: var(--ink-soft);
+        font-size: 11.5px;
+        line-height: 1.58;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4mm;
+      }
+
+      .detail-card,
+      .decision-box,
+      .stat-card,
+      .timeline-note {
+        display: grid;
+        gap: 2.5mm;
+        padding: 5mm;
+        border-radius: 6mm;
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid var(--line);
+      }
+
+      .detail-card strong,
+      .stat-card strong,
+      .timeline-note strong {
+        font-size: 16px;
+        line-height: 1.15;
+      }
+
+      .bar-stack {
+        display: grid;
+        gap: 3mm;
+        margin-top: 2mm;
+      }
+
+      .bar {
+        display: grid;
+        gap: 1.8mm;
+      }
+
+      .bar-track {
+        display: flex;
+        height: 8.5mm;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .bar-segment {
+        height: 100%;
+      }
+
+      .bar-segment--cost {
+        width: 68%;
+        background: #6fa9d8;
+      }
+
+      .bar-segment--expense {
+        width: 11%;
+        background: #bfd5e7;
+      }
+
+      .bar-segment--tax {
+        width: 8%;
+        background: #56c1b7;
+      }
+
+      .bar-segment--margin {
+        width: 13%;
+        background: #dff7f3;
+      }
+
+      .bar-legend {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2.4mm 3mm;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 2.4mm;
+        color: rgba(239, 246, 255, 0.88);
+        font-size: 10px;
+      }
+
+      .legend-swatch {
+        width: 4mm;
+        height: 4mm;
+        border-radius: 1.5mm;
+      }
+
+      .legend-swatch--cost {
+        background: #6fa9d8;
+      }
+
+      .legend-swatch--expense {
+        background: #bfd5e7;
+      }
+
+      .legend-swatch--tax {
+        background: #56c1b7;
+      }
+
+      .legend-swatch--margin {
+        background: #dff7f3;
+      }
+
+      .question-box {
+        display: grid;
+        gap: 2.5mm;
+        background: var(--brand-teal-soft);
+      }
+
+      .question-label {
+        justify-self: start;
+        padding: 0;
+        color: var(--brand-blue);
+        background: transparent;
+      }
+
+      .cash-page {
+        background:
+          linear-gradient(180deg, #f7fbfc 0%, #edf5f8 100%);
+      }
+
+      .cash-layout {
+        display: grid;
+        gap: 5.5mm;
+      }
+
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4mm;
+      }
+
+      .stat-card {
+        background:
+          radial-gradient(circle at top right, rgba(46, 167, 161, 0.1), transparent 38%),
+          rgba(255, 255, 255, 0.9);
+      }
+
+      .stat-card strong {
+        font-family: "Sora", sans-serif;
+        font-size: 24px;
+      }
+
+      .timeline-panel {
+        display: grid;
+        gap: 5mm;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 250, 0.98));
+      }
+
+      .timeline-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 6mm;
+      }
+
+      .timeline-head h3,
+      .assumption-panel h3,
+      .cta-strip h3 {
+        font-size: 18px;
+      }
+
+      .timeline-rail {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4mm;
+        padding-top: 6mm;
+      }
+
+      .timeline-rail::before {
+        content: "";
+        position: absolute;
+        top: 3mm;
+        left: 3mm;
+        right: 3mm;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          rgba(46, 167, 161, 0.32) 0%,
+          rgba(19, 65, 118, 0.32) 100%
+        );
+      }
+
+      .timeline-event {
+        position: relative;
+        display: grid;
+        gap: 2mm;
+        padding-top: 4mm;
+      }
+
+      .timeline-event::before {
+        content: "";
+        position: absolute;
+        top: -1mm;
+        left: 0;
+        width: 6mm;
+        height: 6mm;
+        border-radius: 50%;
+        background: var(--brand-teal);
+        box-shadow: 0 0 0 3px rgba(46, 167, 161, 0.14);
+      }
+
+      .timeline-event:nth-child(2)::before {
+        background: #1b5e87;
+        box-shadow: 0 0 0 3px rgba(19, 65, 118, 0.14);
+      }
+
+      .timeline-event:nth-child(3)::before {
+        background: #94cfc7;
+        box-shadow: 0 0 0 3px rgba(148, 207, 199, 0.18);
+      }
+
+      .timeline-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 4mm;
+      }
+
+      .timeline-note strong {
+        color: var(--brand-blue);
+      }
+
+      .fiscal-page {
+        background:
+          radial-gradient(circle at top right, rgba(46, 167, 161, 0.12), transparent 22%),
+          linear-gradient(180deg, #f9fcfd 0%, #eef6f7 100%);
+      }
+
+      .fiscal-page .page__inner {
+        padding-bottom: 12mm;
+      }
+
+      .fiscal-page .main-panel {
+        gap: 4mm;
+      }
+
+      .fiscal-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4mm;
+      }
+
+      .fiscal-column {
+        display: grid;
+        gap: 4mm;
+        align-content: start;
+      }
+
+      .fiscal-page .headline-strip,
+      .fiscal-page .question-box,
+      .fiscal-page .cta-strip,
+      .fiscal-page .assumption-panel {
+        padding: 5mm 5.5mm;
+      }
+
+      .fiscal-page .headline-strip h3,
+      .fiscal-page .assumption-panel h3,
+      .fiscal-page .cta-strip h3 {
+        font-size: 17px;
+      }
+
+      .fiscal-page .headline-strip p,
+      .fiscal-page .assumption-panel p,
+      .fiscal-page .question-box p,
+      .fiscal-page .cta-strip p {
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      .confidence-panel {
+        display: grid;
+        grid-template-columns: 1fr 64mm;
+        gap: 4mm;
+      }
+
+      .fiscal-page .confidence-panel {
+        gap: 3.5mm;
+      }
+
+      .confidence-box {
+        display: grid;
+        gap: 3mm;
+        padding: 5.5mm;
+        border-radius: 6mm;
+        background: var(--success-soft);
+        border: 1px solid rgba(20, 108, 67, 0.12);
+      }
+
+      .confidence-box--risk {
+        background: var(--danger-soft);
+        border-color: rgba(182, 64, 51, 0.12);
+      }
+
+      .confidence-box strong {
+        font-family: "Sora", sans-serif;
+        font-size: 18px;
+      }
+
+      .fiscal-page .confidence-box {
+        gap: 2.4mm;
+        padding: 4.5mm;
+      }
+
+      .fiscal-page .confidence-box strong {
+        font-size: 17px;
+      }
+
+      .fiscal-page .confidence-box p {
+        font-size: 10.7px;
+        line-height: 1.45;
+      }
+
+      .confidence-scale {
+        display: grid;
+        gap: 4mm;
+        padding: 6mm;
+        border-radius: 7mm;
+        color: #eef6ff;
+        background:
+          radial-gradient(circle at top right, rgba(46, 167, 161, 0.3), transparent 32%),
+          linear-gradient(180deg, #123a67 0%, #0c2744 100%);
+      }
+
+      .scale-bars {
+        display: grid;
+        gap: 2.4mm;
+      }
+
+      .scale-bar {
+        height: 7mm;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .scale-bar.is-on {
+        background: linear-gradient(90deg, #2ea7a1 0%, #8fe0d8 100%);
+      }
+
+      .assumption-panel {
+        display: grid;
+        gap: 4mm;
+      }
+
+      .fiscal-page .assumption-panel {
+        gap: 3mm;
+      }
+
+      .assumption-panel strong {
+        color: var(--brand-blue);
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.6mm;
+      }
+
+      .chip {
+        padding: 2.4mm 4mm;
+        color: var(--brand-blue);
+        background: var(--brand-teal-soft);
+      }
+
+      .cta-strip {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 6mm;
+        color: #eef6ff;
+        background:
+          radial-gradient(circle at top right, rgba(46, 167, 161, 0.2), transparent 34%),
+          linear-gradient(160deg, #123a67 0%, #0c2440 100%);
+      }
+
+      .cta-strip p {
+        color: rgba(236, 245, 255, 0.82);
+      }
+
+      .cta-contact {
+        display: grid;
+        align-content: space-between;
+        gap: 3mm;
+        padding-left: 5mm;
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .fiscal-page .cta-strip {
+        gap: 4mm;
+      }
+
+      .fiscal-page .cta-contact {
+        gap: 2mm;
+        padding-left: 3.5mm;
+      }
+
+      .fiscal-page .cta-contact strong {
+        font-size: 15px;
+      }
+
+      .fiscal-page .cta-contact p {
+        font-size: 10px;
+        line-height: 1.35;
+      }
+
+      .contact-pill {
+        justify-self: start;
+        padding: 0;
+        color: #9fe3dd;
+        background: transparent;
+      }
+
+      .cta-contact strong {
+        font-size: 17px;
+        line-height: 1.2;
+      }
+
+      .page-number {
+        position: absolute;
+        right: 16mm;
+        bottom: 10mm;
+        color: rgba(70, 98, 123, 0.8);
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .cover .page-number {
+        color: rgba(235, 245, 255, 0.74);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page cover">
+      <div class="page__inner">
+        <img class="cover-mark" src="./contta-mark.svg" alt="" />
+
+        <div class="topbar">
+          <div class="brand-lockup">
+            <img src="./contta-logo.svg" alt="Contta" />
+            <span class="business-pill">Business</span>
+          </div>
+          <span class="sample-pill">Amostra de leitura</span>
+        </div>
+
+        <div class="cover-copy">
+          <p>Resumo executivo | Horizonte de 30 dias</p>
+          <h1>Margem, caixa e contexto fiscal no mesmo quadro de decisão.</h1>
+          <p class="lead">
+            Uma leitura inicial pensada para mostrar o que está pressionando resultado agora,
+            qual risco pede revisão e qual decisão deve sair primeiro.
+          </p>
+        </div>
+
+        <div class="summary-sheet">
+          <div class="sheet-head">
+            <div>
+              <strong>Ateliê Norte Serviços Ltda.</strong>
+              <span>Empresa fictícia | Competência: março de 2026</span>
+            </div>
+            <span class="folio-pill">Leitura ilustrativa</span>
+          </div>
+
+          <div class="metrics">
+            <article class="metric">
+              <span class="metric-label">Margem esperada</span>
+              <strong>8,4%</strong>
+              <p>Abaixo do histórico após alta de custo e desconto recorrente.</p>
+            </article>
+            <article class="metric">
+              <span class="metric-label">Lacuna em D+14</span>
+              <strong>R$ 23 mil</strong>
+              <p>Antes do principal lote de recebíveis previsto no mês.</p>
+            </article>
+            <article class="metric">
+              <span class="metric-label">Fator R</span>
+              <strong>27,2%</strong>
+              <p>Próximo da linha crítica e ainda sensível a premissas.</p>
+            </article>
+          </div>
+
+          <div class="sheet-grid">
+            <div class="signal-stack">
+              <article class="signal-row">
+                <span class="signal-index">01</span>
+                <div>
+                  <h3>Margem</h3>
+                  <p>
+                    Rever preço mínimo e política comercial do serviço mais pressionado antes da
+                    próxima compra.
+                  </p>
+                </div>
+              </article>
+              <article class="signal-row">
+                <span class="signal-index">02</span>
+                <div>
+                  <h3>Caixa</h3>
+                  <p>
+                    Acelerar cobrança e reorganizar pagamentos não críticos para reduzir a lacuna
+                    financeira.
+                  </p>
+                </div>
+              </article>
+              <article class="signal-row">
+                <span class="signal-index">03</span>
+                <div>
+                  <h3>Fiscal</h3>
+                  <p>
+                    Validar enquadramento e premissas com o contador antes de tratar o número como
+                    definitivo.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div class="headline-strip">
+              <span class="signal-kicker">O que este material mostra</span>
+              <h3>Uma amostra do padrão visual e da clareza que a Contta leva para a decisão.</h3>
+              <p>
+                O foco não é entregar volume de planilha. É transformar preço, giro e contexto
+                fiscal em uma leitura que uma liderança consegue escanear em minutos.
+              </p>
+              <span class="footer-note">
+                Exemplo ilustrativo baseado na estrutura atual de leitura da Contta. Não representa
+                tela do produto.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <span class="page-number">01 / 04</span>
+      </div>
+    </section>
+
+    <section class="page analysis-page">
+      <div class="page__inner">
+        <div class="section-topbar">
+          <div class="brand-lockup">
+            <img src="./contta-logo.svg" alt="Contta" />
+            <span class="business-pill">Business</span>
+          </div>
+          <span class="folio-pill">Leitura de margem</span>
+        </div>
+
+        <div class="section-body">
+          <aside class="hero-panel">
+            <span class="section-kicker">Preço, custo e erosão</span>
+            <h2>Margem pressionada antes do desconto parecer problema.</h2>
+            <p>
+              A leitura mostra quando o preço ainda sustenta rentabilidade e quando ele apenas
+              mascara erosão no faturamento.
+            </p>
+
+            <div class="focus-metric">
+              <span>Margem esperada</span>
+              <strong>8,4%</strong>
+              <p>Abaixo do histórico e sem folga para manter a política comercial atual.</p>
+            </div>
+
+            <div class="bar-stack">
+              <div class="bar">
+                <span class="legend-label">Composição do preço médio atual</span>
+                <div class="bar-track">
+                  <div class="bar-segment bar-segment--cost"></div>
+                  <div class="bar-segment bar-segment--expense"></div>
+                  <div class="bar-segment bar-segment--tax"></div>
+                  <div class="bar-segment bar-segment--margin"></div>
+                </div>
+              </div>
+
+              <div class="bar-legend">
+                <div class="legend-item">
+                  <span class="legend-swatch legend-swatch--cost"></span>
+                  Custo variável | R$ 114
+                </div>
+                <div class="legend-item">
+                  <span class="legend-swatch legend-swatch--expense"></span>
+                  Despesa alocada | R$ 18
+                </div>
+                <div class="legend-item">
+                  <span class="legend-swatch legend-swatch--tax"></span>
+                  Imposto estimado | 7,6%
+                </div>
+                <div class="legend-item">
+                  <span class="legend-swatch legend-swatch--margin"></span>
+                  Faixa restante | 8,4%
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <div class="main-panel">
+            <div class="headline-strip">
+              <span class="signal-kicker">Serviço analisado</span>
+              <h3>Pacote mensal de atendimento com preço médio atual em R$ 168.</h3>
+              <p>
+                A margem saiu de 16,0% para 8,4% depois da alta de custo e já não sustenta o
+                histórico de concessão comercial da operação.
+              </p>
+            </div>
+
+            <div class="detail-grid">
+              <article class="detail-card">
+                <span>Preço médio atual</span>
+                <strong>R$ 168</strong>
+                <p>Base considerada na leitura do serviço com maior recorrência.</p>
+              </article>
+              <article class="detail-card">
+                <span>Custo variável atualizado</span>
+                <strong>R$ 114</strong>
+                <p>Alta recente no insumo principal já aparece comprimindo a contribuição.</p>
+              </article>
+              <article class="detail-card">
+                <span>Despesa fixa alocada</span>
+                <strong>R$ 18</strong>
+                <p>Sem revisão de rateio, a aparente folga comercial fica artificialmente melhor.</p>
+              </article>
+              <article class="detail-card">
+                <span>Leitura principal</span>
+                <strong>O número atual não protege o desconto recorrente.</strong>
+                <p>O risco não está só no preço final, mas na repetição silenciosa do desvio.</p>
+              </article>
+            </div>
+
+            <div class="decision-box">
+              <span class="action-label">Ação recomendada</span>
+              <p>
+                Definir faixa mínima de preço por contrato, limitar desconto em cenários de custo
+                pressionado e revisar o mix com menor contribuição antes da próxima compra.
+              </p>
+            </div>
+
+            <div class="question-box">
+              <span class="question-label">Pergunta que essa leitura responde</span>
+              <p>Estou vendendo com margem real ou estou escondendo erosão dentro do faturamento?</p>
+            </div>
+          </div>
+        </div>
+
+        <span class="page-number">02 / 04</span>
+      </div>
+    </section>
+
+    <section class="page cash-page">
+      <div class="page__inner">
+        <div class="section-topbar">
+          <div class="brand-lockup">
+            <img src="./contta-logo.svg" alt="Contta" />
+            <span class="business-pill">Business</span>
+          </div>
+          <span class="folio-pill">Pressão de caixa</span>
+        </div>
+
+        <div class="cash-layout">
+          <div class="headline-strip">
+            <span class="signal-kicker">Horizonte de 14 e 30 dias</span>
+            <h3>O mês fecha, mas o intervalo até o principal recebível já exige ação.</h3>
+            <p>
+              Folha, fornecedor e tributos concentram a maior tensão antes da curva de entrada
+              voltar a ganhar tração.
+            </p>
+          </div>
+
+          <div class="stats-row">
+            <article class="stat-card">
+              <span>Entradas confirmadas em 14 dias</span>
+              <strong>R$ 63 mil</strong>
+              <p>Títulos previstos e recebíveis com maior probabilidade de conversão.</p>
+            </article>
+            <article class="stat-card">
+              <span>Saídas comprometidas em 14 dias</span>
+              <strong>R$ 86 mil</strong>
+              <p>Folha, fornecedor e tributos já assumidos no curto prazo.</p>
+            </article>
+            <article class="stat-card">
+              <span>Lacuna projetada em D+14</span>
+              <strong>R$ 23 mil</strong>
+              <p>Ponto de pressão antes do caixa retornar à faixa positiva em D+30.</p>
+            </article>
+          </div>
+
+          <div class="timeline-panel">
+            <div class="timeline-head">
+              <div>
+                <span class="signal-kicker">Ritmo financeiro</span>
+                <h3>Leitura temporal do aperto.</h3>
+              </div>
+              <span class="folio-pill">Caixa volta a positivo em 30 dias</span>
+            </div>
+
+            <div class="timeline-rail">
+              <article class="timeline-event">
+                <strong>D+07</strong>
+                <p>Folha e tributos tomam a dianteira antes da entrada principal.</p>
+              </article>
+              <article class="timeline-event">
+                <strong>D+14</strong>
+                <p>Lacuna máxima prevista de R$ 23 mil se nada for reordenado.</p>
+              </article>
+              <article class="timeline-event">
+                <strong>D+30</strong>
+                <p>Curva retorna à faixa positiva com a entrada mais robusta de recebíveis.</p>
+              </article>
+            </div>
+
+            <div class="timeline-grid">
+              <article class="timeline-note">
+                <span>Ação recomendada</span>
+                <strong>Acelerar cobrança e redesenhar a semana financeira.</strong>
+                <p>
+                  Priorizar títulos vencendo em até 7 dias, negociar prazo com um fornecedor
+                  crítico e segurar compra não essencial nesta janela.
+                </p>
+              </article>
+              <article class="timeline-note">
+                <span>Leitura principal</span>
+                <strong>A quebra mora no timing, não apenas no consolidado do mês.</strong>
+                <p>
+                  O fechamento mensal pode parecer saudável enquanto a operação já atravessa
+                  tensão operacional no meio do caminho.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="question-box">
+            <span class="question-label">Pergunta que essa leitura responde</span>
+            <p>Onde o caixa vai apertar antes de virar urgência operacional para a empresa?</p>
+          </div>
+        </div>
+
+        <span class="page-number">03 / 04</span>
+      </div>
+    </section>
+
+    <section class="page fiscal-page">
+      <div class="page__inner">
+        <div class="section-topbar">
+          <div class="brand-lockup">
+            <img src="./contta-logo.svg" alt="Contta" />
+            <span class="business-pill">Business</span>
+          </div>
+          <span class="folio-pill">Contexto fiscal</span>
+        </div>
+
+        <div class="main-panel">
+          <div class="headline-strip">
+            <span class="signal-kicker">Premissas, risco e encaminhamento</span>
+            <h3>O fiscal ainda influencia margem e caixa, mas o número não pode ser tratado como definitivo.</h3>
+            <p>
+              A carga usada na leitura depende do enquadramento final, do Fator R e da qualidade
+              das premissas operacionais que alimentam o cálculo.
+            </p>
+          </div>
+
+          <div class="fiscal-grid">
+            <div class="fiscal-column">
+              <div class="confidence-box">
+                <span>Regime em avaliação</span>
+                <strong>Simples Nacional</strong>
+                <p>
+                  Folha sobre receita projetada em 27,2%, próxima da zona em que pequenas mudanças
+                  alteram a leitura com rapidez.
+                </p>
+              </div>
+
+              <div class="confidence-box confidence-box--risk">
+                <span>Leitura principal</span>
+                <strong>Existe risco fiscal escondido dentro de um número aparentemente exato.</strong>
+                <p>
+                  O custo tributário não deve ser usado para precificação definitiva sem revisão
+                  das premissas que ainda estão em aberto.
+                </p>
+              </div>
+            </div>
+
+            <div class="fiscal-column">
+              <div class="confidence-scale">
+                <span>Confiança fiscal atual</span>
+                <strong style="font-size: 24px; line-height: 1">Moderada</strong>
+                <div class="scale-bars">
+                  <div class="scale-bar is-on"></div>
+                  <div class="scale-bar is-on"></div>
+                  <div class="scale-bar is-on"></div>
+                  <div class="scale-bar"></div>
+                  <div class="scale-bar"></div>
+                </div>
+              </div>
+
+              <div class="assumption-panel">
+                <div>
+                  <span class="signal-kicker">Pontos que ainda afetam a leitura</span>
+                  <h3>Premissas que precisam ficar explícitas.</h3>
+                </div>
+                <div class="chips">
+                  <span class="chip">Pró-labore</span>
+                  <span class="chip">Composição da receita</span>
+                  <span class="chip">Consistência da folha</span>
+                  <span class="chip">Enquadramento final</span>
+                  <span class="chip">Revisão com contador</span>
+                </div>
+                <p>
+                  <strong>Próximo passo:</strong> fechar as premissas operacionais antes da decisão
+                  comercial para ganhar segurança em preço, provisão e previsão de caixa.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-strip">
+            <div>
+              <span class="signal-kicker">Encaminhamento responsável</span>
+              <h3>Usar a leitura para ajustar preço, provisão e previsão de caixa com mais segurança.</h3>
+              <p>
+                A Contta ajuda a organizar a leitura e explicitar premissas. A validação legal e
+                tributária segue com o contador responsável.
+              </p>
+            </div>
+            <div class="cta-contact">
+              <span class="contact-pill">Quer uma leitura como esta na sua operação?</span>
+              <strong>contato@contta.com.br</strong>
+              <p>contta.com.br</p>
+            </div>
+          </div>
+        </div>
+
+        <span class="page-number">04 / 04</span>
+      </div>
+    </section>
+  </body>
+</html>
