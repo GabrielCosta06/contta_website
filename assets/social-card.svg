@@ -3,17 +3,17 @@
   <desc id="desc">Card social da Contta para margem, caixa e contexto fiscal de PMEs brasileiras.</desc>
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#081426" />
-      <stop offset="45%" stop-color="#102a43" />
-      <stop offset="100%" stop-color="#0f2235" />
+      <stop offset="0%" stop-color="#0b1c31" />
+      <stop offset="45%" stop-color="#134176" />
+      <stop offset="100%" stop-color="#0f2b49" />
     </linearGradient>
     <radialGradient id="glowA" cx="14%" cy="20%" r="54%">
       <stop offset="0%" stop-color="#2ea7a1" stop-opacity="0.52" />
       <stop offset="100%" stop-color="#2ea7a1" stop-opacity="0" />
     </radialGradient>
     <radialGradient id="glowB" cx="88%" cy="18%" r="46%">
-      <stop offset="0%" stop-color="#4c8bc8" stop-opacity="0.36" />
-      <stop offset="100%" stop-color="#4c8bc8" stop-opacity="0" />
+      <stop offset="0%" stop-color="#134176" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#134176" stop-opacity="0" />
     </radialGradient>
     <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#2ea7a1" stop-opacity="0" />
@@ -28,7 +28,7 @@
     <path d="M753 88c134 24 262 112 353 248" />
     <path d="M71 516c156-85 289-126 438-126 188 0 325 45 514 128" />
   </g>
-  <rect x="56" y="52" width="388" height="150" rx="32" fill="#f4f7fb" fill-opacity="0.98" />
+  <rect x="56" y="52" width="388" height="150" rx="32" fill="#f6fafb" fill-opacity="0.98" />
   <rect x="80" y="202" width="1040" height="1" fill="url(#line)" />
   <svg x="80" y="76" width="338" height="112" viewBox="340 800 1360 450" aria-hidden="true">
     <defs>
@@ -62,7 +62,7 @@
     <tspan x="80" dy="0">Margem, caixa e contexto</tspan>
     <tspan x="80" dy="80">fiscal no mesmo quadro.</tspan>
   </text>
-  <text x="80" y="530" fill="#d8e9f4" font-family="Manrope, sans-serif" font-size="29" font-weight="600">
+  <text x="80" y="530" fill="#d8edf2" font-family="Manrope, sans-serif" font-size="29" font-weight="600">
     Inteligência financeira para PMEs brasileiras com leitura operacional mais clara.
   </text>
 </svg>
