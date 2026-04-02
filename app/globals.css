@@ -1,4 +1,5 @@
 :root {
+  color-scheme: only light;
   --font-body: "Manrope", sans-serif;
   --font-heading: "Sora", sans-serif;
   --bg: #edf3fb;
@@ -39,6 +40,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #f8fbff;
 }
 
 body {
