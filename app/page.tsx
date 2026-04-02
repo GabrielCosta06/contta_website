@@ -1,6 +1,8 @@
+import { ConttaLogo } from "@/components/contta-logo";
 import { FeatureIcon } from "@/components/feature-icon";
 import { LeadForm } from "@/components/lead-form";
 import { Reveal } from "@/components/reveal";
+import { absoluteUrl } from "@/lib/metadata";
 import {
   brazilPoints,
   contactBullets,
@@ -24,6 +26,8 @@ export default function HomePage() {
         "@type": "Organization",
         name: siteConfig.legalName,
         url: siteConfig.url,
+        logo: absoluteUrl(siteConfig.logoHref),
+        image: absoluteUrl(siteConfig.socialCardHref),
         email: siteConfig.email,
         telephone: "+55 62 99178-0703",
       },
@@ -42,6 +46,12 @@ export default function HomePage() {
         operatingSystem: "Web, Android, Windows, macOS",
         areaServed: "BR",
         inLanguage: "pt-BR",
+        image: absoluteUrl(siteConfig.socialCardHref),
+        brand: {
+          "@type": "Brand",
+          name: siteConfig.brandName,
+          logo: absoluteUrl(siteConfig.logoHref),
+        },
         description: siteConfig.description,
       },
     ],
@@ -55,7 +65,14 @@ export default function HomePage() {
         <div className="section-shell home-hero__grid">
           <Reveal className="home-hero__copy">
             <span className="eyebrow">Inteligência financeira para PMEs brasileiras</span>
-            <p className="home-hero__brand">{siteConfig.name}</p>
+            <div className="home-hero__brand">
+              <ConttaLogo
+                className="home-hero__logo"
+                alt={siteConfig.logoAlt}
+                loading="eager"
+              />
+              <span className="home-hero__brand-badge">{siteConfig.name}</span>
+            </div>
             <h1 className="home-hero__title">
               Margem, caixa e contexto fiscal no mesmo quadro de decisão.
             </h1>

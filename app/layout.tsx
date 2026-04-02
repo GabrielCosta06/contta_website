@@ -24,8 +24,8 @@ const sora = Sora({
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Contta Business | Margem, caixa e decisão fiscal com contexto Brasil",
-    template: "%s | Contta Business",
+    default: "Contta | Business para margem, caixa e decisão fiscal com contexto Brasil",
+    template: "%s | Contta",
   },
   description: siteConfig.description,
   keywords: [
@@ -36,33 +36,35 @@ export const metadata: Metadata = {
     "DRE",
     "Fator R",
     "risco fiscal",
+    "Contta",
     "Contta Business",
   ],
   alternates: {
     canonical: absoluteUrl("/"),
   },
   icons: {
-    icon: siteConfig.faviconHref,
+    icon: [{ url: siteConfig.faviconHref, type: "image/svg+xml" }],
+    shortcut: [siteConfig.faviconHref],
   },
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: absoluteUrl("/"),
-    siteName: siteConfig.name,
-    title: "Contta Business | Margem, caixa e decisão fiscal com contexto Brasil",
+    siteName: siteConfig.brandName,
+    title: "Contta | Business para margem, caixa e decisão fiscal com contexto Brasil",
     description: siteConfig.description,
     images: [
       {
         url: absoluteUrl(siteConfig.socialCardHref),
         width: 1200,
         height: 630,
-        alt: "Contta Business",
+        alt: siteConfig.logoAlt,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contta Business | Margem, caixa e decisão fiscal com contexto Brasil",
+    title: "Contta | Business para margem, caixa e decisão fiscal com contexto Brasil",
     description: siteConfig.description,
     images: [absoluteUrl(siteConfig.socialCardHref)],
   },
@@ -71,7 +73,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#102a43",
+  themeColor: "#134176",
 };
 
 export default function RootLayout({

@@ -1,6 +1,8 @@
 export const siteConfig = {
+  brandName: "Contta",
   name: "Contta Business",
   legalName: "Contta Tecnologia Ltda.",
+  tagline: "Margem, caixa e contexto fiscal para PMEs brasileiras",
   description:
     "Software de inteligência financeira para PMEs brasileiras que precisam proteger margem, antecipar pressão de caixa e revisar contexto fiscal com mais clareza.",
   url: "https://contta.com.br",
@@ -9,6 +11,9 @@ export const siteConfig = {
   phoneDisplay: "(62) 99178-0703",
   whatsappHref:
     "https://wa.me/5562991780703?text=Ol%C3%A1%2C%20quero%20entender%20se%20a%20Contta%20faz%20sentido%20para%20revisar%20margem%2C%20caixa%20e%20risco%20fiscal%20da%20minha%20empresa.",
+  logoHref: "/assets/contta-logo.svg",
+  logoAlt: "Logo da Contta",
+  markHref: "/assets/contta-mark.svg",
   samplePdfHref: "/assets/amostra-leitura-contta.pdf",
   socialCardHref: "/assets/social-card.svg",
   faviconHref: "/assets/favicon.svg",
