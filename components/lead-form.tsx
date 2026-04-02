@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 
-import { challengeOptions } from "@/lib/site-content";
+import { challengeOptions, siteConfig } from "@/lib/site-content";
 
 type ContactChannel = "email" | "whatsapp";
 type FieldName = "name" | "company" | "challenge" | "contactChannel" | "contact" | "consent";
@@ -137,7 +137,9 @@ export function LeadForm() {
 
   const contactInputMode = contactChannel === "email" ? "email" : "tel";
   const contactPlaceholder =
-    contactChannel === "email" ? "Ex.: financeiro@empresa.com.br…" : "Ex.: (62) 99178-0703…";
+    contactChannel === "email"
+      ? "Ex.: financeiro@empresa.com.br..."
+      : "Ex.: (19) 99836-8671...";
 
   return (
     <form
@@ -157,7 +159,7 @@ export function LeadForm() {
           name="name"
           type="text"
           autoComplete="name"
-          placeholder="Ex.: Ana Ribeiro…"
+          placeholder="Ex.: Ana Ribeiro..."
           aria-describedby="error-name"
           aria-invalid={Boolean(errors.name)}
           onChange={() => handleFieldChange("name")}
@@ -175,7 +177,7 @@ export function LeadForm() {
           name="company"
           type="text"
           autoComplete="organization"
-          placeholder="Ex.: Ateliê Norte…"
+          placeholder="Ex.: Ateliê Norte..."
           aria-describedby="error-company"
           aria-invalid={Boolean(errors.company)}
           onChange={() => handleFieldChange("company")}
@@ -296,11 +298,11 @@ export function LeadForm() {
 
       <div className="form-actions">
         <button className="button button--primary" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Enviando…" : "Enviar Cenário para Leitura Inicial"}
+          {isSubmitting ? "Enviando..." : "Enviar Cenário para Leitura Inicial"}
         </button>
         <a
           className="text-link"
-          href="https://wa.me/5562991780703?text=Ol%C3%A1%2C%20prefiro%20seguir%20pelo%20WhatsApp%20para%20avaliar%20margem%2C%20caixa%20e%20fiscal%20com%20a%20Contta."
+          href={siteConfig.whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -360,10 +362,7 @@ function validateForm(values: ReturnType<typeof readFormValues>) {
       values.contactChannel === "email"
         ? "Informe um e-mail para retorno."
         : "Informe um WhatsApp com DDD.";
-  } else if (
-    values.contactChannel === "email" &&
-    !EMAIL_REGEX.test(values.contact)
-  ) {
+  } else if (values.contactChannel === "email" && !EMAIL_REGEX.test(values.contact)) {
     nextErrors.contact = "Informe um e-mail válido.";
   } else if (
     values.contactChannel === "whatsapp" &&
@@ -379,10 +378,7 @@ function validateForm(values: ReturnType<typeof readFormValues>) {
   return nextErrors;
 }
 
-function focusFirstError(
-  errors: Errors,
-  fieldRefs: Record<FieldName, HTMLElement | null>
-) {
+function focusFirstError(errors: Errors, fieldRefs: Record<FieldName, HTMLElement | null>) {
   const orderedFields: FieldName[] = [
     "name",
     "company",

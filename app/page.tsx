@@ -29,13 +29,13 @@ export default function HomePage() {
         logo: absoluteUrl(siteConfig.logoHref),
         image: absoluteUrl(siteConfig.socialCardHref),
         email: siteConfig.email,
-        telephone: "+55 62 99178-0703",
+        telephone: "+55 19 99836-8671",
       },
       {
         "@type": "ContactPoint",
         contactType: "sales",
         email: siteConfig.email,
-        telephone: "+55 62 99178-0703",
+        telephone: "+55 19 99836-8671",
         availableLanguage: ["Portuguese"],
       },
       {

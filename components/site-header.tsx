@@ -1,10 +1,19 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useEffectEvent, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { Brand } from "@/components/brand";
 import { navItems } from "@/lib/site-content";
+
+function resolveNavHref(pathname: string, href: string) {
+  if (href.startsWith("#")) {
+    return pathname === "/" ? href : `/${href}`;
+  }
+
+  return href;
+}
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -76,23 +85,24 @@ export function SiteHeader() {
         <div className={`site-header__panel${isOpen ? " is-open" : ""}`} id="site-navigation">
           <nav className="site-nav" aria-label="Navegação principal">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={pathname === "/" ? item.href : `/${item.href}`}
+                href={resolveNavHref(pathname, item.href)}
                 onClick={() => setIsOpen(false)}
+                aria-current={pathname === item.href ? "page" : undefined}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
-          <a
-            className="button button--primary button--compact"
+          <Link
+            className="button button--primary button--compact site-header__cta"
             href={pathname === "/" ? "#contato" : "/#contato"}
             onClick={() => setIsOpen(false)}
           >
             Falar com a Contta
-          </a>
+          </Link>
         </div>
       </div>
     </header>

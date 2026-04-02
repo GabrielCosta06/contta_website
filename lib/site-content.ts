@@ -7,10 +7,10 @@ export const siteConfig = {
     "Software de inteligência financeira para PMEs brasileiras que precisam proteger margem, antecipar pressão de caixa e revisar contexto fiscal com mais clareza.",
   url: "https://contta.com.br",
   email: "contato@contta.com.br",
-  phoneHref: "tel:+5562991780703",
-  phoneDisplay: "(62) 99178-0703",
+  phoneHref: "tel:+5519998368671",
+  phoneDisplay: "+55 (19) 99836-8671",
   whatsappHref:
-    "https://wa.me/5562991780703?text=Ol%C3%A1%2C%20quero%20entender%20se%20a%20Contta%20faz%20sentido%20para%20revisar%20margem%2C%20caixa%20e%20risco%20fiscal%20da%20minha%20empresa.",
+    "https://wa.me/5519998368671?text=Ol%C3%A1%2C%20quero%20entender%20se%20a%20Contta%20faz%20sentido%20para%20revisar%20margem%2C%20caixa%20e%20risco%20fiscal%20da%20minha%20empresa.",
   logoHref: "/assets/contta-logo.svg",
   logoAlt: "Logo da Contta",
   markHref: "/assets/contta-mark.svg",
@@ -30,6 +30,7 @@ export const navItems = [
   { label: "Entregas", href: "#entregas" },
   { label: "Amostra", href: "#amostra" },
   { label: "Método", href: "#fluxo" },
+  { label: "Assinatura", href: "/assinatura" },
   { label: "Contato", href: "#contato" },
 ] as const;
 
@@ -41,9 +42,21 @@ export const challengeOptions = [
 ] as const;
 
 export const heroSignals = [
-  { index: "01", title: "Preço", detail: "O preço ainda protege margem depois do custo, do desconto e do imposto?" },
-  { index: "02", title: "Caixa", detail: "Os próximos 14 dias seguem saudáveis ou já existe uma lacuna de giro?" },
-  { index: "03", title: "Fiscal", detail: "A leitura fiscal está segura ou depende de premissas que ainda não foram validadas?" },
+  {
+    index: "01",
+    title: "Preço",
+    detail: "O preço ainda protege margem depois do custo, do desconto e do imposto?",
+  },
+  {
+    index: "02",
+    title: "Caixa",
+    detail: "Os próximos 14 dias seguem saudáveis ou já existe uma lacuna de giro?",
+  },
+  {
+    index: "03",
+    title: "Fiscal",
+    detail: "A leitura fiscal está segura ou depende de premissas que ainda não foram validadas?",
+  },
 ] as const;
 
 export const heroProof = [
@@ -64,9 +77,11 @@ export const deliveryPillars = [
     tag: "Margem",
     kicker: "Proteção de margem",
     title: "Preço, custo e DRE no mesmo quadro.",
-    description: "A Contta cruza preço, mix, custo, despesa e imposto antes da margem sumir no fim do mês.",
+    description:
+      "A Contta cruza preço, mix, custo, despesa e imposto antes da margem sumir no fim do mês.",
     signal: "Preço mínimo, desconto e mix na mesma leitura.",
-    action: "Revisar preço mínimo, desconto, meta ou composição do mix antes de destruir rentabilidade.",
+    action:
+      "Revisar preço mínimo, desconto, meta ou composição do mix antes de destruir rentabilidade.",
     reason: "O desvio quase sempre nasce em pequenos erros repetidos.",
   },
   {
@@ -74,9 +89,11 @@ export const deliveryPillars = [
     tag: "Caixa",
     kicker: "Clareza de caixa",
     title: "Pressão financeira com antecedência.",
-    description: "Pendências, recebíveis e saídas deixam de competir no escuro e passam a formar uma cadência visível.",
+    description:
+      "Pendências, recebíveis e saídas deixam de competir no escuro e passam a formar uma cadência visível.",
     signal: "Lacuna de giro antes do vencimento crítico.",
-    action: "Cobrar antes, reordenar pagamentos e segurar gasto não essencial com prazo mais claro.",
+    action:
+      "Cobrar antes, reordenar pagamentos e segurar gasto não essencial com prazo mais claro.",
     reason: "A quebra acontece no timing, não apenas na receita consolidada.",
   },
   {
@@ -84,9 +101,11 @@ export const deliveryPillars = [
     tag: "Fiscal",
     kicker: "Contexto fiscal Brasil",
     title: "Regime, Fator R e premissas explícitas.",
-    description: "O número fiscal deixa de parecer exato quando faltam hipóteses de enquadramento ou composição de folha.",
+    description:
+      "O número fiscal deixa de parecer exato quando faltam hipóteses de enquadramento ou composição de folha.",
     signal: "Premissas fiscais visíveis antes da decisão.",
-    action: "Revisar premissas com antecedência antes de confiar no fiscal para preço, caixa e margem.",
+    action:
+      "Revisar premissas com antecedência antes de confiar no fiscal para preço, caixa e margem.",
     reason: "No Brasil, contexto tributário muda leitura operacional.",
   },
 ] as const;
@@ -97,7 +116,8 @@ export const workflowSteps = [
     icon: "layers",
     eyebrow: "Base única",
     title: "Organizar a base financeira",
-    detail: "Receita, custo, despesa, orçamento e fiscal mínimo entram no mesmo sistema de leitura.",
+    detail:
+      "Receita, custo, despesa, orçamento e fiscal mínimo entram no mesmo sistema de leitura.",
     outcome: "A leitura começa com menos fricção entre áreas e planilhas.",
   },
   {
@@ -113,7 +133,8 @@ export const workflowSteps = [
     icon: "flow",
     eyebrow: "Ação prática",
     title: "Agir cedo",
-    detail: "Com prioridade clara, o financeiro revisa preço, prazo, gasto ou encaminha a análise ao contador.",
+    detail:
+      "Com prioridade clara, o financeiro revisa preço, prazo, gasto ou encaminha a análise ao contador.",
     outcome: "A próxima ação fica mais simples, mais rápida e mais defensável.",
   },
 ] as const;
@@ -253,5 +274,146 @@ export const contactBullets = [
   {
     icon: "receipt",
     text: "Regime, Fator R ou premissas fiscais ainda geram dúvida.",
+  },
+] as const;
+
+export const subscriptionProof = [
+  "Assinatura ajustada ao porte da operação",
+  "Leitura recorrente para margem, caixa e fiscal",
+  "Implantação orientada antes da rotina ganhar escala",
+] as const;
+
+export const subscriptionIncludes = [
+  {
+    icon: "chart",
+    kicker: "Margem protegida",
+    tag: "Comercial",
+    title: "Preço, custo e DRE na mesma assinatura.",
+    description:
+      "A leitura recorrente deixa mais claro onde a rentabilidade está afinando antes do problema se repetir no mix ou no desconto.",
+    signal: "Faixa mínima, desconto e contribuição no mesmo quadro.",
+  },
+  {
+    icon: "wallet",
+    kicker: "Caixa antecipado",
+    tag: "Financeiro",
+    title: "Horizonte de 14 e 30 dias com prioridade real.",
+    description:
+      "A assinatura acompanha a pressão de caixa com leitura operacional, ajudando a agir antes do aperto virar urgência da semana.",
+    signal: "Entradas, saídas e lacuna visível antes do vencimento crítico.",
+  },
+  {
+    icon: "receipt",
+    kicker: "Fiscal contextualizado",
+    tag: "Contexto Brasil",
+    title: "Premissas fiscais explícitas para decidir com mais segurança.",
+    description:
+      "A Contta organiza as hipóteses que mudam preço, caixa e margem, sem confundir leitura operacional com parecer contábil.",
+    signal: "Risco fiscal visível antes do número parecer definitivo.",
+  },
+] as const;
+
+export const subscriptionPlans = [
+  {
+    name: "Essencial",
+    kicker: "Entrada mais leve",
+    cadence: "Cadência mensal",
+    fit: "PMEs que estão organizando base, rotina e primeiro quadro de decisão.",
+    highlight: "Bom ponto de entrada para a operação ganhar clareza sem exagerar o escopo.",
+    bullets: [
+      "Leitura mensal de margem, caixa e premissas fiscais",
+      "Priorização do que pede ação primeiro",
+      "Escopo pensado para uma operação principal",
+    ],
+    featured: false,
+  },
+  {
+    name: "Growth",
+    kicker: "Mais aderente para a maioria",
+    cadence: "Cadência quinzenal",
+    fit: "Empresas com mais pressão comercial e financeira, que precisam decidir com mais ritmo.",
+    highlight:
+      "Equilíbrio entre profundidade, velocidade e leitura recorrente para o dia a dia.",
+    bullets: [
+      "Leitura quinzenal com foco em pressão de margem e caixa",
+      "Prioridade mais clara para o que destrava resultado",
+      "Melhor encaixe para quem já opera com volume recorrente",
+    ],
+    featured: true,
+  },
+  {
+    name: "Scale",
+    kicker: "Desenho sob medida",
+    cadence: "Ritmo definido por escopo",
+    fit: "Operações com maior complexidade, mais frentes de decisão ou necessidade de consolidação.",
+    highlight:
+      "Modelo comercial ajustado ao porte, à cadência e à profundidade exigida pela operação.",
+    bullets: [
+      "Estrutura pensada para mais de uma frente operacional",
+      "Implantação e acompanhamento desenhados com o time",
+      "Condições comerciais alinhadas ao cenário real da empresa",
+    ],
+    featured: false,
+  },
+] as const;
+
+export const subscriptionJourney = [
+  {
+    step: "1",
+    icon: "layers",
+    eyebrow: "Diagnóstico",
+    title: "Ler o cenário e fechar o escopo certo",
+    detail:
+      "A assinatura começa entendendo ritmo, dor principal, base disponível e o grau de clareza que a operação precisa ganhar.",
+    outcome: "A proposta não nasce genérica. Ela nasce aderente ao porte e ao momento da empresa.",
+  },
+  {
+    step: "2",
+    icon: "target",
+    eyebrow: "Implantação",
+    title: "Colocar margem, caixa e fiscal no mesmo quadro",
+    detail:
+      "A base inicial é organizada para que as leituras recorrentes já saiam com contexto operacional e não apenas com número isolado.",
+    outcome: "A empresa entra na rotina com menos atrito e com mais sinal aproveitável.",
+  },
+  {
+    step: "3",
+    icon: "flow",
+    eyebrow: "Cadência",
+    title: "Transformar leitura em ritmo de decisão",
+    detail:
+      "A assinatura passa a sustentar a rotina comercial e financeira com uma leitura clara do que merece ação primeiro.",
+    outcome: "O ganho não fica só no diagnóstico. Ele entra na rotina da operação.",
+  },
+] as const;
+
+export const subscriptionFaqs = [
+  {
+    icon: "boundary",
+    kicker: "Escopo",
+    title: "A assinatura substitui o contador?",
+    answer:
+      "Não. A Contta organiza a leitura operacional e explicita premissas. A responsabilidade legal, contábil e tributária continua com o contador responsável.",
+  },
+  {
+    icon: "sync",
+    kicker: "Implantação",
+    title: "Preciso estar com tudo integrado para começar?",
+    answer:
+      "Não necessariamente. A assinatura pode começar com a base que a empresa já consegue organizar e evoluir junto conforme a rotina amadurece.",
+  },
+  {
+    icon: "target",
+    kicker: "Comercial",
+    title: "Como a proposta é fechada?",
+    answer:
+      "A proposta considera porte, profundidade da leitura, cadência desejada e complexidade da operação. Por isso a assinatura é apresentada de forma mais aderente do que uma tabela engessada.",
+  },
+  {
+    icon: "spark",
+    kicker: "Aderência",
+    title: "Posso começar com um escopo menor?",
+    answer:
+      "Sim. O desenho da assinatura pode começar mais enxuto e crescer conforme a empresa ganha ritmo e percebe onde a leitura gera mais retorno.",
   },
 ] as const;

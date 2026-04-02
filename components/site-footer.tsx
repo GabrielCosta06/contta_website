@@ -13,6 +13,7 @@ export function SiteFooter() {
         </div>
 
         <div className="site-footer__links">
+          <Link href="/assinatura">Assinatura</Link>
           <Link href="/privacy">Política de Privacidade</Link>
           <Link href="/terms">Termos de Uso</Link>
           <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
@@ -22,4 +23,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-
